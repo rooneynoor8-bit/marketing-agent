@@ -65,12 +65,13 @@ def main() -> None:
             result = run_turn(client, [{"role": "user", "content": prompt}], on_progress=lambda s: print(f"  {s}"))
             status = "ok"
             print(result)
-        except anthropic.APIError as e:
-            result, status = str(e), "error"
+        except Exception as e:  # log every failure so it shows up in reports/weekly.log
+            result, status = f"{type(e).__name__}: {e}", "error"
             failures += 1
-            print(f"  ❌ {e}")
+            print(f"  ❌ {result}")
         with log_path.open("a", encoding="utf-8") as log:
-            log.write(f"{datetime.now().isoformat(timespec='seconds')}\t{client_id}\t{status}\n")
+            detail = "" if status == "ok" else "\t" + " ".join(result.split())[:500]
+            log.write(f"{datetime.now().isoformat(timespec='seconds')}\t{client_id}\t{status}{detail}\n")
 
     sys.exit(1 if failures else 0)
 
