@@ -37,7 +37,15 @@ python weekly_report.py      # تقرير أسبوعي لكل العملاء
 
 التقرير بيتحفظ في `reports/<العميل>/`. ولعميل واحد بس: `python weekly_report.py example-cafe`
 
-**جدولته كل أحد الساعة 8 الصبح:**
+**على GitHub (الأسهل، من غير ما جهازك يكون شغال):**
+التقرير بيشتغل لوحده كل أحد الصبح، وبيتحفظ في فولدر `reports/` جوه الـ repo. محتاج بس تضيف المفتاح:
+1. في الـ repo ادخل على **Settings ← Secrets and variables ← Actions ← New repository secret**.
+2. في Name اكتب `ANTHROPIC_API_KEY`، وفي Secret حط المفتاح.
+3. ولو عاوز ربط الإعلانات، ضيف بنفس الطريقة `META_ACCESS_TOKEN` ومفاتيح `GOOGLE_ADS_*`.
+
+لو عاوز تشغّله دلوقتي: **Actions ← Weekly report ← Run workflow**.
+
+**أو على جهازك، كل أحد الساعة 8 الصبح:**
 - **Linux/Mac**: شغّل `crontab -e` وضيف السطر ده (عدّل المسارات):
   ```
   0 8 * * 0 cd /path/to/marketing-agent && /path/to/python weekly_report.py >> reports/cron.log 2>&1
