@@ -1,0 +1,22 @@
+{
+  "name": "Example Cafe",
+  "website": "https://example.com",
+  "industry": "مقاهي ومشروبات",
+  "market": "مصر - القاهرة الجديدة والتجمع",
+  "products": [
+    "قهوة مختصة",
+    "حلويات",
+    "مساحة عمل"
+  ],
+  "target_audience": "شباب 20-35، طلاب جامعات وموظفين بيشتغلوا ريموت",
+  "competitors": [
+    "Starbucks",
+    "Costa Coffee",
+    "Cilantro"
+  ],
+  "brand_voice": "ودود، شبابي، عامية مصرية خفيفة",
+  "goals": "زيادة الزيارات أيام الأسبوع بنسبة 30% خلال 3 شهور",
+  "monthly_budget": "40,000 جنيه إعلانات",
+  "meta_ad_account_id": "",
+  "google_ads_customer_id": ""
+}
