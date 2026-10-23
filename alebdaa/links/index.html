@@ -351,7 +351,16 @@
   .complain svg { width: 26px; height: 26px; color: var(--sand); flex: none; }
   .complain b { display: block; font-size: .92rem; }
   .complain small { color: var(--ink-soft); font-size: .8rem; }
-  .admin-link { margin-top: 10px; border-style: solid; }
+  .copy-line { display: block; width: 100%; font-size: .76rem; color: var(--ink-soft); text-align: center; margin: 18px 0 0; padding: 6px 0; cursor: default; -webkit-tap-highlight-color: transparent; }
+  .adm-modal { position: fixed; inset: 0; z-index: 60; display: flex; align-items: center; justify-content: center; padding: 20px; background: rgba(26,26,24,.86); -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px); }
+  .adm-modal[hidden] { display: none !important; }
+  .adm-box { position: relative; width: 100%; max-width: 360px; background: var(--bg); border: 1px solid var(--line); border-radius: 24px; padding: 26px 20px 20px; text-align: center; }
+  .adm-box .lic { width: 56px; height: 56px; margin: 0 auto 12px; border-radius: 16px; display: grid; place-items: center; background: var(--gold-soft); color: var(--sand); }
+  .adm-box .lic svg { width: 28px; height: 28px; }
+  .adm-box h3 { margin: 0; font-size: 1.2rem; color: #fff; }
+  .adm-box p { margin: 6px 0 18px; font-size: .88rem; color: var(--ink-soft); }
+  .adm-go { display: block; padding: 13px; border-radius: 999px; background: #c96442; color: #fff; font-weight: 700; }
+  .adm-x { position: absolute; top: 10px; left: 10px; width: 34px; height: 34px; border-radius: 50%; background: var(--soft); color: #fff; }
   .stats { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: -6px 0 18px; }
   .stat { background: var(--bg); border: 1px solid var(--line); border-radius: 12px; padding: 8px 6px; display: flex; align-items: baseline; justify-content: center; gap: 5px; white-space: nowrap; }
   .stat b { font-size: 1.1rem; line-height: 1.2; color: var(--sand); }
@@ -552,8 +561,7 @@
       <a data-track="svcq_aftersales" data-wa="السلام عليكم، أحتاج إلى خدمة ما بعد البيع"><span><svg><use href="#i-wrench"/></svg></span>ما بعد البيع</a>
     </div>
     <a class="complain" data-track="about_complaint" data-wa="السلام عليكم، عندي شكوى أو اقتراح:"><svg><use href="#i-chat-alert"/></svg><span><b>لديك شكوى أو اقتراح؟</b><small>راسلنا عبر واتساب وسنرد عليك في أسرع وقت</small></span></a>
-    <a class="complain admin-link" href="https://alebdaa-admin.arkgulf-agency.workers.dev" target="_blank" rel="noopener noreferrer"><svg><use href="#i-grid"/></svg><span><b>الإدارة</b><small>دخول منصة إدارة الحسابات</small></span></a>
-    <p style="font-size:.76rem;color:var(--ink-soft);text-align:center;margin:18px 0 0">© الإبداع للمظلات واللاند سكيب · سجل تجاري 87398</p>
+    <button type="button" class="copy-line" id="adminTrigger">© الإبداع للمظلات واللاند سكيب · سجل تجاري 87398</button>
   </section>
 </div>
 
@@ -576,6 +584,16 @@
     <button type="button" class="x" id="natClose" aria-label="إغلاق">✕</button>
     <div class="nat-head"><h3 id="natTitle">مشاريع وطنية</h3><p>اضغط على أي مشروع لعرض تفاصيله</p></div>
     <div class="nat-grid" id="natGrid"></div>
+  </div>
+</div>
+
+<div class="adm-modal" id="admModal" hidden>
+  <div class="adm-box" role="dialog" aria-modal="true" aria-labelledby="admTitle">
+    <button type="button" class="adm-x" id="admClose" aria-label="إغلاق">✕</button>
+    <span class="lic"><svg><use href="#i-grid"/></svg></span>
+    <h3 id="admTitle">إدارة الحسابات</h3>
+    <p>للفريق فقط · الدخول بكلمة المرور</p>
+    <a class="adm-go" href="https://alebdaa-admin.arkgulf-agency.workers.dev" target="_blank" rel="noopener noreferrer">دخول المنصة</a>
   </div>
 </div>
 
@@ -768,6 +786,12 @@
   natModal.addEventListener("click", e => { if (e.target === natModal) closeNat(); });
   document.addEventListener("keydown", e => { if (e.key === "Escape" && !natModal.hidden) closeNat(); });
 
+  // الإدارة: تفتح من سطر الحقوق في آخر تبويب الشركة
+  const admModal = document.getElementById("admModal");
+  document.getElementById("adminTrigger").addEventListener("click", () => { admModal.hidden = false; document.getElementById("admClose").focus(); });
+  document.getElementById("admClose").addEventListener("click", () => { admModal.hidden = true; });
+  admModal.addEventListener("click", e => { if (e.target === admModal) admModal.hidden = true; });
+  document.addEventListener("keydown", e => { if (e.key === "Escape") admModal.hidden = true; });
 </script>
 </body>
 </html>
