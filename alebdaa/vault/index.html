@@ -1,0 +1,406 @@
+<title>إدارة حسابات الإبداع</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="robots" content="noindex, nofollow">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+  /* خزنة بنفس ستايل صفحة الروابط: فحمي دافي + برتقالي، عمود واحد للموبايل */
+  :root {
+    color-scheme: dark;
+    --page: #262624;
+    --card: #30302e;
+    --soft: #3a3936;
+    --line: #45443f;
+    --ink: #faf9f5;
+    --ink-soft: #b7b5a9;
+    --accent: #d97757;
+    --accent-deep: #c96442;
+    --accent-soft: rgba(217,119,87,.16);
+    --ok: #5fd08a;
+    --bad: #ff8a65;
+    --font: "IBM Plex Sans Arabic", "Segoe UI", Tahoma, system-ui, sans-serif;
+    --mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+  }
+  * { box-sizing: border-box; }
+  [hidden] { display: none !important; }
+  html, body { background: var(--page); color: var(--ink); }
+  body { font-family: var(--font); direction: rtl; line-height: 1.5; font-size: 15px; }
+  button, input, select, textarea { font: inherit; color: inherit; }
+  button { cursor: pointer; border: 0; background: none; padding: 0; }
+  a { color: inherit; }
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 10px; }
+  .wrap { max-width: 560px; margin: 0 auto; padding-block: 18px 40px; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+  svg { display: block; }
+
+  /* gate (setup / unlock) */
+  .gate { min-height: 70vh; display: grid; place-items: center; }
+  .gate-box { width: 100%; max-width: 380px; background: var(--card); border: 1px solid var(--line); border-radius: 24px; padding: 28px 22px 22px; text-align: center; }
+  .seal { width: 60px; height: 60px; margin: 0 auto 14px; border-radius: 18px; display: grid; place-items: center; background: var(--accent-soft); color: var(--accent); }
+  .seal svg { width: 30px; height: 30px; }
+  .gate h1 { font-size: 1.3rem; margin: 0; text-wrap: balance; }
+  .gate p { margin: 6px 0 18px; color: var(--ink-soft); font-size: .9rem; }
+  .field { display: grid; gap: 6px; text-align: right; margin-bottom: 12px; }
+  .field label { font-size: .82rem; font-weight: 600; color: var(--ink-soft); }
+  .input { width: 100%; background: var(--soft); border: 1px solid var(--line); border-radius: 14px; padding: 12px 14px; outline: none; }
+  .input:focus { border-color: var(--accent); }
+  .btn { display: flex; align-items: center; justify-content: center; gap: 8px; width: 100%; padding: 13px; border-radius: 999px; background: var(--accent-deep); color: #fff; font-weight: 700; }
+  .btn:disabled { opacity: .55; cursor: default; }
+  .btn.ghost { background: var(--soft); color: var(--ink); }
+  .err { color: var(--bad); font-size: .85rem; min-height: 1.3em; margin: 4px 0 8px; }
+  .note { font-size: .78rem; color: var(--ink-soft); margin-top: 14px; line-height: 1.6; }
+
+  /* app */
+  .top { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; }
+  .top h1 { font-size: 1.15rem; margin: 0; flex: 1; }
+  .top small { display: block; font-size: .76rem; color: var(--ink-soft); font-weight: 500; }
+  .icon-btn { width: 42px; height: 42px; border-radius: 14px; display: grid; place-items: center; background: var(--card); border: 1px solid var(--line); color: var(--ink); }
+  .icon-btn svg { width: 20px; height: 20px; }
+  .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-bottom: 12px; }
+  .stat { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 10px; text-align: center; }
+  .stat b { display: block; font-size: 1.25rem; font-variant-numeric: tabular-nums; }
+  .stat span { font-size: .74rem; color: var(--ink-soft); }
+  .stat.warn b { color: var(--bad); }
+  .tools { display: flex; gap: 8px; margin-bottom: 16px; }
+  .tools .input { flex: 1; min-width: 0; }
+  .add { flex: none; width: auto; padding: 0 18px; }
+  .cat { margin-bottom: 18px; }
+  .cat h2 { font-size: .9rem; color: var(--ink-soft); margin: 0 0 8px; padding-right: 10px; border-right: 3px solid var(--accent); }
+  .acc { background: var(--card); border: 1px solid var(--line); border-radius: 18px; padding: 12px; margin-bottom: 8px; }
+  .acc-head { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+  .acc-head .ic { flex: none; width: 38px; height: 38px; border-radius: 12px; display: grid; place-items: center; background: var(--accent-soft); color: var(--accent); font-weight: 700; }
+  .acc-head .nm { flex: 1; min-width: 0; }
+  .acc-head b { display: block; font-size: .98rem; overflow-wrap: anywhere; }
+  .acc-head a { font-size: .76rem; color: var(--accent); text-decoration: none; }
+  .row { display: flex; align-items: center; gap: 8px; padding: 7px 0; border-top: 1px solid var(--line); min-width: 0; }
+  .row .k { flex: none; width: 82px; font-size: .78rem; color: var(--ink-soft); }
+  .row .v { flex: 1; min-width: 0; font-family: var(--mono); font-size: .86rem; direction: ltr; text-align: right; overflow-wrap: anywhere; }
+  .row .v.empty { font-family: var(--font); color: var(--ink-soft); direction: rtl; }
+  .mini { flex: none; font-size: .74rem; font-weight: 700; color: var(--accent); padding: 4px 8px; border-radius: 8px; background: var(--accent-soft); }
+  .acc-note { font-size: .8rem; color: var(--ink-soft); padding-top: 7px; border-top: 1px solid var(--line); }
+  .acc-foot { display: flex; justify-content: flex-end; gap: 8px; margin-top: 8px; }
+  .empty-state { text-align: center; color: var(--ink-soft); padding: 30px 10px; border: 1px dashed var(--line); border-radius: 18px; }
+  .foot-actions { display: grid; gap: 8px; margin-top: 22px; }
+
+  /* sheet */
+  .sheet-bg { position: fixed; inset: 0; z-index: 50; background: rgba(20,20,19,.86); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); display: flex; align-items: flex-end; justify-content: center; }
+  .sheet { width: 100%; max-width: 560px; max-height: 92vh; overflow: auto; background: var(--card); border-radius: 24px 24px 0 0; padding: 20px max(16px, env(safe-area-inset-left, 0px)) calc(20px + env(safe-area-inset-bottom, 0px)); }
+  .sheet h3 { margin: 0 0 14px; font-size: 1.1rem; }
+  .two { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .pw-wrap { display: flex; gap: 6px; }
+  .pw-wrap .input { flex: 1; min-width: 0; direction: ltr; text-align: right; font-family: var(--mono); }
+  .sheet-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 8px; }
+  .danger { color: var(--bad); font-size: .85rem; font-weight: 700; margin-top: 12px; width: 100%; padding: 8px; }
+  .toast { position: fixed; z-index: 70; left: 50%; transform: translateX(-50%); bottom: calc(20px + env(safe-area-inset-bottom, 0px)); background: var(--ink); color: var(--page); font-weight: 700; padding: 10px 18px; border-radius: 999px; font-size: .86rem; }
+  @media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
+</style>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-lock" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="11" width="16" height="10" rx="2.5"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></g></symbol>
+    <symbol id="i-key" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="15" r="4"/><path d="m10.8 12.2 8.7-8.7M17 6l2 2M15 8l2 2"/></g></symbol>
+  </defs>
+</svg>
+
+<div class="wrap">
+  <!-- loading / setup / unlock -->
+  <section class="gate" id="gate">
+    <div class="gate-box">
+      <span class="seal"><svg><use href="#i-lock"/></svg></span>
+      <h1 id="gTitle">إدارة حسابات الإبداع</h1>
+      <p id="gText">جاري فتح الخزنة…</p>
+      <form id="gForm" hidden autocomplete="off">
+        <div class="field"><label for="gPw">كلمة المرور الرئيسية</label><input class="input" id="gPw" type="password" autocomplete="current-password" required minlength="10"></div>
+        <div class="field" id="gConfirmWrap" hidden><label for="gPw2">أعد كتابة كلمة المرور</label><input class="input" id="gPw2" type="password" autocomplete="new-password" minlength="10"></div>
+        <div class="err" id="gErr" role="alert"></div>
+        <button class="btn" id="gBtn" type="submit">فتح</button>
+      </form>
+      <div class="note" id="gNote" hidden>البيانات بتتشفّر على جهازك بكلمة المرور دي قبل ما تتحفظ، ومحدش يقدر يقراها من غيرها. <b>كلمة المرور مش ممكن تترجع لو نسيتها</b>، فاحفظها في مكان آمن.</div>
+    </div>
+  </section>
+
+  <!-- vault -->
+  <section id="app" hidden>
+    <div class="top">
+      <h1>حسابات الإبداع<small id="savedAt">مشفّرة · AES-256</small></h1>
+      <button class="icon-btn" id="lockBtn" type="button" aria-label="قفل الخزنة" title="قفل"><svg><use href="#i-lock"/></svg></button>
+    </div>
+    <div class="stats">
+      <div class="stat"><b id="sCount">0</b><span>حساب</span></div>
+      <div class="stat"><b id="sFilled">0</b><span>بكلمة مرور</span></div>
+      <div class="stat" id="sDupWrap"><b id="sDup">0</b><span>باسورد مكرر</span></div>
+    </div>
+    <div class="tools">
+      <input class="input" id="q" type="search" placeholder="ابحث عن منصة أو إيميل" aria-label="بحث">
+      <button class="btn add" id="addBtn" type="button">+ حساب</button>
+    </div>
+    <div id="list"></div>
+    <div class="foot-actions">
+      <button class="btn ghost" id="toggleAll" type="button">إظهار كل كلمات المرور</button>
+      <button class="btn ghost" id="changeMaster" type="button">تغيير كلمة المرور الرئيسية</button>
+    </div>
+  </section>
+</div>
+
+<!-- edit sheet -->
+<div class="sheet-bg" id="editBg" hidden>
+  <form class="sheet" id="editForm" autocomplete="off" role="dialog" aria-modal="true" aria-labelledby="eTitle">
+    <h3 id="eTitle">حساب</h3>
+    <div class="two">
+      <div class="field"><label for="eName">المنصة</label><input class="input" id="eName" required maxlength="60"></div>
+      <div class="field"><label for="eCat">القسم</label>
+        <select class="input" id="eCat"><option value="social">السوشيال</option><option value="google">جوجل والإعلانات</option><option value="web">الموقع والتقنية</option><option value="other">أخرى</option></select></div>
+    </div>
+    <div class="field"><label for="eUser">اسم المستخدم</label><input class="input" id="eUser" maxlength="200" dir="ltr"></div>
+    <div class="field"><label for="eEmail">الإيميل</label><input class="input" id="eEmail" type="email" maxlength="200" dir="ltr"></div>
+    <div class="field"><label for="ePw">كلمة المرور</label>
+      <div class="pw-wrap"><input class="input" id="ePw" type="text" maxlength="200" spellcheck="false"><button class="btn ghost" style="width:auto;padding:0 14px" id="genBtn" type="button">توليد</button></div></div>
+    <div class="field"><label for="eUrl">رابط الحساب أو لوحة التحكم</label><input class="input" id="eUrl" type="url" maxlength="300" dir="ltr" placeholder="https://"></div>
+    <div class="field"><label for="eNote">ملاحظة</label><input class="input" id="eNote" maxlength="300" placeholder="رقم الجوال المرتبط، المسؤول، التحقق بخطوتين…"></div>
+    <div class="sheet-actions"><button class="btn" type="submit">حفظ</button><button class="btn ghost" type="button" id="eCancel">إلغاء</button></div>
+    <button class="danger" type="button" id="eDelete">حذف الحساب</button>
+  </form>
+</div>
+
+<!-- change master sheet -->
+<div class="sheet-bg" id="masterBg" hidden>
+  <form class="sheet" id="masterForm" autocomplete="off" role="dialog" aria-modal="true" aria-labelledby="mTitle">
+    <h3 id="mTitle">تغيير كلمة المرور الرئيسية</h3>
+    <div class="field"><label for="mPw">كلمة المرور الجديدة (10 حروف على الأقل)</label><input class="input" id="mPw" type="password" minlength="10" required autocomplete="new-password"></div>
+    <div class="field"><label for="mPw2">أعد كتابتها</label><input class="input" id="mPw2" type="password" minlength="10" required autocomplete="new-password"></div>
+    <div class="err" id="mErr" role="alert"></div>
+    <div class="sheet-actions"><button class="btn" type="submit">تغيير</button><button class="btn ghost" type="button" id="mCancel">إلغاء</button></div>
+  </form>
+</div>
+
+<div class="toast" id="toast" hidden></div>
+
+<script>
+(function () {
+  const ITER = 600000;
+  const IDLE_MS = 10 * 60 * 1000;
+  const CATS = { social: "السوشيال", google: "جوجل والإعلانات", web: "الموقع والتقنية", other: "أخرى" };
+  // حسابات مبدئية: أسماء المستخدمين العامة بس، من غير أي كلمات مرور
+  const SEED = [
+    ["instagram", "إنستقرام", "social", "alebdaatents", "https://www.instagram.com/alebdaatents/"],
+    ["tiktok", "تيك توك", "social", "alebdaa_tents", "https://www.tiktok.com/@alebdaa_tents"],
+    ["snapchat", "سناب شات", "social", "alebdatents", "https://www.snapchat.com/@alebdatents"],
+    ["facebook", "فيسبوك", "social", "alebdaatents", "https://business.facebook.com/latest/home"],
+    ["youtube", "يوتيوب", "social", "alebdaatents", "https://studio.youtube.com/"],
+    ["gmail", "Gmail", "google", "ebdaa.tents@gmail.com", "https://mail.google.com/"],
+    ["gbp", "Google Business", "google", "", "https://business.google.com/"],
+    ["meta-ads", "Meta Ads", "google", "", "https://adsmanager.facebook.com/"],
+    ["snap-ads", "Snap Ads", "google", "", "https://ads.snapchat.com/"],
+    ["tiktok-ads", "TikTok Ads", "google", "", "https://ads.tiktok.com/"],
+    ["website", "الموقع (ووردبريس)", "web", "", "https://ebdaatents.com/wp-admin/"],
+    ["domain", "الدومين والاستضافة", "web", "ebdaatents.com", ""]
+  ].map(([id, name, cat, user, url]) => ({ id, name, cat, user, email: id === "gmail" ? user : "", password: "", url, note: "" }));
+
+  const $ = id => document.getElementById(id);
+  const enc = new TextEncoder(), dec = new TextDecoder();
+  const b64 = u8 => btoa(String.fromCharCode(...u8));
+  const unb64 = s => Uint8Array.from(atob(s), c => c.charCodeAt(0));
+
+  let db = null, ref = null, key = null, salt = null, vault = null, showAll = false, editing = null, idleTimer = 0, failCount = 0;
+  const revealed = new Set();
+
+  function toast(t) { const x = $("toast"); x.textContent = t; x.hidden = false; clearTimeout(toast.t); toast.t = setTimeout(() => { x.hidden = true; }, 1700); }
+
+  async function deriveKey(pw, saltBytes, iter) {
+    const base = await crypto.subtle.importKey("raw", enc.encode(pw), "PBKDF2", false, ["deriveKey"]);
+    return crypto.subtle.deriveKey({ name: "PBKDF2", salt: saltBytes, iterations: iter, hash: "SHA-256" }, base, { name: "AES-GCM", length: 256 }, false, ["encrypt", "decrypt"]);
+  }
+  async function seal(obj) {
+    const iv = crypto.getRandomValues(new Uint8Array(12));
+    const ct = new Uint8Array(await crypto.subtle.encrypt({ name: "AES-GCM", iv }, key, enc.encode(JSON.stringify(obj))));
+    return { v: 1, kdf: "PBKDF2-SHA256", iter: ITER, salt: b64(salt), iv: b64(iv), ct: b64(ct), updated: new Date().toISOString() };
+  }
+  async function open(doc, pw) {
+    const k = await deriveKey(pw, unb64(doc.salt), doc.iter || ITER);
+    const pt = await crypto.subtle.decrypt({ name: "AES-GCM", iv: unb64(doc.iv) }, k, unb64(doc.ct));
+    return { k, data: JSON.parse(dec.decode(pt)) };
+  }
+
+  function gate(mode, text) {
+    $("gate").hidden = false; $("app").hidden = true;
+    $("gText").textContent = text;
+    const form = mode === "setup" || mode === "unlock";
+    $("gForm").hidden = !form; $("gNote").hidden = mode !== "setup";
+    $("gConfirmWrap").hidden = mode !== "setup";
+    $("gPw2").required = mode === "setup";
+    $("gBtn").textContent = mode === "setup" ? "إنشاء الخزنة" : "فتح";
+    $("gPw").autocomplete = mode === "setup" ? "new-password" : "current-password";
+    $("gForm").dataset.mode = mode;
+    $("gErr").textContent = ""; $("gPw").value = ""; $("gPw2").value = "";
+    if (form) setTimeout(() => $("gPw").focus(), 50);
+  }
+
+  function lock() {
+    key = null; vault = null; revealed.clear(); showAll = false;
+    $("editBg").hidden = true; $("masterBg").hidden = true;
+    gate("unlock", "الخزنة مقفولة. اكتب كلمة المرور الرئيسية.");
+  }
+  function bumpIdle() { clearTimeout(idleTimer); if (key) idleTimer = setTimeout(lock, IDLE_MS); }
+  ["pointerdown", "keydown", "scroll"].forEach(ev => document.addEventListener(ev, bumpIdle, { passive: true }));
+
+  async function save(msg) {
+    try {
+      const doc = await seal(vault);
+      await ref.set(doc);
+      $("savedAt").textContent = "مشفّرة · آخر حفظ " + new Date(doc.updated).toLocaleString("ar-QA", { dateStyle: "short", timeStyle: "short" });
+      toast(msg || "اتحفظ");
+    } catch (e) {
+      toast(e && e.code === "quota_exceeded" ? "المساحة ممتلئة" : "ماقدرتش أحفظ، جرّب تاني");
+    }
+  }
+
+  function copy(text) {
+    navigator.clipboard.writeText(text).then(() => toast("اتنسخ"), () => toast("ماقدرتش أنسخ، حدّد النص وانسخه"));
+  }
+
+  function el(tag, cls, text) { const e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; }
+
+  function row(label, value, isPw, accId) {
+    const r = el("div", "row");
+    r.append(el("span", "k", label));
+    const shown = isPw && value && !(showAll || revealed.has(accId)) ? "••••••••••" : (value || "—");
+    const v = el("span", "v" + (value ? "" : " empty"), shown);
+    r.append(v);
+    if (value) {
+      if (isPw) {
+        const t = el("button", "mini", showAll || revealed.has(accId) ? "إخفاء" : "إظهار"); t.type = "button";
+        t.addEventListener("click", () => { revealed.has(accId) ? revealed.delete(accId) : revealed.add(accId); render(); });
+        r.append(t);
+      }
+      const c = el("button", "mini", "نسخ"); c.type = "button";
+      c.addEventListener("click", () => copy(value));
+      r.append(c);
+    }
+    return r;
+  }
+
+  function render() {
+    const q = $("q").value.trim().toLowerCase();
+    const list = $("list"); list.textContent = "";
+    const accs = vault.accounts;
+    const pwCounts = {}; accs.forEach(a => { if (a.password) pwCounts[a.password] = (pwCounts[a.password] || 0) + 1; });
+    const dups = accs.filter(a => a.password && pwCounts[a.password] > 1).length;
+    $("sCount").textContent = accs.length;
+    $("sFilled").textContent = accs.filter(a => a.password).length;
+    $("sDup").textContent = dups; $("sDupWrap").classList.toggle("warn", dups > 0);
+    $("toggleAll").textContent = showAll ? "إخفاء كل كلمات المرور" : "إظهار كل كلمات المرور";
+    const shown = accs.filter(a => !q || [a.name, a.user, a.email, a.note].join(" ").toLowerCase().includes(q));
+    if (!shown.length) { list.append(el("div", "empty-state", q ? "مفيش نتيجة للبحث ده." : "مفيش حسابات لسه. دوس «+ حساب» عشان تضيف أول واحد.")); return; }
+    Object.keys(CATS).forEach(cat => {
+      const items = shown.filter(a => (a.cat || "other") === cat);
+      if (!items.length) return;
+      const sec = el("section", "cat"); sec.append(el("h2", null, CATS[cat] + " · " + items.length));
+      items.forEach(a => {
+        const card = el("article", "acc");
+        const head = el("div", "acc-head");
+        head.append(el("span", "ic", (a.name || "؟").trim().charAt(0)));
+        const nm = el("div", "nm"); nm.append(el("b", null, a.name));
+        if (/^https:\/\//.test(a.url || "")) { const l = el("a", null, "فتح الحساب ↗"); l.href = a.url; l.target = "_blank"; l.rel = "noopener noreferrer"; nm.append(l); }
+        head.append(nm);
+        if (a.password && pwCounts[a.password] > 1) head.append(el("span", "mini", "مكرر"));
+        card.append(head);
+        card.append(row("المستخدم", a.user), row("الإيميل", a.email), row("كلمة المرور", a.password, true, a.id));
+        if (a.note) card.append(el("div", "acc-note", a.note));
+        const foot = el("div", "acc-foot"); const eb = el("button", "mini", "تعديل"); eb.type = "button";
+        eb.addEventListener("click", () => openEdit(a.id)); foot.append(eb); card.append(foot);
+        sec.append(card);
+      });
+      list.append(sec);
+    });
+  }
+
+  function openEdit(id) {
+    editing = id;
+    const a = vault.accounts.find(x => x.id === id) || { name: "", cat: "social", user: "", email: "", password: "", url: "", note: "" };
+    $("eTitle").textContent = id ? "تعديل " + a.name : "حساب جديد";
+    $("eName").value = a.name; $("eCat").value = a.cat || "other"; $("eUser").value = a.user; $("eEmail").value = a.email;
+    $("ePw").value = a.password; $("eUrl").value = a.url; $("eNote").value = a.note;
+    $("eDelete").hidden = !id; $("eDelete").dataset.armed = ""; $("eDelete").textContent = "حذف الحساب";
+    $("editBg").hidden = false; setTimeout(() => $("eName").focus(), 50);
+  }
+  $("addBtn").addEventListener("click", () => openEdit(null));
+  $("eCancel").addEventListener("click", () => { $("editBg").hidden = true; });
+  $("genBtn").addEventListener("click", () => {
+    const cs = "ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz23456789!@#$%&*?";
+    const r = crypto.getRandomValues(new Uint32Array(18)); $("ePw").value = Array.from(r, n => cs[n % cs.length]).join("");
+  });
+  $("editForm").addEventListener("submit", e => {
+    e.preventDefault();
+    const url = $("eUrl").value.trim();
+    const a = { id: editing || "a" + Date.now(), name: $("eName").value.trim(), cat: $("eCat").value, user: $("eUser").value.trim(), email: $("eEmail").value.trim(),
+      password: $("ePw").value, url: /^https:\/\//.test(url) ? url : "", note: $("eNote").value.trim() };
+    const i = vault.accounts.findIndex(x => x.id === a.id);
+    if (i >= 0) vault.accounts[i] = a; else vault.accounts.push(a);
+    $("editBg").hidden = true; render(); save("اتحفظ " + a.name);
+  });
+  $("eDelete").addEventListener("click", function () {
+    if (!this.dataset.armed) { this.dataset.armed = "1"; this.textContent = "اضغط تاني للتأكيد"; return; }
+    vault.accounts = vault.accounts.filter(x => x.id !== editing);
+    $("editBg").hidden = true; render(); save("اتحذف");
+  });
+  $("q").addEventListener("input", render);
+  $("toggleAll").addEventListener("click", () => { showAll = !showAll; revealed.clear(); render(); });
+  $("lockBtn").addEventListener("click", lock);
+  $("changeMaster").addEventListener("click", () => { $("mErr").textContent = ""; $("mPw").value = ""; $("mPw2").value = ""; $("masterBg").hidden = false; setTimeout(() => $("mPw").focus(), 50); });
+  $("mCancel").addEventListener("click", () => { $("masterBg").hidden = true; });
+  $("masterForm").addEventListener("submit", async e => {
+    e.preventDefault();
+    if ($("mPw").value !== $("mPw2").value) { $("mErr").textContent = "الكلمتين مش زي بعض."; return; }
+    salt = crypto.getRandomValues(new Uint8Array(16));
+    key = await deriveKey($("mPw").value, salt, ITER);
+    $("masterBg").hidden = true; save("اتغيّرت كلمة المرور الرئيسية");
+  });
+  [$("editBg"), $("masterBg")].forEach(bg => bg.addEventListener("click", e => { if (e.target === bg) bg.hidden = true; }));
+  document.addEventListener("keydown", e => { if (e.key === "Escape") { $("editBg").hidden = true; $("masterBg").hidden = true; } });
+
+  function showApp() { $("gate").hidden = true; $("app").hidden = false; render(); bumpIdle(); }
+
+  $("gForm").addEventListener("submit", async e => {
+    e.preventDefault();
+    const mode = $("gForm").dataset.mode, pw = $("gPw").value;
+    $("gErr").textContent = ""; $("gBtn").disabled = true;
+    try {
+      if (mode === "setup") {
+        if (pw.length < 10) { $("gErr").textContent = "كلمة المرور لازم تكون 10 حروف على الأقل."; return; }
+        if (pw !== $("gPw2").value) { $("gErr").textContent = "الكلمتين مش زي بعض."; return; }
+        salt = crypto.getRandomValues(new Uint8Array(16));
+        key = await deriveKey(pw, salt, ITER);
+        vault = { accounts: SEED.map(a => ({ ...a })) };
+        await save("اتعملت الخزنة");
+        showApp();
+      } else {
+        const snap = await ref.get();
+        if (!snap.exists) { gate("setup", "مفيش خزنة لسه. اختار كلمة مرور رئيسية."); return; }
+        const doc = snap.data();
+        try {
+          const r = await open(doc, pw);
+          key = r.k; salt = unb64(doc.salt); vault = r.data; failCount = 0;
+          showApp();
+        } catch {
+          failCount++;
+          $("gErr").textContent = "كلمة المرور غير صحيحة.";
+          if (failCount >= 5) { $("gErr").textContent = "محاولات كتير. استنى 30 ثانية."; await new Promise(r => setTimeout(r, 30000)); }
+        }
+      }
+    } finally { $("gBtn").disabled = false; }
+  });
+
+  (async function start() {
+    if (!window.crypto || !crypto.subtle) { gate("msg", "المتصفح ده مش بيدعم التشفير. افتح الصفحة من متصفح حديث."); return; }
+    const c = window.claude;
+    if (!c || !c.use) { gate("msg", "افتح الصفحة من claude.ai عشان الخزنة تشتغل."); return; }
+    const [dbNs, user] = await Promise.all([c.use("db"), c.use("user")]);
+    const uid = user ? await user.id() : null;
+    if (!dbNs || !uid) { gate("msg", "سجّل دخولك على claude.ai وافتح الصفحة تاني."); return; }
+    db = dbNs; ref = db.doc("data/users/" + uid + "/vault");
+    try {
+      const snap = await ref.get();
+      if (snap.exists) gate("unlock", "اكتب كلمة المرور الرئيسية عشان تفتح الحسابات.");
+      else gate("setup", "أول مرة: اختار كلمة مرور رئيسية للخزنة.");
+    } catch { gate("msg", "ماقدرتش أوصل للخزنة دلوقتي. حدّث الصفحة."); }
+  })();
+})();
+</script>
