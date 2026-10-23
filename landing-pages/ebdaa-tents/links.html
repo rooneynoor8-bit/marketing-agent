@@ -1,0 +1,290 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>الإبداع للمظلات | كل روابطنا في مكان واحد</title>
+<meta name="description" content="واتساب، اتصال، اللوكيشن، الخدمات، الأعمال وحساباتنا. الإبداع للمظلات في قطر.">
+<link rel="icon" href="https://ebdaatents.com/wp-content/uploads/2026/09/cropped-AL-EBDAA-TENTS-COMPANY-PROFILE-32x32.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
+<!-- TODO: ضع هنا Meta Pixel و Google Tag و Snap Pixel -->
+<style>
+  :root {
+    --ink: #13212e;
+    --ink-soft: #5a6774;
+    --bg: #f4efe6;
+    --card: #ffffff;
+    --line: #e6decf;
+    --accent: #c8792b;
+    --wa: #1faa59;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; font-family: "IBM Plex Sans Arabic", system-ui, sans-serif;
+    color: var(--ink); background: var(--bg); line-height: 1.55;
+  }
+  a { color: inherit; text-decoration: none; }
+  .page { max-width: 480px; margin: 0 auto; padding: 0 16px 40px; }
+
+  /* ---------- Header ---------- */
+  header {
+    margin: 0 -16px; padding: 28px 16px 22px; text-align: center; color: #fff;
+    background: linear-gradient(160deg, #1f3549, var(--ink));
+    border-radius: 0 0 28px 28px; position: relative; overflow: hidden;
+  }
+  header::before {
+    content: ""; position: absolute; width: 260px; height: 260px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(200,121,43,.35), transparent 70%); top: -120px; right: -80px;
+  }
+  .logo {
+    width: 88px; height: 88px; border-radius: 50%; margin: 0 auto; background: #fff; padding: 5px;
+    position: relative; box-shadow: 0 6px 20px rgba(0,0,0,.25);
+  }
+  .logo img { width: 100%; height: 100%; object-fit: contain; border-radius: 50%; }
+  h1 { font-size: 1.35rem; margin: 10px 0 0; position: relative; }
+  .tag { color: #c9d3dc; font-size: .88rem; margin: 2px 0 0; position: relative; }
+  .mini-stats {
+    display: flex; justify-content: center; gap: 14px; margin-top: 12px; font-size: .78rem;
+    color: #f3c38f; position: relative; flex-wrap: wrap;
+  }
+
+  /* ---------- Quick buttons ---------- */
+  .quick { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-top: -18px; position: relative; }
+  .quick a {
+    background: var(--card); border: 1px solid var(--line); border-radius: 16px;
+    padding: 10px 2px 8px; display: flex; flex-direction: column; align-items: center; gap: 4px;
+    font-size: .8rem; font-weight: 600; box-shadow: 0 6px 18px rgba(19,33,46,.08);
+  }
+  .quick a:active, .row:active, .work:active { transform: scale(.97); }
+  .quick svg { width: 24px; height: 24px; }
+  .quick .wa { background: var(--wa); color: #fff; border-color: var(--wa); }
+
+  /* ---------- Tabs ---------- */
+  .tabs {
+    display: flex; gap: 4px; margin-top: 18px; padding: 4px; background: var(--card);
+    border: 1px solid var(--line); border-radius: 14px; position: sticky; top: 8px; z-index: 5;
+    box-shadow: 0 4px 14px rgba(19,33,46,.06);
+  }
+  .tabs button {
+    flex: 1; border: 0; background: none; font: inherit; font-size: .85rem; font-weight: 600;
+    padding: 8px 2px; border-radius: 10px; color: var(--ink-soft); cursor: pointer;
+  }
+  .tabs button[aria-selected="true"] { background: var(--ink); color: #fff; }
+  .panel { display: none; margin-top: 14px; }
+  .panel.active { display: block; }
+  .panel h2 { font-size: 1rem; margin: 0; }
+  .panel .sub { font-size: .82rem; color: var(--ink-soft); margin: 0 0 10px; }
+
+  /* ---------- List rows (زي صفحة الروابط) ---------- */
+  .list { display: grid; gap: 8px; }
+  .row {
+    display: flex; align-items: center; gap: 12px; background: var(--card);
+    border: 1px solid var(--line); border-radius: 14px; padding: 10px 12px; transition: transform .12s;
+  }
+  .row .ic {
+    flex: none; width: 44px; height: 44px; border-radius: 12px; display: grid; place-items: center;
+    font-size: 1.25rem; background: #f6efe3; color: var(--accent); overflow: hidden;
+  }
+  .row .ic img { width: 100%; height: 100%; object-fit: cover; }
+  .row .ic svg { width: 22px; height: 22px; }
+  .row .tx { flex: 1; min-width: 0; }
+  .row b { display: block; font-size: .95rem; }
+  .row small { color: var(--ink-soft); font-size: .78rem; }
+  .row .go { color: var(--ink-soft); font-size: 1.1rem; }
+  .row .go.wa { color: var(--wa); }
+  .row.todo { border-style: dashed; opacity: .6; }
+
+  .hint {
+    font-size: .82rem; text-align: center; color: var(--ink-soft); background: #fff8ee;
+    border: 1px dashed #e2b783; border-radius: 12px; padding: 8px; margin-bottom: 10px;
+  }
+
+  /* ---------- Works grid ---------- */
+  .works { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; }
+  .work { position: relative; aspect-ratio: 1; border-radius: 12px; overflow: hidden; background: linear-gradient(135deg, #d9cdb7, #c2b293); }
+  .work img { width: 100%; height: 100%; object-fit: cover; }
+  .work span {
+    position: absolute; inset: auto 0 0 0; padding: 14px 6px 5px; font-size: .68rem; font-weight: 600; color: #fff;
+    background: linear-gradient(to top, rgba(0,0,0,.65), transparent);
+  }
+  .work.broken img { display: none; }
+  .work.broken span { background: none; color: #6b5c41; inset: 0; display: grid; place-items: center; text-align: center; }
+  .chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 14px; }
+  .chips span { background: var(--card); border: 1px solid var(--line); border-radius: 999px; padding: 4px 10px; font-size: .78rem; }
+
+  /* ---------- Footer ---------- */
+  footer { text-align: center; margin-top: 26px; font-size: .78rem; color: var(--ink-soft); }
+  footer a { color: var(--accent); font-weight: 600; }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <header>
+    <div class="logo"><img src="https://ebdaatents.com/wp-content/uploads/2026/09/cropped-AL-EBDAA-TENTS-COMPANY-PROFILE-192x192.png" alt="شعار الإبداع للمظلات"></div>
+    <h1>الإبداع للمظلات</h1>
+    <p class="tag">مظلات · برجولات · سواتر · هناجر، في قطر</p>
+    <div class="mini-stats"><span>✦ +10,000 مظلة منفذة</span><span>✦ +20 سنة خبرة</span><span>✦ مصنع خاص</span></div>
+  </header>
+
+  <nav class="quick" aria-label="تواصل سريع">
+    <a class="wa" data-track="quick_whatsapp" data-wa="السلام عليكم، أبغى أستفسر عن المظلات">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm4.5 12.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.4.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.1 5.1 0 0 0 1.1 2.7 11.7 11.7 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3Z"/></svg>
+      واتساب
+    </a>
+    <a data-track="quick_call" href="tel:+97470703311">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2Z"/></svg>
+      اتصال
+    </a>
+    <a data-track="quick_map" href="https://www.google.com/maps/search/?api=1&query=%D8%A7%D9%84%D8%A5%D8%A8%D8%AF%D8%A7%D8%B9+%D9%84%D9%84%D9%85%D8%B8%D9%84%D8%A7%D8%AA+%D9%82%D8%B7%D8%B1" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21Z"/><circle cx="12" cy="9.5" r="2.5"/></svg>
+      اللوكيشن
+    </a>
+    <a data-track="quick_site" href="https://ebdaatents.com" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg>
+      الموقع
+    </a>
+  </nav>
+
+  <div class="tabs" role="tablist">
+    <button role="tab" aria-selected="true" aria-controls="p-services">الخدمات</button>
+    <button role="tab" aria-selected="false" aria-controls="p-works">أعمالنا</button>
+    <button role="tab" aria-selected="false" aria-controls="p-social">حساباتنا</button>
+    <button role="tab" aria-selected="false" aria-controls="p-contact">تواصل</button>
+  </div>
+
+  <!-- الخدمات -->
+  <section class="panel active" id="p-services" role="tabpanel">
+    <div class="hint">👆 اضغط على أي نوع ونرد عليك بالتفاصيل والأسعار على واتساب</div>
+    <div class="list">
+      <a class="row" data-track="svc_car" data-wa="السلام عليكم، أبغى عرض سعر لمظلات سيارات">
+        <span class="ic">🚗</span><span class="tx"><b>مظلات السيارات</b><small>فلل، مواقف، شركات</small></span><span class="go wa">←</span>
+      </a>
+      <a class="row" data-track="svc_pergola" data-wa="السلام عليكم، أبغى عرض سعر لبرجولة">
+        <span class="ic">🌿</span><span class="tx"><b>البرجولات</b><small>جلسات خارجية للحدائق والتراس</small></span><span class="go wa">←</span>
+      </a>
+      <a class="row" data-track="svc_louver" data-wa="السلام عليكم، أبغى عرض سعر لمظلة Louver">
+        <span class="ic">☀️</span><span class="tx"><b>مظلات Louver</b><small>شرائح متحركة للظل والتهوية</small></span><span class="go wa">←</span>
+      </a>
+      <a class="row" data-track="svc_pvc" data-wa="السلام عليكم، أبغى عرض سعر لمظلات PVC أو HDPE">
+        <span class="ic">⛱️</span><span class="tx"><b>مظلات PVC و HDPE</b><small>للمداخل والساحات ومناطق الجلوس</small></span><span class="go wa">←</span>
+      </a>
+      <a class="row" data-track="svc_cnc" data-wa="السلام عليكم، أبغى عرض سعر لسواتر قص ليزر CNC">
+        <span class="ic">✳️</span><span class="tx"><b>سواتر قص ليزر CNC</b><small>خصوصية بنقوش حسب الطلب</small></span><span class="go wa">←</span>
+      </a>
+      <a class="row" data-track="svc_hangar" data-wa="السلام عليكم، أبغى عرض سعر لسواتر أو هناجر">
+        <span class="ic">🏗️</span><span class="tx"><b>السواتر والهناجر</b><small>مستودعات ومشاريع ومرافق</small></span><span class="go wa">←</span>
+      </a>
+      <a class="row" data-track="svc_arch" data-wa="السلام عليكم، أبغى عرض سعر لمظلات معمارية">
+        <span class="ic">🏛️</span><span class="tx"><b>المظلات المعمارية</b><small>واجهات ومداخل وساحات</small></span><span class="go wa">←</span>
+      </a>
+      <a class="row" data-track="svc_consult" data-wa="السلام عليكم، محتاج استشارة ومعاينة للموقع">
+        <span class="ic">📐</span><span class="tx"><b>مش متأكد؟ اطلب معاينة</b><small>نزور الموقع ونقترح الأنسب</small></span><span class="go wa">←</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- أعمالنا -->
+  <section class="panel" id="p-works" role="tabpanel">
+    <h2>من أعمالنا</h2>
+    <p class="sub">مواقع نفّذ فيها فريقنا في قطر</p>
+    <div class="works">
+      <a class="work" href="https://ebdaatents.com/%d9%85%d8%b9%d8%b1%d8%b6-%d8%a7%d9%84%d8%a3%d8%b9%d9%85%d8%a7%d9%84/" target="_blank" rel="noopener"><img loading="lazy" src="https://ebdaatents.com/wp-content/uploads/2026/09/الوكرة-300x200.webp" alt=""><span>سوق واقف الوكرة</span></a>
+      <a class="work" href="https://ebdaatents.com/%d9%85%d8%b9%d8%b1%d8%b6-%d8%a7%d9%84%d8%a3%d8%b9%d9%85%d8%a7%d9%84/" target="_blank" rel="noopener"><img loading="lazy" src="https://ebdaatents.com/wp-content/uploads/2026/09/مشروع-برجولا-سكاي-روف-–-Sky-Roof-Pergola-300x225.webp" alt=""><span>النادي العربي</span></a>
+      <a class="work" href="https://ebdaatents.com/%d9%85%d8%b9%d8%b1%d8%b6-%d8%a7%d9%84%d8%a3%d8%b9%d9%85%d8%a7%d9%84/" target="_blank" rel="noopener"><img loading="lazy" src="https://ebdaatents.com/wp-content/uploads/2026/09/منتجع-سميسمة-300x169.webp" alt=""><span>منتجع سميسمة</span></a>
+      <a class="work" href="https://ebdaatents.com/%d9%85%d8%b9%d8%b1%d8%b6-%d8%a7%d9%84%d8%a3%d8%b9%d9%85%d8%a7%d9%84/" target="_blank" rel="noopener"><img loading="lazy" src="https://ebdaatents.com/wp-content/uploads/2026/09/إيفوري-إن-السد-300x200.webp" alt=""><span>إيفوري إن السد</span></a>
+      <a class="work" href="https://ebdaatents.com/%d9%85%d8%b9%d8%b1%d8%b6-%d8%a7%d9%84%d8%a3%d8%b9%d9%85%d8%a7%d9%84/" target="_blank" rel="noopener"><img loading="lazy" src="https://ebdaatents.com/wp-content/uploads/2026/09/حمد-300x200.webp" alt=""><span>مستشفى حمد</span></a>
+      <a class="work" href="https://ebdaatents.com/%d9%85%d8%b9%d8%b1%d8%b6-%d8%a7%d9%84%d8%a3%d8%b9%d9%85%d8%a7%d9%84/" target="_blank" rel="noopener"><img loading="lazy" src="https://ebdaatents.com/wp-content/uploads/2026/09/وزارة-العدل-1-300x200.webp" alt=""><span>وزارة العدل</span></a>
+    </div>
+    <div class="chips">
+      <span>ميناء حمد</span><span>جامعة كالجاري قطر</span><span>أشغال</span><span>وزارة الأوقاف</span>
+      <span>نادي الشحانية</span><span>المصلحة العامة للضرائب</span>
+    </div>
+    <div class="list" style="margin-top:12px">
+      <a class="row" href="https://ebdaatents.com/%d9%85%d8%b9%d8%b1%d8%b6-%d8%a7%d9%84%d8%a3%d8%b9%d9%85%d8%a7%d9%84/" target="_blank" rel="noopener" data-track="works_all">
+        <span class="ic">🖼️</span><span class="tx"><b>معرض الأعمال الكامل</b><small>على موقعنا</small></span><span class="go">←</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- حساباتنا -->
+  <section class="panel" id="p-social" role="tabpanel">
+    <h2>حساباتنا على السوشيال ميديا</h2>
+    <p class="sub">تابعنا لأحدث المشاريع والعروض</p>
+    <div class="list">
+      <a class="row" href="https://www.instagram.com/alebdaatents/" target="_blank" rel="noopener" data-track="social_instagram">
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></span>
+        <span class="tx"><b>إنستقرام</b><small>@alebdaatents</small></span><span class="go">←</span>
+      </a>
+      <!-- حسابات لسه محتاجة روابطها: شيل class="todo" وحط الرابط -->
+      <a class="row todo" href="#"><span class="ic">♪</span><span class="tx"><b>تيك توك</b><small>ضع رابط الحساب</small></span><span class="go">←</span></a>
+      <a class="row todo" href="#"><span class="ic">👻</span><span class="tx"><b>سناب شات</b><small>ضع رابط الحساب</small></span><span class="go">←</span></a>
+      <a class="row todo" href="#"><span class="ic">f</span><span class="tx"><b>فيسبوك</b><small>ضع رابط الحساب</small></span><span class="go">←</span></a>
+      <a class="row todo" href="#"><span class="ic">⭐</span><span class="tx"><b>تقييماتنا على جوجل</b><small>ضع رابط Google Business</small></span><span class="go">←</span></a>
+    </div>
+  </section>
+
+  <!-- تواصل -->
+  <section class="panel" id="p-contact" role="tabpanel">
+    <h2>تواصل مباشر</h2>
+    <p class="sub">اختار أي رقم، كلنا في خدمتك</p>
+    <div class="list">
+      <a class="row" href="tel:+97470703311" data-track="call_1"><span class="ic">📞</span><span class="tx"><b dir="ltr" style="text-align:right">+974 7070 3311</b><small>اتصال</small></span><span class="go">←</span></a>
+      <a class="row" href="tel:+97470603337" data-track="call_2"><span class="ic">📞</span><span class="tx"><b dir="ltr" style="text-align:right">+974 7060 3337</b><small>اتصال</small></span><span class="go">←</span></a>
+      <a class="row" href="tel:+97470603336" data-track="call_3"><span class="ic">📞</span><span class="tx"><b dir="ltr" style="text-align:right">+974 7060 3336</b><small>اتصال</small></span><span class="go">←</span></a>
+      <a class="row" href="tel:+97470339946" data-track="call_4"><span class="ic">📞</span><span class="tx"><b dir="ltr" style="text-align:right">+974 7033 9946</b><small>اتصال</small></span><span class="go">←</span></a>
+      <a class="row" href="tel:+97470660522" data-track="call_5"><span class="ic">📞</span><span class="tx"><b dir="ltr" style="text-align:right">+974 7066 0522</b><small>اتصال</small></span><span class="go">←</span></a>
+      <a class="row" href="mailto:ebdaa.tents@gmail.com" data-track="email"><span class="ic">✉️</span><span class="tx"><b>البريد الإلكتروني</b><small>ebdaa.tents@gmail.com</small></span><span class="go">←</span></a>
+      <a class="row" href="https://www.google.com/maps/search/?api=1&query=%D8%A7%D9%84%D8%A5%D8%A8%D8%AF%D8%A7%D8%B9+%D9%84%D9%84%D9%85%D8%B8%D9%84%D8%A7%D8%AA+%D9%82%D8%B7%D8%B1" target="_blank" rel="noopener" data-track="map_office"><span class="ic">🏢</span><span class="tx"><b>المكتب</b><small>طريق سلوى، قبل محطة بترول التيسير</small></span><span class="go">←</span></a>
+      <div class="row"><span class="ic">🏭</span><span class="tx"><b>المصنع</b><small>بركة العوامر</small></span></div>
+    </div>
+  </section>
+
+  <footer>© الإبداع للمظلات · <a href="https://ebdaatents.com" target="_blank" rel="noopener">ebdaatents.com</a></footer>
+</div>
+
+<script>
+  // رقم واتساب المبيعات
+  const WA_NUMBER = "97470703311";
+
+  // مصدر الحملة من الرابط، بيتضاف للرسالة عشان المبيعات تعرف الطلب جاي منين
+  const params = new URLSearchParams(location.search);
+  const source = [params.get("utm_source"), params.get("utm_campaign")].filter(Boolean).join(" / ");
+
+  function waLink(text) {
+    const full = source ? `${text}\n(المصدر: ${source})` : text;
+    return `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(full)}`;
+  }
+
+  function track(name) {
+    if (window.fbq) fbq("track", "Contact", { content_name: name });
+    if (window.gtag) gtag("event", "generate_lead", { method: name });
+    if (window.snaptr) snaptr("track", "CUSTOM_EVENT_1", { description: name });
+  }
+
+  document.querySelectorAll("[data-wa]").forEach(el => {
+    el.href = waLink(el.dataset.wa);
+    el.target = "_blank";
+    el.rel = "noopener";
+  });
+  document.querySelectorAll("[data-track]").forEach(el => {
+    el.addEventListener("click", () => track(el.dataset.track));
+  });
+
+  document.querySelectorAll(".work img").forEach(img => {
+    img.addEventListener("error", () => img.parentElement.classList.add("broken"));
+  });
+
+  const tabs = document.querySelectorAll('[role="tab"]');
+  tabs.forEach(tab => tab.addEventListener("click", () => {
+    tabs.forEach(t => {
+      const on = t === tab;
+      t.setAttribute("aria-selected", on);
+      document.getElementById(t.getAttribute("aria-controls")).classList.toggle("active", on);
+    });
+  }));
+</script>
+</body>
+</html>
