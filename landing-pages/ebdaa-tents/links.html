@@ -11,120 +11,163 @@
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
 <!-- TODO: ضع هنا Meta Pixel و Google Tag و Snap Pixel -->
 <style>
-  /* شكل تطبيق: هيدر غامق، ثم مجموعات بيضاء فيها شبكة أيقونات مربعة ملونة (4 في الصف) */
+  /* نفس فكرة صفحة الروابط: صورة غلاف، كارت معلومات فوقها، 3 أزرار، شريط تبويبات بأيقونات، شبكة أيقونات مربعة كبيرة، وشريط سفلي عائم */
   :root {
     color-scheme: light;
-    --ink: #13212e;
-    --ink-soft: #5d6a76;
-    --bg: #efeae1;
-    --panel: #ffffff;
-    --line: #e5ddcf;
-    --accent: #b8692a;
-    --wa: #1c9d52;
-    --t-navy: #1f3549; --t-copper: #b8692a; --t-olive: #5f7d3c; --t-teal: #2b6f73;
-    --t-brown: #8a653a; --t-slate: #4b5a68; --t-clay: #a4512d; --t-steel: #36608a;
+    --bg: #ffffff;
+    --soft: #f5f2ee;
+    --ink: #1a1d21;
+    --ink-soft: #6b7078;
+    --line: #e7e2db;
+    --accent: #b4532a;
+    --accent-ink: #8f3f1d;
+    --navy: #1f3549;
+    --wa: #25d366;
     --font: "IBM Plex Sans Arabic", "Segoe UI", Tahoma, system-ui, sans-serif;
   }
   * { box-sizing: border-box; }
+  [hidden] { display: none !important; }
   body { margin: 0; direction: rtl; font-family: var(--font); color: var(--ink); background: var(--bg); line-height: 1.5; }
   a { color: inherit; text-decoration: none; }
-  a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 12px; }
+  button { font: inherit; color: inherit; background: none; border: 0; cursor: pointer; padding: 0; }
+  a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 10px; }
   svg { display: block; }
-  .page { max-width: 480px; margin: 0 auto; padding: 0 16px 96px; }
+  .page { max-width: 520px; margin: 0 auto; padding-bottom: 120px; }
+  .wrap { padding: 0 16px; }
 
-  /* ---------- Header ---------- */
-  header {
-    margin: 0 -16px; padding: 26px 16px 56px; color: #fff; text-align: center;
-    background: linear-gradient(160deg, #22394e, var(--ink));
+  /* ---------- Cover ---------- */
+  .cover {
+    height: 230px; position: relative; overflow: hidden;
+    background:
+      repeating-linear-gradient(100deg, rgba(255,255,255,.06) 0 14px, transparent 14px 34px),
+      linear-gradient(160deg, #2a4359, #13212e 70%);
   }
+  .cover img { width: 100%; height: 100%; object-fit: cover; }
+
+  /* ---------- Info card ---------- */
+  .card {
+    position: relative; margin: -56px 16px 0; background: var(--bg); border-radius: 22px;
+    padding: 16px; box-shadow: 0 6px 24px rgba(0,0,0,.10); border: 1px solid var(--line);
+  }
+  .card-top { display: flex; align-items: center; gap: 12px; }
   .logo {
-    width: 78px; height: 78px; margin: 0 auto; border-radius: 22px; background: #fff; padding: 6px;
-    overflow: hidden; display: grid; place-items: center; box-shadow: 0 8px 22px rgba(0,0,0,.28);
+    flex: none; width: 66px; height: 66px; border-radius: 50%; border: 2px solid var(--line);
+    background: #fff; overflow: hidden; display: grid; place-items: center;
   }
   .logo img { width: 100%; height: 100%; object-fit: contain; color: transparent; font-size: 0; }
-  .mono { font-size: 2.4rem; font-weight: 700; color: var(--accent); line-height: 1; }
-  h1 { font-size: 1.3rem; line-height: 1.35; margin: 12px 0 0; }
-  .h1-sub { display: block; font-size: .92rem; font-weight: 500; color: #f0bf8c; }
-  .tag { color: #c5cfd8; font-size: .85rem; margin: 4px 0 0; }
-  .rating { display: inline-block; margin-top: 10px; font-size: .78rem; font-weight: 600; color: #e9eef2; }
-  .rating .st { color: #f5b82e; letter-spacing: 1px; }
+  .mono { font-size: 2rem; font-weight: 700; color: var(--accent); line-height: 1; }
+  .name { flex: 1; min-width: 0; }
+  h1 { font-size: 1.25rem; margin: 0; line-height: 1.3; }
+  h1 small { display: block; font-size: .85rem; font-weight: 500; color: var(--ink-soft); }
+  .rate { align-self: flex-start; font-size: .85rem; white-space: nowrap; }
+  .rate b { text-decoration: underline; text-underline-offset: 3px; }
+  .rate .st { color: #f2a91c; }
+  .rate span { color: var(--ink-soft); text-decoration: underline; text-underline-offset: 3px; }
+  .desc { margin: 12px 0 0; font-size: .9rem; }
+  .tags { margin: 4px 0 0; font-size: .88rem; color: var(--ink); }
+  .tags button { color: var(--accent); font-size: .88rem; }
+  .more-box { margin-top: 10px; padding-top: 10px; border-top: 1px dashed var(--line); font-size: .85rem; color: var(--ink-soft); display: grid; gap: 4px; }
 
-  /* ---------- Panels + tile grid ---------- */
-  .panel { background: var(--panel); border-radius: 22px; padding: 16px 12px 14px; box-shadow: 0 1px 2px rgba(19,33,46,.05); }
-  .panel + .panel { margin-top: 14px; }
-  .quick { margin-top: -40px; position: relative; box-shadow: 0 10px 28px rgba(19,33,46,.12); }
-  .ph { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; padding: 0 4px 12px; }
-  h2 { font-size: 1rem; margin: 0; }
-  .ph small { font-size: .74rem; color: var(--ink-soft); }
+  /* ---------- Pill buttons ---------- */
+  .pills { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin: 16px 16px 0; }
+  .pill {
+    display: flex; align-items: center; justify-content: center; gap: 8px; padding: 12px 6px;
+    border: 1.5px solid var(--line); border-radius: 14px; color: var(--accent); font-weight: 700; font-size: .95rem; background: var(--bg);
+  }
+  .pill svg { width: 22px; height: 22px; }
+  .pill[aria-expanded="true"] { border-color: var(--accent); }
+  .locpick { margin: 10px 16px 0; display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .locpick a { background: var(--soft); border-radius: 14px; padding: 12px; display: grid; gap: 2px; }
+  .locpick b { font-size: .92rem; }
+  .locpick small { color: var(--ink-soft); font-size: .76rem; line-height: 1.4; }
+  .locpick span { color: var(--accent); font-size: .8rem; font-weight: 700; margin-top: 4px; }
 
-  .grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px 6px; }
-  .tile { display: flex; flex-direction: column; align-items: center; gap: 6px; text-align: center; min-width: 0; }
+  /* ---------- Promo words ---------- */
+  .promo { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin: 22px 16px 0; text-align: center; }
+  .promo div {
+    font-size: 1.35rem; font-weight: 700; line-height: 1.15; color: var(--accent);
+    text-shadow: 0 2px 0 rgba(143,63,29,.18);
+  }
+  .promo small { display: block; font-size: .72rem; font-weight: 600; color: var(--ink-soft); text-shadow: none; margin-top: 4px; }
+
+  /* ---------- Tabs ---------- */
+  .tabs {
+    display: grid; grid-template-columns: repeat(5, 1fr); margin-top: 26px; border-bottom: 1px solid var(--line);
+    position: sticky; top: env(safe-area-inset-top, 0px); background: var(--bg); z-index: 5;
+  }
+  .tabs button { display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 10px 2px 9px; color: var(--ink-soft); font-size: .82rem; font-weight: 600; border-bottom: 3px solid transparent; margin-bottom: -1px; }
+  .tabs svg { width: 28px; height: 28px; }
+  .tabs button[aria-selected="true"] { color: var(--accent); border-bottom-color: var(--accent); }
+  .panel { padding: 20px 16px 0; }
+  .panel[hidden] { display: none; }
+  .ttl { border-right: 4px solid var(--accent); padding-right: 10px; margin-bottom: 18px; }
+  .ttl h2 { margin: 0; font-size: 1.2rem; }
+  .ttl p { margin: 2px 0 0; color: var(--ink-soft); font-size: .88rem; }
+
+  /* ---------- Big square tiles (3 per row) ---------- */
+  .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px 14px; }
+  .tile { display: flex; flex-direction: column; align-items: center; gap: 8px; text-align: center; min-width: 0; }
   .sq {
-    width: 60px; height: 60px; border-radius: 17px; display: grid; place-items: center; color: #fff;
-    box-shadow: inset 0 -2px 0 rgba(0,0,0,.12), 0 3px 8px rgba(19,33,46,.14); transition: transform .12s;
+    width: 100%; max-width: 116px; aspect-ratio: 1; border-radius: 26%; display: grid; place-items: center; color: #fff;
+    box-shadow: 0 4px 12px rgba(0,0,0,.12); transition: transform .12s;
   }
-  .sq svg { width: 30px; height: 30px; }
-  .tile:active .sq { transform: scale(.92); }
-  .tile span.l { font-size: .74rem; font-weight: 600; line-height: 1.3; }
+  .sq svg { width: 46%; height: 46%; }
+  .tile:active .sq { transform: scale(.94); }
+  .tile .l { font-size: .9rem; font-weight: 700; }
+  .tile .s { font-size: .74rem; color: var(--ink-soft); margin-top: -6px; }
 
-  /* tile colors */
-  .c-wa { background: var(--wa); } .c-navy { background: var(--t-navy); } .c-copper { background: var(--t-copper); }
-  .c-olive { background: var(--t-olive); } .c-teal { background: var(--t-teal); } .c-brown { background: var(--t-brown); }
-  .c-slate { background: var(--t-slate); } .c-clay { background: var(--t-clay); } .c-steel { background: var(--t-steel); }
-  .c-ig { background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fd5949 45%, #d6249f 60%, #285aeb 90%); }
-  .c-tt { background: #111; } .c-snap { background: #fffc00; color: #111; } .c-fb { background: #1877f2; }
-  .c-yt { background: #ff0000; } .c-g { background: #fff; color: #4285f4; border: 1px solid var(--line); }
+  .c-wa { background: var(--wa); } .c-ig { background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fd5949 45%, #d6249f 60%, #285aeb 90%); }
+  .c-tt { background: #000; } .c-snap { background: #fffc00; color: #000; } .c-fb { background: #1877f2; } .c-yt { background: #ff0000; }
+  .c-g { background: #fff; color: #4285f4; border: 1px solid var(--line); } .c-web { background: var(--navy); } .c-mail { background: var(--accent); }
+  .c-1 { background: #1f3549; } .c-2 { background: #b4532a; } .c-3 { background: #5f7d3c; } .c-4 { background: #2b6f73; } .c-5 { background: #8a653a; }
+  .c-6 { background: #4b5a68; } .c-7 { background: #9b3f2a; } .c-8 { background: #36608a; } .c-9 { background: #c08a2e; }
 
-  /* ---------- Reviews ---------- */
-  .rv { display: flex; gap: 12px; align-items: center; padding: 0 4px; }
-  .rv .score { font-size: 2rem; font-weight: 700; line-height: 1; }
-  .rv .st { color: #e3a008; letter-spacing: 1px; }
-  .rv small { display: block; color: var(--ink-soft); font-size: .76rem; }
-  .quote { margin: 12px 4px 8px; font-size: .86rem; text-align: right; }
-  .more { display: inline-block; margin: 0 4px; font-size: .8rem; font-weight: 700; color: var(--accent); }
+  .hint { background: var(--soft); border-radius: 12px; padding: 10px 12px; font-size: .85rem; color: var(--ink-soft); margin: -6px 0 18px; }
 
-  /* ---------- Work ---------- */
-  .photos { display: grid; grid-auto-flow: column; grid-auto-columns: 72%; gap: 8px; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; margin-bottom: 12px; }
-  .photos::-webkit-scrollbar { display: none; }
-  .photos figure { margin: 0; scroll-snap-align: start; border-radius: 14px; overflow: hidden; position: relative; aspect-ratio: 4/3; max-width: 100%; background: linear-gradient(135deg, #d9cdb7, #c2b293); }
+  /* works */
+  .photos { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 20px; }
+  .photos figure { margin: 0; border-radius: 14px; overflow: hidden; position: relative; aspect-ratio: 1; max-width: 100%; background: linear-gradient(135deg, #e3d8c6, #cbb994); }
   .photos img { width: 100%; height: 100%; object-fit: cover; }
-  .photos figcaption { position: absolute; inset: auto 0 0 0; padding: 18px 10px 6px; font-size: .76rem; font-weight: 600; color: #fff; background: linear-gradient(to top, rgba(0,0,0,.65), transparent); }
+  .photos figcaption { position: absolute; inset: auto 0 0 0; padding: 18px 8px 6px; font-size: .74rem; font-weight: 600; color: #fff; background: linear-gradient(to top, rgba(0,0,0,.65), transparent); }
   .photos figure.broken img { display: none; }
-  .photos figure.broken figcaption { inset: 0; display: grid; place-items: center; background: none; color: #6b5c41; }
-  .chips { display: flex; flex-wrap: wrap; gap: 6px; padding: 12px 4px 0; }
-  .chips span { background: var(--bg); border-radius: 999px; padding: 4px 10px; font-size: .74rem; }
+  .photos figure.broken figcaption { inset: 0; display: grid; place-items: center; background: none; color: #6b5c41; text-align: center; }
+  .chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 20px; }
+  .chips span { background: var(--soft); border-radius: 999px; padding: 5px 11px; font-size: .78rem; }
 
-  /* ---------- Locations ---------- */
-  .locs { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-  .loc { display: flex; flex-direction: column; align-items: flex-start; gap: 8px; background: var(--bg); border-radius: 16px; padding: 12px; min-width: 0; }
-  .loc .sq { width: 46px; height: 46px; border-radius: 14px; }
-  .loc .sq svg { width: 24px; height: 24px; }
-  .loc b { font-size: .92rem; }
-  .loc small { color: var(--ink-soft); font-size: .74rem; line-height: 1.45; flex: 1; }
-  .loc .dir { font-size: .78rem; font-weight: 700; color: var(--accent); }
-  .addr { margin: 10px 4px 0; font-size: .74rem; color: var(--ink-soft); }
+  /* reviews */
+  .score { display: flex; align-items: center; gap: 14px; }
+  .score b { font-size: 2.6rem; line-height: 1; }
+  .score .st { color: #f2a91c; font-size: 1.1rem; letter-spacing: 2px; }
+  .score small { display: block; color: var(--ink-soft); }
+  .quotes { display: grid; gap: 10px; margin: 18px 0; }
+  .quotes p { margin: 0; background: var(--soft); border-radius: 14px; padding: 12px 14px; font-size: .88rem; text-align: right; }
+  .cta { display: flex; align-items: center; justify-content: center; gap: 8px; border: 1.5px solid var(--accent); color: var(--accent); border-radius: 14px; padding: 12px; font-weight: 700; }
 
-  /* ---------- Footer ---------- */
-  footer { margin-top: 18px; text-align: center; font-size: .8rem; color: var(--ink-soft); display: grid; gap: 8px; }
-  .phones { display: flex; justify-content: center; flex-wrap: wrap; gap: 8px; }
-  .phones a { direction: ltr; background: var(--panel); border-radius: 999px; padding: 6px 12px; font-weight: 600; color: var(--ink); font-variant-numeric: tabular-nums; }
+  /* about */
+  .facts { display: grid; gap: 10px; }
+  .fact { display: flex; gap: 12px; align-items: center; background: var(--soft); border-radius: 14px; padding: 12px; }
+  .fact .ic { flex: none; width: 44px; height: 44px; border-radius: 12px; display: grid; place-items: center; background: var(--bg); color: var(--accent); }
+  .fact .ic svg { width: 24px; height: 24px; }
+  .fact b { display: block; font-size: .92rem; }
+  .fact small { color: var(--ink-soft); font-size: .8rem; }
+  .phones { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 4px; }
+  .phones a { direction: ltr; background: var(--bg); border: 1px solid var(--line); border-radius: 999px; padding: 4px 10px; font-size: .82rem; font-weight: 600; font-variant-numeric: tabular-nums; }
 
-  /* ---------- Sticky WhatsApp ---------- */
-  .sticky {
-    position: fixed; bottom: 0; left: 0; right: 0; z-index: 20;
-    padding: 10px max(16px, env(safe-area-inset-left, 0px)) calc(10px + env(safe-area-inset-bottom, 0px));
-    background: rgba(239,234,225,.95); backdrop-filter: blur(8px); border-top: 1px solid var(--line);
-    transform: translateY(110%); transition: transform .25s;
+  /* ---------- Floating bottom bar ---------- */
+  .dock {
+    position: fixed; z-index: 20; left: 50%; transform: translateX(-50%);
+    bottom: calc(12px + env(safe-area-inset-bottom, 0px)); width: calc(100% - 32px); max-width: 488px;
+    background: var(--bg); border: 1px solid var(--line); border-radius: 22px; box-shadow: 0 8px 30px rgba(0,0,0,.14);
+    display: grid; grid-template-columns: repeat(4, 1fr); padding: 10px 4px;
   }
-  .sticky.show { transform: none; }
-  .btn { display: flex; align-items: center; justify-content: center; gap: 10px; max-width: 448px; margin: 0 auto; padding: 13px; border-radius: 14px; font-weight: 700; background: var(--wa); color: #fff; }
-  .btn svg { width: 22px; height: 22px; }
+  .dock a { display: flex; flex-direction: column; align-items: center; gap: 4px; font-size: .82rem; font-weight: 600; color: var(--ink); }
+  .dock svg { width: 26px; height: 26px; }
+  .dock .wa { color: #128c4b; }
   @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
 </style>
 </head>
 <body>
 
-<!-- مكتبة الأيقونات -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <defs>
     <symbol id="i-wa" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm4.5 12.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.4.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.1 5.1 0 0 0 1.1 2.7 11.7 11.7 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3Z"/></symbol>
@@ -159,128 +202,143 @@
     <symbol id="i-globe" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></g></symbol>
     <symbol id="i-mail" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3.5 6.5 8.5 7 8.5-7"/></g></symbol>
     <symbol id="i-star" viewBox="0 0 24 24"><path fill="currentColor" d="m12 2.8 2.8 5.8 6.3.9-4.6 4.4 1.1 6.3L12 17.2l-5.6 3 1.1-6.3L2.9 9.5l6.3-.9Z"/></symbol>
+    <symbol id="i-grid" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3.5" y="3.5" width="7" height="7" rx="2"/><rect x="13.5" y="3.5" width="7" height="7" rx="2"/><rect x="3.5" y="13.5" width="7" height="7" rx="2"/><rect x="13.5" y="13.5" width="7" height="7" rx="2"/></g></symbol>
+    <symbol id="i-star-o" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" d="m12 3 2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1L3.2 9.5l6.1-.9Z"/></symbol>
+    <symbol id="i-chat-alert" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v12H9l-5 4Z"/><path d="M12 7.5v4M12 14h.01"/></g></symbol>
   </defs>
 </svg>
-
 <div class="page">
+  <div class="cover"><img src="https://ebdaatents.com/wp-content/uploads/2026/09/مشروع-برجولا-سكاي-روف-–-Sky-Roof-Pergola-1024x768.webp" alt="" onerror="this.remove()"></div>
 
-  <header>
-    <div class="logo"><img src="https://ebdaatents.com/wp-content/uploads/2026/09/cropped-AL-EBDAA-TENTS-COMPANY-PROFILE-192x192.png" alt="شعار الإبداع للمظلات واللاند سكيب"></div>
-    <h1>الإبداع للمظلات <span class="h1-sub">واللاند سكيب</span></h1>
-    <p class="tag">سواتر · مظلات · برجولات · أبواب · شبابيك، في قطر</p>
-    <a class="rating" href="https://ebdaatents.com/review/" target="_blank" rel="noopener" data-track="header_reviews"><span class="st">★★★★☆</span> 4.3 · 24 تقييم على جوجل</a>
-  </header>
-
-  <!-- أزرار سريعة -->
-  <div class="panel quick" id="mainCta">
-    <div class="grid">
-      <a class="tile" data-track="q_whatsapp" data-wa="السلام عليكم، أبغى عرض سعر"><span class="sq c-wa"><svg><use href="#i-wa"/></svg></span><span class="l">واتساب</span></a>
-      <a class="tile" href="tel:+97470703311" data-track="q_call"><span class="sq c-navy"><svg><use href="#i-phone"/></svg></span><span class="l">اتصال</span></a>
-      <a class="tile" data-track="q_inspect" data-wa="السلام عليكم، محتاج معاينة للموقع"><span class="sq c-copper"><svg><use href="#i-measure"/></svg></span><span class="l">طلب معاينة</span></a>
-      <a class="tile" href="#locations" data-track="q_locations"><span class="sq c-teal"><svg><use href="#i-pin"/></svg></span><span class="l">مواقعنا</span></a>
+  <div class="card">
+    <div class="card-top">
+      <div class="logo"><img src="https://ebdaatents.com/wp-content/uploads/2026/09/cropped-AL-EBDAA-TENTS-COMPANY-PROFILE-192x192.png" alt="شعار الإبداع للمظلات واللاند سكيب"></div>
+      <div class="name"><h1>الإبداع للمظلات<small>واللاند سكيب</small></h1></div>
+      <a class="rate" href="https://ebdaatents.com/review/" target="_blank" rel="noopener" data-track="card_rating"><span class="st">★</span> <b>4.3</b> <span>(24)</span></a>
+    </div>
+    <p class="desc">شركة الإبداع للمظلات واللاند سكيب | الدوحة، قطر</p>
+    <p class="tags">سواتر • مظلات • برجولات • خيام • أبواب وشبابيك <button type="button" id="moreBtn" aria-expanded="false" aria-controls="moreBox">عرض المزيد</button></p>
+    <div class="more-box" id="moreBox" hidden>
+      <div>مصنع خاص في بركة العوامر، وفريق خبرته أكثر من 20 سنة.</div>
+      <div>نفّذنا أكثر من 10,000 مظلة وبرجولة في قطر.</div>
+      <div>مواعيد العمل: يوميًا من 9 صباحًا حتى 8 مساءً.</div>
     </div>
   </div>
 
-  <!-- الخدمات -->
-  <div class="panel">
-    <div class="ph"><h2>خدماتنا</h2><small>اضغط ونرد عليك بالسعر على واتساب</small></div>
-    <div class="grid">
-      <a class="tile" data-track="svc_car" data-wa="السلام عليكم، أبغى عرض سعر لمظلات سيارات"><span class="sq c-navy"><svg><use href="#i-carshade"/></svg></span><span class="l">مظلات سيارات</span></a>
-      <a class="tile" data-track="svc_screens" data-wa="السلام عليكم، أبغى عرض سعر لسواتر"><span class="sq c-copper"><svg><use href="#i-screen"/></svg></span><span class="l">سواتر</span></a>
-      <a class="tile" data-track="svc_pergola" data-wa="السلام عليكم، أبغى عرض سعر لبرجولة"><span class="sq c-olive"><svg><use href="#i-pergola"/></svg></span><span class="l">برجولات</span></a>
-      <a class="tile" data-track="svc_shades" data-wa="السلام عليكم، أبغى عرض سعر لمظلات PVC أو HDPE"><span class="sq c-teal"><svg><use href="#i-sail"/></svg></span><span class="l">مظلات PVC</span></a>
-      <a class="tile" data-track="svc_tents" data-wa="السلام عليكم، أبغى عرض سعر لخيمة عربية أميرية"><span class="sq c-brown"><svg><use href="#i-tent"/></svg></span><span class="l">خيام أميرية</span></a>
-      <a class="tile" data-track="svc_hangar" data-wa="السلام عليكم، أبغى عرض سعر لهناجر"><span class="sq c-slate"><svg><use href="#i-hangar"/></svg></span><span class="l">هناجر</span></a>
-      <a class="tile" data-track="svc_doors" data-wa="السلام عليكم، أبغى عرض سعر لأبواب"><span class="sq c-clay"><svg><use href="#i-door"/></svg></span><span class="l">أبواب</span></a>
-      <a class="tile" data-track="svc_windows" data-wa="السلام عليكم، أبغى عرض سعر لشبابيك"><span class="sq c-steel"><svg><use href="#i-window"/></svg></span><span class="l">شبابيك</span></a>
-    </div>
+  <div class="pills">
+    <a class="pill" data-track="pill_whatsapp" data-wa="السلام عليكم، أبغى عرض سعر"><svg><use href="#i-wa"/></svg>واتساب</a>
+    <button class="pill" type="button" id="locBtn" aria-expanded="false" aria-controls="locPick" data-track="pill_location"><svg><use href="#i-pin"/></svg>اللوكيشن</button>
+    <button class="pill" type="button" data-goto="services" data-track="pill_services"><svg><use href="#i-pergola"/></svg>الخدمات</button>
+  </div>
+  <div class="locpick" id="locPick" hidden>
+    <a href="https://maps.app.goo.gl/CAhxjJKBMuafqmHr5" target="_blank" rel="noopener" data-track="loc_hq"><b>مقر الشركة</b><small>طريق سلوى، قبل محطة بترول التيسير</small><span>افتح الخريطة ←</span></a>
+    <a href="https://maps.app.goo.gl/CGUFvtqHQ1JWBPZs6" target="_blank" rel="noopener" data-track="loc_factory"><b>المصنع</b><small>بركة العوامر</small><span>افتح الخريطة ←</span></a>
   </div>
 
-  <!-- ليه الإبداع -->
-  <div class="panel">
-    <div class="ph"><h2>ليه الإبداع؟</h2></div>
-    <div class="grid">
-      <div class="tile"><span class="sq c-copper"><svg><use href="#i-bolt"/></svg></span><span class="l">أسرع تركيب في قطر</span></div>
-      <div class="tile"><span class="sq c-navy"><svg><use href="#i-shield"/></svg></span><span class="l">ضمان حتى 8 سنوات</span></div>
-      <div class="tile"><span class="sq c-olive"><svg><use href="#i-wrench"/></svg></span><span class="l">خدمة ما بعد البيع</span></div>
-      <a class="tile" data-track="usp_installment" data-wa="السلام عليكم، أبغى أعرف أنظمة التقسيط المتاحة"><span class="sq c-teal"><svg><use href="#i-card"/></svg></span><span class="l">أنظمة تقسيط</span></a>
-    </div>
+  <div class="promo">
+    <div>أسرع<br>تركيب<small>في قطر</small></div>
+    <div>ضمان<br>8 سنوات<small>على التنفيذ</small></div>
+    <div>أنظمة<br>تقسيط<small>تناسبك</small></div>
   </div>
+
+  <nav class="tabs" role="tablist">
+    <button role="tab" aria-selected="true" aria-controls="p-accounts" data-tab="accounts"><svg><use href="#i-grid"/></svg>حساباتنا</button>
+    <button role="tab" aria-selected="false" aria-controls="p-services" data-tab="services"><svg><use href="#i-pergola"/></svg>الخدمات</button>
+    <button role="tab" aria-selected="false" aria-controls="p-works" data-tab="works"><svg><use href="#i-gallery"/></svg>أعمالنا</button>
+    <button role="tab" aria-selected="false" aria-controls="p-reviews" data-tab="reviews"><svg><use href="#i-star-o"/></svg>التقييمات</button>
+    <button role="tab" aria-selected="false" aria-controls="p-about" data-tab="about"><svg><use href="#i-office"/></svg>الشركة</button>
+  </nav>
 
   <!-- حساباتنا -->
-  <div class="panel">
-    <div class="ph"><h2>حساباتنا</h2><small>تابع أحدث مشاريعنا</small></div>
+  <section class="panel" id="p-accounts" role="tabpanel">
+    <div class="ttl"><h2>حساباتنا على السوشيال ميديا</h2><p>تابعنا لمعرفة أحدث المشاريع والعروض</p></div>
     <div class="grid">
       <a class="tile" href="https://www.instagram.com/alebdaatents/" target="_blank" rel="noopener" data-track="social_instagram"><span class="sq c-ig"><svg><use href="#i-insta"/></svg></span><span class="l">إنستقرام</span></a>
       <a class="tile" href="https://www.tiktok.com/@alebdaa_tents" target="_blank" rel="noopener" data-track="social_tiktok"><span class="sq c-tt"><svg><use href="#i-tiktok"/></svg></span><span class="l">تيك توك</span></a>
       <a class="tile" href="https://www.snapchat.com/@alebdatents" target="_blank" rel="noopener" data-track="social_snapchat"><span class="sq c-snap"><svg><use href="#i-snap"/></svg></span><span class="l">سناب شات</span></a>
       <a class="tile" href="https://www.facebook.com/alebdaatents" target="_blank" rel="noopener" data-track="social_facebook"><span class="sq c-fb"><svg><use href="#i-fb"/></svg></span><span class="l">فيسبوك</span></a>
       <a class="tile" href="https://www.youtube.com/@alebdaatents" target="_blank" rel="noopener" data-track="social_youtube"><span class="sq c-yt"><svg><use href="#i-yt"/></svg></span><span class="l">يوتيوب</span></a>
-      <a class="tile" href="https://ebdaatents.com/review/" target="_blank" rel="noopener" data-track="social_google"><span class="sq c-g"><svg><use href="#i-star"/></svg></span><span class="l">تقييمات جوجل</span></a>
-      <a class="tile" href="https://ebdaatents.com" target="_blank" rel="noopener" data-track="social_site"><span class="sq c-navy"><svg><use href="#i-globe"/></svg></span><span class="l">الموقع</span></a>
-      <a class="tile" href="mailto:ebdaa.tents@gmail.com" data-track="social_email"><span class="sq c-copper"><svg><use href="#i-mail"/></svg></span><span class="l">الإيميل</span></a>
+      <a class="tile" data-track="social_whatsapp" data-wa="السلام عليكم"><span class="sq c-wa"><svg><use href="#i-wa"/></svg></span><span class="l">واتساب</span></a>
+      <a class="tile" href="https://ebdaatents.com/review/" target="_blank" rel="noopener" data-track="social_google"><span class="sq c-g"><svg><use href="#i-star"/></svg></span><span class="l">جوجل</span></a>
+      <a class="tile" href="https://ebdaatents.com" target="_blank" rel="noopener" data-track="social_site"><span class="sq c-web"><svg><use href="#i-globe"/></svg></span><span class="l">الموقع</span></a>
+      <a class="tile" href="mailto:ebdaa.tents@gmail.com" data-track="social_email"><span class="sq c-mail"><svg><use href="#i-mail"/></svg></span><span class="l">الإيميل</span></a>
     </div>
-  </div>
+  </section>
 
-  <!-- التقييمات -->
-  <a class="panel" style="display:block" href="https://ebdaatents.com/review/" target="_blank" rel="noopener" data-track="reviews_card">
-    <div class="ph"><h2>آراء عملائنا</h2><small>من جوجل</small></div>
-    <div class="rv"><span class="score">4.3</span><span><span class="st">★★★★☆</span><small>24 تقييم على جوجل</small></span></div>
-    <p class="quote" dir="ltr">“Their team was professional, reliable, and delivered high-quality work on time.”</p>
-    <span class="more">شوف كل التقييمات، وقيّمنا انت كمان ←</span>
-  </a>
+  <!-- الخدمات -->
+  <section class="panel" id="p-services" role="tabpanel" hidden>
+    <div class="ttl"><h2>خدماتنا</h2><p>تصميم وتصنيع وتركيب في كل قطر</p></div>
+    <p class="hint">اضغط على أي نوع ونرد عليك بالتفاصيل والأسعار على واتساب</p>
+    <div class="grid">
+      <a class="tile" data-track="svc_car" data-wa="السلام عليكم، أبغى عرض سعر لمظلات سيارات"><span class="sq c-1"><svg><use href="#i-carshade"/></svg></span><span class="l">مظلات سيارات</span></a>
+      <a class="tile" data-track="svc_screens" data-wa="السلام عليكم، أبغى عرض سعر لسواتر"><span class="sq c-2"><svg><use href="#i-screen"/></svg></span><span class="l">سواتر</span></a>
+      <a class="tile" data-track="svc_pergola" data-wa="السلام عليكم، أبغى عرض سعر لبرجولة"><span class="sq c-3"><svg><use href="#i-pergola"/></svg></span><span class="l">برجولات</span></a>
+      <a class="tile" data-track="svc_shades" data-wa="السلام عليكم، أبغى عرض سعر لمظلات PVC أو HDPE"><span class="sq c-4"><svg><use href="#i-sail"/></svg></span><span class="l">مظلات PVC</span></a>
+      <a class="tile" data-track="svc_tents" data-wa="السلام عليكم، أبغى عرض سعر لخيمة عربية أميرية"><span class="sq c-5"><svg><use href="#i-tent"/></svg></span><span class="l">خيام أميرية</span></a>
+      <a class="tile" data-track="svc_hangar" data-wa="السلام عليكم، أبغى عرض سعر لهناجر"><span class="sq c-6"><svg><use href="#i-hangar"/></svg></span><span class="l">هناجر</span></a>
+      <a class="tile" data-track="svc_doors" data-wa="السلام عليكم، أبغى عرض سعر لأبواب"><span class="sq c-7"><svg><use href="#i-door"/></svg></span><span class="l">أبواب</span></a>
+      <a class="tile" data-track="svc_windows" data-wa="السلام عليكم، أبغى عرض سعر لشبابيك"><span class="sq c-8"><svg><use href="#i-window"/></svg></span><span class="l">شبابيك</span></a>
+      <a class="tile" data-track="svc_inspect" data-wa="السلام عليكم، محتاج معاينة للموقع"><span class="sq c-9"><svg><use href="#i-measure"/></svg></span><span class="l">طلب معاينة</span></a>
+    </div>
+  </section>
 
-  <!-- شغلنا -->
-  <div class="panel">
-    <div class="ph"><h2>من شغلنا</h2><small>اسحب ←</small></div>
+  <!-- أعمالنا -->
+  <section class="panel" id="p-works" role="tabpanel" hidden>
+    <div class="ttl"><h2>من أعمالنا</h2><p>مشاريع نفّذها فريقنا في قطر</p></div>
     <!--photos-->
     <div class="photos">
       <figure><img loading="lazy" src="https://ebdaatents.com/wp-content/uploads/2026/09/الوكرة-768x512.webp" alt=""><figcaption>سوق واقف الوكرة</figcaption></figure>
       <figure><img loading="lazy" src="https://ebdaatents.com/wp-content/uploads/2026/09/مشروع-برجولا-سكاي-روف-–-Sky-Roof-Pergola-768x576.webp" alt=""><figcaption>النادي العربي</figcaption></figure>
       <figure><img loading="lazy" src="https://ebdaatents.com/wp-content/uploads/2026/09/منتجع-سميسمة-768x432.webp" alt=""><figcaption>منتجع سميسمة</figcaption></figure>
       <figure><img loading="lazy" src="https://ebdaatents.com/wp-content/uploads/2026/09/إيفوري-إن-السد-768x512.webp" alt=""><figcaption>فندق إيفوري إن السد</figcaption></figure>
-      <figure><img loading="lazy" src="https://ebdaatents.com/wp-content/uploads/2026/09/حمد-768x512.webp" alt=""><figcaption>مستشفى حمد</figcaption></figure>
-      <figure><img loading="lazy" src="https://ebdaatents.com/wp-content/uploads/2026/09/وزارة-العدل-1-768x512.webp" alt=""><figcaption>وزارة العدل</figcaption></figure>
     </div>
     <!--/photos-->
     <div class="grid">
       <a class="tile" href="https://www.tiktok.com/@alebdaa_tents/video/7589825630724787474" target="_blank" rel="noopener" data-track="works_video"><span class="sq c-tt"><svg><use href="#i-play"/></svg></span><span class="l">فيديو أعمالنا</span></a>
-      <a class="tile" href="https://ebdaatents.com/%d9%85%d8%b9%d8%b1%d8%b6-%d8%a7%d9%84%d8%a3%d8%b9%d9%85%d8%a7%d9%84/" target="_blank" rel="noopener" data-track="works_all"><span class="sq c-brown"><svg><use href="#i-gallery"/></svg></span><span class="l">معرض الأعمال</span></a>
+      <a class="tile" href="https://ebdaatents.com/%d9%85%d8%b9%d8%b1%d8%b6-%d8%a7%d9%84%d8%a3%d8%b9%d9%85%d8%a7%d9%84/" target="_blank" rel="noopener" data-track="works_all"><span class="sq c-5"><svg><use href="#i-gallery"/></svg></span><span class="l">معرض الأعمال</span></a>
+      <a class="tile" href="https://www.instagram.com/alebdaatents/" target="_blank" rel="noopener" data-track="works_instagram"><span class="sq c-ig"><svg><use href="#i-insta"/></svg></span><span class="l">صور إنستقرام</span></a>
     </div>
     <div class="chips">
       <span>سوق واقف الوكرة</span><span>مستشفى حمد</span><span>ميناء حمد</span><span>جامعة كالجاري قطر</span>
       <span>أشغال</span><span>وزارة العدل</span><span>وزارة الأوقاف</span><span>النادي العربي</span>
       <span>نادي الشحانية</span><span>المصلحة العامة للضرائب</span>
     </div>
-  </div>
+  </section>
 
-  <!-- مواقعنا -->
-  <div class="panel" id="locations">
-    <div class="ph"><h2>مواقعنا</h2><small>يوميًا 9 ص – 8 م</small></div>
-    <div class="locs">
-      <a class="loc" href="https://maps.app.goo.gl/CAhxjJKBMuafqmHr5" target="_blank" rel="noopener" data-track="loc_hq">
-        <span class="sq c-navy"><svg><use href="#i-office"/></svg></span><b>مقر الشركة</b><small>طريق سلوى، قبل محطة بترول التيسير</small><span class="dir">الاتجاهات ←</span>
-      </a>
-      <a class="loc" href="https://maps.app.goo.gl/CGUFvtqHQ1JWBPZs6" target="_blank" rel="noopener" data-track="loc_factory">
-        <span class="sq c-copper"><svg><use href="#i-factory"/></svg></span><b>المصنع</b><small>بركة العوامر</small><span class="dir">الاتجاهات ←</span>
-      </a>
+  <!-- التقييمات -->
+  <section class="panel" id="p-reviews" role="tabpanel" hidden>
+    <div class="ttl"><h2>تقييماتنا على جوجل</h2><p>آراء عملائنا الحقيقية</p></div>
+    <div class="score"><b>4.3</b><div><span class="st">★★★★☆</span><small>24 تقييم على جوجل</small></div></div>
+    <div class="quotes">
+      <p dir="ltr">“I had an excellent experience with Al Ibdaa Tent Company. Their team was professional, reliable, and delivered high-quality work on time.”</p>
+      <p dir="ltr">“Very professional company”</p>
+      <p dir="ltr">“Thank you alebdaa good quality”</p>
     </div>
-    <p class="addr">العنوان الوطني للمقر: مبنى 37 · شارع 701 · منطقة 43 · الطابق 1، مكتب 7</p>
-  </div>
+    <a class="cta" href="https://ebdaatents.com/review/" target="_blank" rel="noopener" data-track="reviews_all"><svg width="20" height="20"><use href="#i-star-o"/></svg>شوف كل التقييمات، وقيّمنا انت كمان</a>
+  </section>
 
-  <footer>
-    <div class="phones">
-      <a href="tel:+97470703311" data-track="call_1">+974 7070 3311</a>
-      <a href="tel:+97470603337" data-track="call_2">+974 7060 3337</a>
-      <a href="tel:+97470339946" data-track="call_3">+974 7033 9946</a>
+  <!-- الشركة -->
+  <section class="panel" id="p-about" role="tabpanel" hidden>
+    <div class="ttl"><h2>عن الشركة</h2><p>كل اللي محتاج تعرفه عننا</p></div>
+    <div class="facts">
+      <div class="fact"><span class="ic"><svg><use href="#i-bolt"/></svg></span><div><b>أسرع تركيب في قطر</b><small>من مصنعنا لموقعك مباشرة</small></div></div>
+      <div class="fact"><span class="ic"><svg><use href="#i-shield"/></svg></span><div><b>ضمان يصل إلى 8 سنوات</b><small>وخدمة ما بعد البيع</small></div></div>
+      <div class="fact"><span class="ic"><svg><use href="#i-card"/></svg></span><div><b>أنظمة تقسيط مختلفة</b><small>اسألنا على واتساب</small></div></div>
+      <div class="fact"><span class="ic"><svg><use href="#i-office"/></svg></span><div><b>مقر الشركة</b><small>طريق سلوى، قبل محطة بترول التيسير · مبنى 37، شارع 701، منطقة 43</small></div></div>
+      <div class="fact"><span class="ic"><svg><use href="#i-factory"/></svg></span><div><b>المصنع</b><small>بركة العوامر</small></div></div>
+      <div class="fact"><span class="ic"><svg><use href="#i-phone"/></svg></span><div><b>أرقام التواصل</b><div class="phones"><a href="tel:+97470703311">+974 7070 3311</a><a href="tel:+97470603337">+974 7060 3337</a><a href="tel:+97470339946">+974 7033 9946</a></div></div></div>
     </div>
-    <div>© الإبداع للمظلات واللاند سكيب · سجل تجاري 87398</div>
-  </footer>
+    <p style="font-size:.76rem;color:var(--ink-soft);text-align:center;margin:18px 0 0">© الإبداع للمظلات واللاند سكيب · سجل تجاري 87398</p>
+  </section>
 </div>
 
-<div class="sticky" id="sticky">
-  <a class="btn btn-wa" data-track="sticky_whatsapp" data-wa="السلام عليكم، أبغى عرض سعر"><svg><use href="#i-wa"/></svg> اطلب عرض سعر على واتساب</a>
-</div>
+<!-- الشريط السفلي -->
+<nav class="dock" aria-label="تواصل">
+  <a href="tel:+97470703311" data-track="dock_call"><svg><use href="#i-phone"/></svg>اتصال</a>
+  <a class="wa" data-track="dock_whatsapp" data-wa="السلام عليكم، أبغى عرض سعر"><svg><use href="#i-wa"/></svg>واتساب</a>
+  <a data-track="dock_installment" data-wa="السلام عليكم، أبغى أعرف أنظمة التقسيط المتاحة"><svg><use href="#i-card"/></svg>تقسيط</a>
+  <a data-track="dock_complaint" data-wa="السلام عليكم، عندي شكوى/اقتراح:"><svg><use href="#i-chat-alert"/></svg>شكاوي</a>
+</nav>
 
 <script>
   // رقم واتساب المبيعات
@@ -314,12 +372,28 @@
     img.addEventListener("error", () => img.parentElement.classList.add("broken"));
   });
 
-  // شريط واتساب ثابت يظهر بعد ما الزرار الكبير يختفي من الشاشة
-  const sticky = document.getElementById("sticky");
-  if ("IntersectionObserver" in window) {
-    new IntersectionObserver(([e]) => sticky.classList.toggle("show", !e.isIntersecting))
-      .observe(document.getElementById("mainCta"));
+  function toggle(btnId, boxId) {
+    const btn = document.getElementById(btnId), box = document.getElementById(boxId);
+    btn.addEventListener("click", () => {
+      box.hidden = !box.hidden;
+      btn.setAttribute("aria-expanded", !box.hidden);
+    });
   }
+  toggle("moreBtn", "moreBox");
+  toggle("locBtn", "locPick");
+
+  // التبويبات
+  const tabs = document.querySelectorAll('[role="tab"]');
+  function openTab(name, scroll) {
+    tabs.forEach(t => {
+      const on = t.dataset.tab === name;
+      t.setAttribute("aria-selected", on);
+      document.getElementById(t.getAttribute("aria-controls")).hidden = !on;
+    });
+    if (scroll) document.querySelector(".tabs").scrollIntoView({ behavior: "smooth" });
+  }
+  tabs.forEach(t => t.addEventListener("click", () => openTab(t.dataset.tab)));
+  document.querySelectorAll("[data-goto]").forEach(b => b.addEventListener("click", () => openTab(b.dataset.goto, true)));
 </script>
 </body>
 </html>
