@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>الإبداع للمظلات | كل روابطنا في مكان واحد</title>
-<meta name="description" content="واتساب، اتصال، اللوكيشن، الخدمات، الأعمال وحساباتنا. الإبداع للمظلات في قطر.">
+<title>الإبداع للمظلات واللاند سكيب | سواتر، مظلات، برجولات، أبواب وشبابيك</title>
+<meta name="description" content="سواتر، مظلات، برجولات، خيام، أبواب وشبابيك في قطر. أسرع تركيب، ضمان يصل إلى 8 سنوات، وأنظمة تقسيط.">
 <link rel="icon" href="https://ebdaatents.com/wp-content/uploads/2026/09/cropped-AL-EBDAA-TENTS-COMPANY-PROFILE-32x32.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -42,8 +42,10 @@
     width: 88px; height: 88px; border-radius: 50%; margin: 0 auto; background: #fff; padding: 5px;
     position: relative; box-shadow: 0 6px 20px rgba(0,0,0,.25);
   }
-  .logo img { width: 100%; height: 100%; object-fit: contain; border-radius: 50%; }
-  h1 { font-size: 1.35rem; margin: 10px 0 0; position: relative; }
+  .logo img { width: 100%; height: 100%; object-fit: contain; border-radius: 50%; color: transparent; font-size: 0; }
+  .logo { overflow: hidden; }
+  h1 { font-size: 1.35rem; line-height: 1.35; margin: 10px 0 0; position: relative; }
+  .h1-sub { display: block; font-size: .95rem; font-weight: 500; color: #f3c38f; }
   .tag { color: #c9d3dc; font-size: .88rem; margin: 2px 0 0; position: relative; }
   .mini-stats {
     display: flex; justify-content: center; gap: 14px; margin-top: 12px; font-size: .78rem;
@@ -60,6 +62,17 @@
   .quick a:active, .row:active, .work:active { transform: scale(.97); }
   .quick svg { width: 24px; height: 24px; }
   .quick .wa { background: var(--wa); color: #fff; border-color: var(--wa); }
+
+  /* ---------- USPs ---------- */
+  .usps { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 12px; }
+  .usp {
+    display: flex; align-items: center; gap: 8px; background: var(--card); border: 1px solid var(--line);
+    border-radius: 14px; padding: 10px; font-size: .82rem; font-weight: 600; line-height: 1.3;
+  }
+  .usp i { font-style: normal; font-size: 1.2rem; flex: none; }
+  .usp small { display: block; font-weight: 400; color: var(--ink-soft); font-size: .72rem; }
+  .group-title { font-size: .85rem; font-weight: 700; color: var(--accent); margin: 16px 2px 8px; }
+  .group-title:first-of-type { margin-top: 0; }
 
   /* ---------- Tabs ---------- */
   .tabs {
@@ -123,9 +136,9 @@
 <div class="page">
 
   <header>
-    <div class="logo"><img src="https://ebdaatents.com/wp-content/uploads/2026/09/cropped-AL-EBDAA-TENTS-COMPANY-PROFILE-192x192.png" alt="شعار الإبداع للمظلات"></div>
-    <h1>الإبداع للمظلات</h1>
-    <p class="tag">مظلات · برجولات · سواتر · هناجر، في قطر</p>
+    <div class="logo"><img src="https://ebdaatents.com/wp-content/uploads/2026/09/cropped-AL-EBDAA-TENTS-COMPANY-PROFILE-192x192.png" alt="شعار الإبداع للمظلات واللاند سكيب"></div>
+    <h1>الإبداع للمظلات <span class="h1-sub">واللاند سكيب</span></h1>
+    <p class="tag">سواتر · مظلات · برجولات · أبواب · شبابيك، في قطر</p>
     <div class="mini-stats"><span>✦ +10,000 مظلة منفذة</span><span>✦ +20 سنة خبرة</span><span>✦ مصنع خاص</span></div>
   </header>
 
@@ -148,6 +161,14 @@
     </a>
   </nav>
 
+  <!-- ليه الإبداع -->
+  <div class="usps">
+    <div class="usp"><i>⚡</i><span>أسرع تركيب في قطر</span></div>
+    <div class="usp"><i>🛡️</i><span>ضمان حتى 8 سنوات</span></div>
+    <div class="usp"><i>🔧</i><span>خدمة ما بعد البيع</span></div>
+    <div class="usp"><i>💳</i><span>أنظمة تقسيط مختلفة</span></div>
+  </div>
+
   <div class="tabs" role="tablist">
     <button role="tab" aria-selected="true" aria-controls="p-services">الخدمات</button>
     <button role="tab" aria-selected="false" aria-controls="p-works">أعمالنا</button>
@@ -158,27 +179,42 @@
   <!-- الخدمات -->
   <section class="panel active" id="p-services" role="tabpanel">
     <div class="hint">👆 اضغط على أي نوع ونرد عليك بالتفاصيل والأسعار على واتساب</div>
+    <div class="group-title">سواتر ومظلات</div>
     <div class="list">
       <a class="row" data-track="svc_car" data-wa="السلام عليكم، أبغى عرض سعر لمظلات سيارات">
         <span class="ic">🚗</span><span class="tx"><b>مظلات السيارات</b><small>فلل، مواقف، شركات</small></span><span class="go wa">←</span>
       </a>
+      <a class="row" data-track="svc_screens" data-wa="السلام عليكم، أبغى عرض سعر لسواتر">
+        <span class="ic">🧱</span><span class="tx"><b>السواتر</b><small>قماش، بلاستيك، قص ليزر CNC</small></span><span class="go wa">←</span>
+      </a>
       <a class="row" data-track="svc_pergola" data-wa="السلام عليكم، أبغى عرض سعر لبرجولة">
-        <span class="ic">🌿</span><span class="tx"><b>البرجولات</b><small>جلسات خارجية للحدائق والتراس</small></span><span class="go wa">←</span>
+        <span class="ic">🌿</span><span class="tx"><b>البرجولات بجميع أنواعها</b><small>تصاميم متعددة، منها Louver المتحركة</small></span><span class="go wa">←</span>
       </a>
-      <a class="row" data-track="svc_louver" data-wa="السلام عليكم، أبغى عرض سعر لمظلة Louver">
-        <span class="ic">☀️</span><span class="tx"><b>مظلات Louver</b><small>شرائح متحركة للظل والتهوية</small></span><span class="go wa">←</span>
+      <a class="row" data-track="svc_shades" data-wa="السلام عليكم، أبغى عرض سعر لمظلات PVC أو HDPE">
+        <span class="ic">⛱️</span><span class="tx"><b>مظلات PVC و HDPE ومعمارية</b><small>مداخل، ساحات، جلسات</small></span><span class="go wa">←</span>
       </a>
-      <a class="row" data-track="svc_pvc" data-wa="السلام عليكم، أبغى عرض سعر لمظلات PVC أو HDPE">
-        <span class="ic">⛱️</span><span class="tx"><b>مظلات PVC و HDPE</b><small>للمداخل والساحات ومناطق الجلوس</small></span><span class="go wa">←</span>
+      <a class="row" data-track="svc_tents" data-wa="السلام عليكم، أبغى عرض سعر لخيمة عربية أميرية">
+        <span class="ic">⛺</span><span class="tx"><b>خيام عربية أميرية</b><small>للمجالس والمناسبات والفلل</small></span><span class="go wa">←</span>
       </a>
-      <a class="row" data-track="svc_cnc" data-wa="السلام عليكم، أبغى عرض سعر لسواتر قص ليزر CNC">
-        <span class="ic">✳️</span><span class="tx"><b>سواتر قص ليزر CNC</b><small>خصوصية بنقوش حسب الطلب</small></span><span class="go wa">←</span>
+      <a class="row" data-track="svc_hangar" data-wa="السلام عليكم، أبغى عرض سعر لهناجر">
+        <span class="ic">🏗️</span><span class="tx"><b>الهناجر</b><small>مستودعات ومشاريع ومرافق</small></span><span class="go wa">←</span>
       </a>
-      <a class="row" data-track="svc_hangar" data-wa="السلام عليكم، أبغى عرض سعر لسواتر أو هناجر">
-        <span class="ic">🏗️</span><span class="tx"><b>السواتر والهناجر</b><small>مستودعات ومشاريع ومرافق</small></span><span class="go wa">←</span>
+    </div>
+
+    <div class="group-title">أبواب وشبابيك</div>
+    <div class="list">
+      <a class="row" data-track="svc_doors" data-wa="السلام عليكم، أبغى عرض سعر لأبواب">
+        <span class="ic">🚪</span><span class="tx"><b>الأبواب الداخلية والخارجية</b><small>للفلل والمنازل والمشاريع</small></span><span class="go wa">←</span>
       </a>
-      <a class="row" data-track="svc_arch" data-wa="السلام عليكم، أبغى عرض سعر لمظلات معمارية">
-        <span class="ic">🏛️</span><span class="tx"><b>المظلات المعمارية</b><small>واجهات ومداخل وساحات</small></span><span class="go wa">←</span>
+      <a class="row" data-track="svc_windows" data-wa="السلام عليكم، أبغى عرض سعر لشبابيك">
+        <span class="ic">🪟</span><span class="tx"><b>الشبابيك بجميع أنواعها</b><small>نوفّر الأنسب لمكانك</small></span><span class="go wa">←</span>
+      </a>
+    </div>
+
+    <div class="group-title">محتاج مساعدة؟</div>
+    <div class="list">
+      <a class="row" data-track="svc_installment" data-wa="السلام عليكم، أبغى أعرف أنظمة التقسيط المتاحة">
+        <span class="ic">💳</span><span class="tx"><b>اسأل عن التقسيط</b><small>أنظمة تقسيط مختلفة تناسبك</small></span><span class="go wa">←</span>
       </a>
       <a class="row" data-track="svc_consult" data-wa="السلام عليكم، محتاج استشارة ومعاينة للموقع">
         <span class="ic">📐</span><span class="tx"><b>مش متأكد؟ اطلب معاينة</b><small>نزور الموقع ونقترح الأنسب</small></span><span class="go wa">←</span>
@@ -229,20 +265,18 @@
   <!-- تواصل -->
   <section class="panel" id="p-contact" role="tabpanel">
     <h2>تواصل مباشر</h2>
-    <p class="sub">اختار أي رقم، كلنا في خدمتك</p>
+    <p class="sub">اختار أي رقم، فريقنا في خدمتك</p>
     <div class="list">
       <a class="row" href="tel:+97470703311" data-track="call_1"><span class="ic">📞</span><span class="tx"><b dir="ltr" style="text-align:right">+974 7070 3311</b><small>اتصال</small></span><span class="go">←</span></a>
       <a class="row" href="tel:+97470603337" data-track="call_2"><span class="ic">📞</span><span class="tx"><b dir="ltr" style="text-align:right">+974 7060 3337</b><small>اتصال</small></span><span class="go">←</span></a>
-      <a class="row" href="tel:+97470603336" data-track="call_3"><span class="ic">📞</span><span class="tx"><b dir="ltr" style="text-align:right">+974 7060 3336</b><small>اتصال</small></span><span class="go">←</span></a>
-      <a class="row" href="tel:+97470339946" data-track="call_4"><span class="ic">📞</span><span class="tx"><b dir="ltr" style="text-align:right">+974 7033 9946</b><small>اتصال</small></span><span class="go">←</span></a>
-      <a class="row" href="tel:+97470660522" data-track="call_5"><span class="ic">📞</span><span class="tx"><b dir="ltr" style="text-align:right">+974 7066 0522</b><small>اتصال</small></span><span class="go">←</span></a>
+      <a class="row" href="tel:+97470339946" data-track="call_3"><span class="ic">📞</span><span class="tx"><b dir="ltr" style="text-align:right">+974 7033 9946</b><small>اتصال</small></span><span class="go">←</span></a>
       <a class="row" href="mailto:ebdaa.tents@gmail.com" data-track="email"><span class="ic">✉️</span><span class="tx"><b>البريد الإلكتروني</b><small>ebdaa.tents@gmail.com</small></span><span class="go">←</span></a>
-      <a class="row" href="https://www.google.com/maps/search/?api=1&query=%D8%A7%D9%84%D8%A5%D8%A8%D8%AF%D8%A7%D8%B9+%D9%84%D9%84%D9%85%D8%B8%D9%84%D8%A7%D8%AA+%D9%82%D8%B7%D8%B1" target="_blank" rel="noopener" data-track="map_office"><span class="ic">🏢</span><span class="tx"><b>المكتب</b><small>طريق سلوى، قبل محطة بترول التيسير</small></span><span class="go">←</span></a>
+      <a class="row" href="https://www.google.com/maps/search/?api=1&query=%D8%A7%D9%84%D8%A5%D8%A8%D8%AF%D8%A7%D8%B9+%D9%84%D9%84%D9%85%D8%B8%D9%84%D8%A7%D8%AA+%D9%82%D8%B7%D8%B1" target="_blank" rel="noopener" data-track="map_office"><span class="ic">🏢</span><span class="tx"><b>مقر الشركة الجديد</b><small>طريق سلوى، قبل محطة بترول التيسير</small></span><span class="go">←</span></a>
       <div class="row"><span class="ic">🏭</span><span class="tx"><b>المصنع</b><small>بركة العوامر</small></span></div>
     </div>
   </section>
 
-  <footer>© الإبداع للمظلات · <a href="https://ebdaatents.com" target="_blank" rel="noopener">ebdaatents.com</a></footer>
+  <footer>© الإبداع للمظلات واللاند سكيب · <a href="https://ebdaatents.com" target="_blank" rel="noopener">ebdaatents.com</a></footer>
 </div>
 
 <script>
