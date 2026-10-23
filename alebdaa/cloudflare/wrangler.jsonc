@@ -1,0 +1,16 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "alebdaa",
+  "main": "src/worker.js",
+  "compatibility_date": "2026-09-01",
+  "workers_dev": true,
+  "assets": {
+    "directory": "./public",
+    "binding": "ASSETS",
+    "html_handling": "auto-trailing-slash",
+    "run_worker_first": ["/api/*", "/admin", "/admin/*"]
+  },
+  "kv_namespaces": [
+    { "binding": "DATA", "id": "a8ed77311cc0474f819aff2c0a2bf4b2" }
+  ]
+}
