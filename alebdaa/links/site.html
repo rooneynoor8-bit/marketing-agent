@@ -1,0 +1,839 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/rooneynoor8-bit/marketing-agent@0f09add8e872150dd6a7229a9bfae019df678a5e/alebdaa/links/img/647a0ed786.jpg">
+<!-- ضع هنا أكواد Meta Pixel و Google Tag و Snap Pixel -->
+<title>الإبداع للمظلات</title>
+<meta name="description" content="سواتر، مظلات، برجولات، خيام، أبواب وشبابيك في قطر. أسرع تركيب، ضمان يصل إلى 8 سنوات، وأنظمة تقسيط.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=Syncopate:wght@700&display=swap" rel="stylesheet">
+<style>
+  /* نفس فكرة صفحة الروابط: صورة غلاف، كارت معلومات فوقها، 3 أزرار، شريط تبويبات بأيقونات، شبكة أيقونات مربعة كبيرة، وشريط سفلي عائم */
+  :root {
+    color-scheme: dark;
+    --bg: #161616;
+    --page: #0a0a0a;
+    --soft: #222222;
+    --ink: #f3f1ed;
+    --ink-soft: #a39d95;
+    --line: #2c2c2c;
+    --accent: #f3f1ed;
+    --accent-ink: #ffffff;
+    --sand: #e8890a;
+    --gold-deep: #f0a23a;
+    --gold-soft: rgba(232,137,10,.16);
+    --navy: #f3f1ed;
+    --surface-dark: #1e1e1e;
+    --wa: #25d366;
+    --font: "IBM Plex Sans Arabic", "Segoe UI", Tahoma, system-ui, sans-serif;
+  }
+  /* 3 اختيارات ألوان للمعاينة: 1 فوق أسود وتحت فاتح · 2 فحمي دافي · 3 فاتح */
+  body.t1, body.t3 { --bg: #ffffff; --page: #f7f1e6; --soft: #fbf1e1; --ink: #161412; --ink-soft: #7a5418; --line: #efdcbd;
+    --accent: #161412; --gold-deep: #a8620a; --gold-soft: #fbf0df; --navy: #161412; --surface-dark: #161412; color-scheme: light; }
+  body.t2 { --bg: #26221e; --page: #191613; --soft: #302b26; --ink: #f3efe8; --ink-soft: #aaa298; --line: #3b352f;
+    --accent: #f3efe8; --gold-deep: #f0a23a; --gold-soft: rgba(232,137,10,.16); --navy: #f3efe8; --surface-dark: #2c2824; color-scheme: dark; }
+  body.t1 .top-zone { --bg: #000000; --page: #000000; --soft: #120c04; --ink: #ffffff; --ink-soft: #e8c58f; --line: rgba(232,137,10,.35);
+    --accent: #f3f1ed; --gold-deep: #f0a23a; --gold-soft: rgba(232,137,10,.16); --navy: #ffffff; --surface-dark: #000000; color-scheme: dark;
+    background: var(--page); color: var(--ink); border-radius: 0 0 28px 28px; padding-bottom: 22px; }
+  .top-zone { position: relative; }
+  .theme-pick { position: fixed; z-index: 30; top: calc(10px + env(safe-area-inset-top, 0px)); left: 50%; transform: translateX(-50%);
+    display: flex; gap: 4px; padding: 4px; border-radius: 999px; background: rgba(0,0,0,.72); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); }
+  .theme-pick button { color: #fff; font-size: .74rem; font-weight: 700; padding: 6px 10px; border-radius: 999px; white-space: nowrap; }
+  .theme-pick button[aria-pressed="true"] { background: var(--sand); color: #111; }
+  .social-row .c-tt { color: var(--ink); }
+  /* 3 ستايل كلود: فحمي دافي + برتقالي كلود */
+  body.t4 { --bg: #30302e; --page: #262624; --soft: #3a3936; --ink: #faf9f5; --ink-soft: #b7b5a9; --line: #45443f;
+    --accent: #faf9f5; --sand: #d97757; --gold-deep: #e8957a; --gold-soft: rgba(217,119,87,.16); --navy: #faf9f5; --surface-dark: #3a3936; color-scheme: dark; }
+  body.t4 .card { border-radius: 26px; box-shadow: 0 8px 28px rgba(0,0,0,.35); }
+  body.t4 .pill { border-radius: 999px; background: var(--bg); border-color: var(--line); }
+  body.t4 .dock { background: rgba(48,48,46,.94); border-color: var(--line); border-radius: 28px; }
+  body.t4 .dock svg { color: var(--sand); }
+  body.t4 .social-row .l { color: #ffffff; font-weight: 700; }
+  body.t4 .social-row .c-fb { color: #2d88ff; }
+  body.t4 .tabs button { color: #ffffff; }
+  body.t4 .tabs button[aria-selected="true"] { color: var(--sand); }
+
+  body.t4 .cat-ask { background: #c96442; color: #fff; border-radius: 999px; width: fit-content; margin: 14px auto 20px; padding: 9px 18px; font-size: .88rem; gap: 6px; }
+  body.t4 .cat-ask svg { color: #fff; width: 18px; height: 18px; }
+  body.t4 .cat-nav button { background: var(--bg); border: 1px solid var(--line); color: var(--sand); font-size: 1.9rem; font-weight: 700; line-height: 1; padding-bottom: 4px; box-shadow: none; }
+  body.t4 .cat-nav button:disabled { opacity: .45; }
+  body.t4 .cat-count { color: #fff; }
+  body.t4 .m-cta { background: #c96442; border-radius: 999px; color: #fff !important; font-size: 1.05rem; }
+  body.t4 .m-cta svg { color: #fff; }
+  body.t4 .modal { background: rgba(26,26,24,.86); }
+  body.t4 .m-body h3 { color: #fff; font-size: 1.35rem; }
+  body.t4 .m-body p { color: #ffffff; font-size: 1rem; line-height: 1.7; }
+  body.t4 .m-tag { color: #ffffff; background: rgba(255,255,255,.14); font-size: .85rem; }
+  body.t4 .theme-pick button[aria-pressed="true"] { background: #c96442; color: #fff; }
+  body.t4 #p-works { --soft: #ece6dc; }
+  * { box-sizing: border-box; }
+  [hidden] { display: none !important; }
+  body { margin: 0; direction: rtl; font-family: var(--font); color: var(--ink); background: var(--page); line-height: 1.5; }
+  a { color: inherit; text-decoration: none; }
+  button { font: inherit; color: inherit; background: none; border: 0; cursor: pointer; padding: 0; }
+  a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 10px; }
+  svg { display: block; }
+  .page { max-width: 520px; margin: 0 auto; padding-bottom: 120px; }
+  .wrap { padding: 0 16px; }
+
+  /* ---------- Cover ---------- */
+  .cover {
+    height: 230px; position: relative; overflow: hidden;
+    background:
+      repeating-linear-gradient(100deg, rgba(255,255,255,.06) 0 14px, transparent 14px 34px),
+      linear-gradient(160deg, #2a4359, #13212e 70%);
+  }
+  .cover img { width: 100%; height: 100%; object-fit: cover; }
+  button.cover { display: block; width: 100%; padding: 0; border: 0; cursor: zoom-in; }
+  .cover img { object-position: 50% 0%; }
+  button.cover { height: 290px; }
+  .zoom { position: absolute; z-index: 2; top: calc(12px + env(safe-area-inset-top, 0px)); right: 12px; display: inline-flex; align-items: center; gap: 6px; background: rgba(0,0,0,.55); color: #fff; font-size: .78rem; font-weight: 600; padding: 6px 10px; border-radius: 999px; }
+  .zoom svg { width: 16px; height: 16px; }
+  .cover::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,.25), transparent 50%); }
+
+  /* ---------- Info card ---------- */
+  .card {
+    position: relative; margin: -56px 16px 0; background: var(--bg); border-radius: 22px; border-color: var(--line) !important;
+    padding: 16px; box-shadow: 0 6px 24px rgba(0,0,0,.10); border: 1px solid var(--line);
+  }
+  .card { cursor: pointer; -webkit-tap-highlight-color: transparent; }
+  .card-top { display: flex; align-items: center; gap: 12px; }
+  .logo {
+    flex: none; width: 70px; height: 70px; border-radius: 22%; border: 0; box-shadow: 0 4px 12px rgba(0,0,0,.25);
+    background: #111; overflow: hidden; display: grid; place-items: center;
+  }
+  .logo img { width: 100%; height: 100%; object-fit: cover; color: transparent; font-size: 0; }
+  .mono { font-size: 2rem; font-weight: 700; color: var(--accent); line-height: 1; }
+  .name { flex: 1; min-width: 0; }
+  h1 { font-size: 1.25rem; margin: 0; line-height: 1.3; }
+  h1 small { display: block; font-size: .85rem; font-weight: 500; color: var(--ink-soft); }
+  .wm { display: block; font-family: "Syncopate", var(--font); font-size: .62rem; letter-spacing: .14em; color: var(--gold-deep); margin-top: 2px; direction: ltr; text-align: right; }
+  .rate { align-self: flex-start; font-size: .85rem; white-space: nowrap; }
+  .rate b { font-weight: 700; }
+  .rate .st { color: var(--sand); }
+  .rate span { color: var(--ink-soft); }
+  .desc { margin: 12px 0 0; font-size: .9rem; }
+  .mb-desc { margin: 0 0 6px; font-size: .88rem; color: var(--ink); }
+  .tags { margin: 10px 0 0; font-size: .88rem; color: var(--ink); }
+  .tags button { color: var(--gold-deep); font-weight: 700; font-size: .88rem; }
+  .more-box { margin-top: 10px; padding-top: 10px; border-top: 1px dashed var(--line); font-size: .85rem; color: var(--ink-soft); display: grid; gap: 4px; }
+
+  /* ---------- Pill buttons ---------- */
+  .pills { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin: 12px 16px 0; }
+  .pill {
+    display: flex; align-items: center; justify-content: center; gap: 8px; padding: 12px 6px;
+    border: 1.5px solid var(--line); border-radius: 14px; color: var(--accent); font-weight: 700; font-size: .95rem; background: var(--bg);
+  }
+  .pill svg { width: 22px; height: 22px; color: var(--sand); }
+  .pill[aria-expanded="true"] { border-color: var(--accent); }
+  .pills .pill { padding: 11px 4px; gap: 5px; font-size: .84rem; white-space: nowrap; }
+  .pills .pill svg { width: 18px; height: 18px; flex: none; }
+  .site-btn { display: flex; align-items: center; justify-content: center; gap: 8px; margin: 10px 16px 0; padding: 11px 14px;
+    border: 1.5px solid var(--line); border-radius: 999px; background: var(--bg); color: var(--ink); font-weight: 700; font-size: .92rem; }
+  .site-btn svg { width: 20px; height: 20px; color: var(--sand); }
+  .site-btn span { color: var(--ink-soft); font-weight: 500; font-size: .82rem; }
+  .locpick[hidden] { display: none !important; }
+  .locpick { margin: 10px 16px 0; display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .locpick a { background: var(--bg); border: 1px solid var(--sand); border-radius: 18px; padding: 14px 12px; display: grid; justify-items: start; gap: 4px; }
+  .locpick .lic { width: 42px; height: 42px; border-radius: 12px; display: grid; place-items: center; background: var(--sand); color: #fff; margin-bottom: 4px; }
+  .locpick .lic svg { width: 24px; height: 24px; }
+  .locpick b { font-size: 1.02rem; color: #fff; }
+  .locpick small { color: #e6e3da; font-size: .84rem; line-height: 1.45; }
+  .locpick .go { color: var(--gold-deep); font-size: .88rem; font-weight: 700; margin-top: 6px; }
+
+  /* ---------- Projects showcase (شريط متحرك) ---------- */
+  .showcase { margin-top: 12px; }
+  .sc-head { padding: 0 16px; margin-bottom: 12px; border-right: 4px solid var(--sand); margin-right: 16px; padding-right: 10px; }
+  .sc-head h2 { margin: 0; font-size: 1.1rem; }
+  .sc-head small { color: var(--ink-soft); font-size: .8rem; }
+  .marquee { direction: ltr; overflow-y: hidden; overscroll-behavior-x: contain; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; padding: 0; margin: 0 16px; }
+  .marquee::-webkit-scrollbar { display: none; }
+  .track { display: flex; gap: 10px; margin: 0; padding: 0; list-style: none; }
+  .pj-img { margin-bottom: 0 !important; }
+  .track li { flex: none; scroll-snap-align: start; }
+  .pj { direction: rtl; display: block; width: calc((min(100vw, 520px) - 32px - 20px) / 3); text-align: center; background: none; border: 0; border-radius: 0; padding: 0; box-shadow: none; cursor: pointer; }
+  .pj-img { display: grid; place-items: center; aspect-ratio: 1; margin-bottom: 8px; background: none; }
+  .pj-img img { width: 100%; height: 100%; object-fit: contain; }
+  .pj { position: relative; }
+  .pj b { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+  .pj small { display: none; }
+
+  /* ---------- Tabs ---------- */
+  .tabs {
+    display: grid; grid-template-columns: repeat(5, 1fr); margin-top: 26px; border-bottom: 1px solid var(--line);
+    position: sticky; top: env(safe-area-inset-top, 0px); background: var(--page); z-index: 5;
+  }
+  .tabs button { display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 10px 2px 9px; color: var(--ink-soft); font-size: .82rem; font-weight: 600; border-bottom: 3px solid transparent; margin-bottom: -1px; }
+  .tabs svg { width: 28px; height: 28px; }
+  .tabs button[aria-selected="true"] { color: var(--gold-deep); border-bottom-color: var(--sand); }
+  .panel { padding: 20px 16px 0; }
+  .panel[hidden] { display: none; }
+  .ttl { border-right: 4px solid var(--sand); padding-right: 10px; margin-bottom: 18px; }
+  .ttl h2 { margin: 0; font-size: 1.2rem; }
+  .ttl p { margin: 2px 0 0; color: var(--ink-soft); font-size: .88rem; }
+
+  /* ---------- Big square tiles (3 per row) ---------- */
+  .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px 14px; }
+  .tile { display: flex; flex-direction: column; align-items: center; gap: 8px; text-align: center; min-width: 0; }
+  .sq {
+    width: 100%; max-width: 116px; aspect-ratio: 1; border-radius: 26%; display: grid; place-items: center; color: #fff;
+    box-shadow: 0 4px 12px rgba(0,0,0,.12); transition: transform .12s;
+  }
+  .sq svg { width: 46%; height: 46%; }
+  .tile:active .sq { transform: scale(.94); }
+  .sq.photo { overflow: hidden; background: var(--soft); }
+  .sq.photo img { width: 100%; height: 100%; object-fit: cover; }
+  .c-ink { background: var(--surface-dark); color: var(--sand); border: 1px solid var(--line); }
+  .tile .l { font-size: .9rem; font-weight: 700; }
+  .tile .s { font-size: .74rem; color: var(--ink-soft); margin-top: -6px; }
+
+  .c-wa { background: var(--wa); } .c-ig { background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fd5949 45%, #d6249f 60%, #285aeb 90%); }
+  .c-tt { background: #000; border: 1px solid var(--line); } .c-snap { background: #fffc00; color: #000; } .c-fb { background: #1877f2; } .c-yt { background: #ff0000; }
+  .c-g { background: #fff; color: #4285f4; border: 1px solid var(--line); } .c-web { background: var(--navy); } .c-mail { background: var(--accent); }
+  .c-1 { background: #1f3549; } .c-2 { background: #b4532a; } .c-3 { background: #5f7d3c; } .c-4 { background: #2b6f73; } .c-5 { background: #8a653a; }
+  .c-6 { background: #4b5a68; } .c-7 { background: #9b3f2a; } .c-8 { background: #36608a; } .c-9 { background: #c08a2e; }
+
+  .grid.two { grid-template-columns: repeat(2, 1fr); padding: 0 12%; }
+  /* أيقونات السوشيال: صغيرة ومن غير فريم */
+  .social-row { grid-template-columns: repeat(5, 1fr); gap: 8px 4px; }
+  .social-row .sq { width: 34px; height: 34px; max-width: none; aspect-ratio: auto; border-radius: 0; background: none !important; border: 0; box-shadow: none; }
+  .social-row .sq svg { width: 34px; height: 34px; }
+  .social-row .l { font-size: .72rem; font-weight: 600; }
+  .social-row .c-ig { color: #d6249f; }  .social-row .c-fb { color: #1877f2; }
+  .social-row .c-yt { color: #ff0000; } .social-row .c-web { color: var(--ink); }
+  .social-row .c-snap { color: #111; }
+  /* الخدمات: صفين بس والباقي بالسحب */
+  .svc-scroll { grid-template-columns: none; grid-template-rows: repeat(2, auto); grid-auto-flow: column;
+    grid-auto-columns: calc((100% - 30px) / 4); gap: 16px 10px; overflow-x: auto; overflow-y: hidden;
+    overscroll-behavior-x: contain; scroll-snap-type: x mandatory; scrollbar-width: none; margin: 0; padding: 0 0 4px; }
+  .svc-scroll::-webkit-scrollbar { display: none; }
+  .svc-scroll .tile { scroll-snap-align: start; }
+  .svc-scroll .tile:nth-child(8n+1), .svc-scroll .tile:nth-child(8n+2) { scroll-snap-align: start; }
+  .svc-scroll .tile .l { font-size: .74rem; line-height: 1.3; }
+  .svc-scroll .sq { border-radius: 22%; }
+  .svc-quick { display: grid; grid-template-columns: repeat(5, 1fr); gap: 6px; margin: -4px 0 18px; }
+  .svc-quick a { display: flex; flex-direction: column; align-items: center; gap: 6px; text-align: center; font-size: .74rem; font-weight: 700; color: var(--ink); line-height: 1.25; }
+  .svc-quick span { width: 50px; height: 50px; border-radius: 16px; display: grid; place-items: center; background: var(--bg); border: 1px solid var(--line); color: var(--sand); }
+  .svc-quick svg { width: 24px; height: 24px; }
+  .svc-quick button { display: flex; flex-direction: column; align-items: center; gap: 6px; text-align: center; font-size: .74rem; font-weight: 700; color: var(--ink); line-height: 1.25; }
+  .svc-quick button[aria-expanded="true"] span { border-color: var(--sand); }
+  .ask-l { margin: 8px 0 10px; font-size: .86rem; font-weight: 700; color: var(--ink); }
+  #p-about .svc-quick { margin: 0 0 6px; }
+  #p-about .svc-quick span { background: var(--gold-soft); border-color: transparent; border-radius: 12px; width: 46px; height: 46px; }
+  .info-quick { margin: 8px 0 12px; grid-template-columns: repeat(2, 1fr); padding: 0 26%; }
+  .sites { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin: 0 0 12px; }
+  .sites a, .sites button { display: grid; justify-items: center; gap: 2px; text-align: center; padding: 10px 4px; border: 1px solid var(--line); border-radius: 14px; background: var(--bg); }
+  .sites .lic { width: 38px; height: 38px; border-radius: 12px; display: grid; place-items: center; background: var(--gold-soft); color: var(--sand); margin-bottom: 4px; }
+  .sites .lic svg { width: 20px; height: 20px; }
+  .sites b { font-size: .84rem; color: var(--ink); }
+  .sites small { font-size: .7rem; color: var(--ink-soft); line-height: 1.3; }
+  .sites button[aria-expanded="true"] { border-color: var(--sand); }
+  .phones-box { justify-content: center; margin: 0 0 12px; }
+  .addr { margin: 4px 0 0; text-align: center; font-size: .78rem; color: var(--ink-soft); line-height: 1.6; }
+  .hint { background: none; border: 1px dashed var(--line); border-radius: 12px; padding: 10px 12px; font-size: .85rem; color: var(--ink-soft); margin: -6px 0 18px; }
+
+  /* works */
+  .photos { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 20px; }
+  .photos figure { margin: 0; border-radius: 14px; overflow: hidden; position: relative; aspect-ratio: 1; max-width: 100%; background: linear-gradient(135deg, #e3d8c6, #cbb994); }
+  .photos img { width: 100%; height: 100%; object-fit: cover; }
+  .photos figcaption { position: absolute; inset: auto 0 0 0; padding: 18px 8px 6px; font-size: .74rem; font-weight: 600; color: #fff; background: linear-gradient(to top, rgba(0,0,0,.65), transparent); }
+  .photos figure.broken img { display: none; }
+  .photos figure.broken figcaption { inset: 0; display: grid; place-items: center; background: none; color: #6b5c41; text-align: center; }
+  .chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 20px; }
+  .chips span { background: var(--soft); border-radius: 999px; padding: 5px 11px; font-size: .78rem; }
+
+  /* reviews */
+  .score { display: flex; align-items: center; gap: 14px; }
+  .score b { font-size: 2.6rem; line-height: 1; }
+  .score .st { color: var(--sand); font-size: 1.1rem; letter-spacing: 2px; }
+  .score small { display: block; color: var(--ink-soft); }
+  .quotes { display: grid; gap: 10px; margin: 18px 0; }
+  .quotes p { margin: 0; background: var(--soft); border-radius: 14px; padding: 12px 14px; font-size: .88rem; text-align: right; }
+  .cta { display: flex; align-items: center; justify-content: center; gap: 8px; border: 1.5px solid var(--accent); color: var(--accent); border-radius: 14px; padding: 12px; font-weight: 700; }
+
+  /* about */
+  .facts { display: grid; gap: 10px; }
+  .fact { display: flex; gap: 12px; align-items: center; background: var(--soft); border-radius: 14px; padding: 12px; }
+  .fact .ic { flex: none; width: 44px; height: 44px; border-radius: 12px; display: grid; place-items: center; background: var(--bg); color: var(--accent); }
+  .fact .ic svg { width: 24px; height: 24px; }
+  .fact b { display: block; font-size: .92rem; }
+  .fact small { color: var(--ink-soft); font-size: .8rem; }
+  .phones { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 4px; }
+  .phones a { direction: ltr; background: var(--bg); border: 1px solid var(--line); border-radius: 999px; padding: 4px 10px; font-size: .82rem; font-weight: 600; font-variant-numeric: tabular-nums; }
+
+  /* ---------- Floating bottom bar ---------- */
+  .dock {
+    position: fixed; z-index: 20; left: 50%; transform: translateX(-50%);
+    bottom: calc(12px + env(safe-area-inset-bottom, 0px)); width: calc(100% - 32px); max-width: 488px;
+    background: rgba(0,0,0,.92); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); border: 1px solid rgba(232,137,10,.35); border-radius: 22px; box-shadow: 0 8px 30px rgba(0,0,0,.5);
+    display: grid; grid-template-columns: repeat(3, 1fr); padding: 10px 4px;
+  }
+  .dock a { display: flex; flex-direction: column; align-items: center; gap: 4px; font-size: .82rem; font-weight: 600; color: #fff; }
+  .dock svg { width: 26px; height: 26px; color: var(--sand); }
+  .dock .wa { color: #128c4b; }
+  body.t1 #p-works, body.t3 #p-works { --soft: #ece6dc; --line: #e3dcd0; --ink-soft: #6f6a64; --bg: #ffffff; }
+  .catalog { direction: ltr; display: flex; gap: 12px; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; border-radius: 12px; }
+  .catalog::-webkit-scrollbar { display: none; }
+  .cat-pg { flex: 0 0 100%; scroll-snap-align: center; display: block; width: 100%; padding: 0; border-radius: 12px; overflow: hidden; background: var(--soft); cursor: zoom-in; }
+  .cat-nav { direction: ltr; display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: 12px; }
+  .cat-nav button { width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--line); background: var(--bg); color: var(--sand); display: grid; place-items: center; font-size: 1.3rem; }
+  .cat-nav button:disabled { opacity: .35; }
+  .cat-count { font-size: .9rem; font-weight: 600; color: var(--ink-soft); font-variant-numeric: tabular-nums; }
+  .cat-pg img { display: block; width: 100%; aspect-ratio: 1708/962; object-fit: cover; }
+  .cat-ask { display: flex; align-items: center; justify-content: center; gap: 8px; margin: 16px 0 20px; padding: 13px; border-radius: 14px; background: var(--sand); color: #111; font-weight: 700; }
+  .cat-ask svg { width: 22px; height: 22px; color: #111; }
+  /* ---------- Popup ---------- */
+  .modal { position: fixed; inset: 0; z-index: 50; background: transparent; -webkit-backdrop-filter: blur(18px); backdrop-filter: blur(18px); display: flex; align-items: center; justify-content: center; padding: 0 0 env(safe-area-inset-bottom, 0px); }
+  .modal:not(.photo) .sheet { margin-bottom: 12vh; }
+  .sheet { position: relative; width: 100%; max-width: 520px; max-height: 92vh; overflow: auto; background: transparent; border-radius: 0; animation: up .22s ease-out; }
+  .modal:not(.photo) .m-img img { filter: drop-shadow(0 18px 24px rgba(0,0,0,.18)); }
+  @keyframes up { from { transform: translateY(30px); opacity: .4; } }
+  .x { position: absolute; top: 12px; left: 12px; z-index: 2; width: 36px; height: 36px; border-radius: 50%; background: rgba(0,0,0,.55); color: #fff; font-size: 1rem; }
+  .m-img { background: none; display: grid; place-items: center; padding: 20px 20px 0; }
+  .m-img img { width: 100%; max-height: 52vh; object-fit: contain; }
+  .modal.photo .sheet { background: #000; border-radius: 0; max-width: none; height: 100%; max-height: none; display: grid; place-items: center; }
+  .modal.photo { align-items: stretch; padding: 0; }
+  .modal.photo .m-img { background: #000; padding: 0; width: 100%; }
+  .modal.photo .m-img img { max-height: 100vh; }
+  .m-body { padding: 16px 18px 22px; }
+  .m-tag { display: inline-block; font-size: .78rem; font-weight: 700; color: var(--gold-deep); background: var(--gold-soft); border-radius: 999px; padding: 3px 10px; }
+  .m-body h3 { margin: 8px 0 4px; font-size: 1.2rem; }
+  .m-body p { margin: 0 0 16px; color: var(--ink-soft); font-size: .92rem; }
+  .m-cta { display: flex; align-items: center; justify-content: center; gap: 8px; background: #1fa855; color: #fff; border-radius: 14px; padding: 13px; font-weight: 700; }
+  .m-cta svg { width: 22px; height: 22px; }
+  /* ---------- مشاريع وطنية + عملائنا ---------- */
+  .pill.nat { background: #c96442 !important; border-color: #c96442 !important; color: #fff !important; }
+  .pill.nat svg { color: #fff; }
+  .tabs button { font-size: .78rem; }
+  .sheet.nat-sheet { background: var(--bg); border: 1px solid var(--line); border-radius: 24px; width: calc(100% - 28px); margin-left: 14px; margin-right: 14px; padding: 18px 16px 20px; }
+  .nat-head { padding-left: 44px; margin-bottom: 14px; border-right: 4px solid var(--sand); padding-right: 10px; }
+  .nat-head h3 { margin: 0; font-size: 1.25rem; color: var(--ink); }
+  .nat-head p { margin: 2px 0 0; color: var(--ink-soft); font-size: .86rem; }
+  .nat-grid, .cl-grid { display: grid; gap: 10px; }
+  .nat-grid { grid-template-columns: repeat(6, 1fr); gap: 8px; }
+  .nat-grid button { grid-column: span 3; }
+  .nat-grid button.flag { grid-column: span 2; }
+  .nat-grid button:nth-child(5) { grid-column: 1 / -1; }
+  .nat-grid .flag b { font-size: .74rem; }
+  .nat-grid button.flag { padding: 8px 4px; gap: 2px; }
+  .nat-head { margin-bottom: 10px; }
+  .nat-grid .flag small { font-size: .66rem; }
+  .cl-grid { grid-template-columns: repeat(3, 1fr); }
+  .cl-grid .cl-card { display: grid; gap: 4px; justify-items: center; align-content: start; text-align: center; background: var(--soft); border: 1px solid var(--line); border-radius: 16px; padding: 10px 6px 12px; }
+  .cl-grid .vis { display: grid; place-items: center; width: 100%; aspect-ratio: 1; }
+  .cl-grid .vis img { width: 78%; aspect-ratio: auto; filter: drop-shadow(0 4px 8px rgba(0,0,0,.35)); border-radius: 3px; }
+  .cl-grid .vis svg { width: 44%; height: 44%; color: var(--sand); }
+  .nat-grid button, .cl-grid button { display: grid; gap: 4px; justify-items: center; align-content: start; text-align: center; background: var(--soft); border: 1px solid var(--line); border-radius: 16px; padding: 10px 6px 12px; }
+  .nat-grid img, .cl-grid img { width: 100%; aspect-ratio: 1; object-fit: contain; }
+  .modal:not(.photo) .sheet.nat-sheet { margin-bottom: 0; max-height: calc(100vh - 20px); padding: 14px 14px 16px; }
+  .nat-grid img { aspect-ratio: auto; height: 64px; }
+  .nat-grid .flag img { height: 34px; padding: 2px 6px; filter: drop-shadow(0 4px 8px rgba(0,0,0,.35)); }
+  .modal:not(.photo) .m-img img[src^="data:image/svg"] { max-height: 22vh; max-width: 70%; }
+  .nat-grid button { padding: 8px 6px 10px; }
+  .nat-grid b { font-size: .8rem; line-height: 1.3; }
+  .cl-grid b { font-size: .76rem; line-height: 1.3; }
+  .nat-grid small, .cl-grid small { font-size: .7rem; color: var(--ink-soft); line-height: 1.3; }
+  .cl-sub { font-size: 1rem; margin: 22px 0 10px; }
+  .more-cl { display: contents; }
+  #p-clients .chips { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  #p-clients .chips span:not(.more-cl) { display: flex; align-items: center; justify-content: center; text-align: center; min-height: 46px; padding: 6px 10px; border-radius: 12px; border: 1px solid var(--line); font-size: .8rem; line-height: 1.35; }
+  .cl-all { display: block; margin: 12px auto 0; color: var(--gold-deep); font-weight: 700; font-size: .88rem; padding: 6px 12px; }
+  .mb-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .mb { background: var(--soft); border-radius: 14px; padding: 10px; display: grid; gap: 2px; justify-items: start; }
+  .mb svg { width: 22px; height: 22px; color: var(--sand); margin-bottom: 4px; }
+  .mb b { font-size: .88rem; color: var(--ink); line-height: 1.3; }
+  .mb small { font-size: .74rem; color: var(--ink-soft); line-height: 1.35; }
+  .mb-hours { text-align: center; font-size: .8rem; color: var(--ink-soft); margin-top: 6px; }
+  .complain { display: flex; align-items: center; gap: 12px; margin-top: 18px; padding: 12px 14px; border: 1px dashed var(--line); border-radius: 14px; }
+  .complain svg { width: 26px; height: 26px; color: var(--sand); flex: none; }
+  .complain b { display: block; font-size: .92rem; }
+  .complain small { color: var(--ink-soft); font-size: .8rem; }
+  .copy-line { display: block; width: 100%; font-size: .76rem; color: var(--ink-soft); text-align: center; margin: 18px 0 0; padding: 6px 0; cursor: default; -webkit-tap-highlight-color: transparent; }
+  .adm-modal { position: fixed; inset: 0; z-index: 60; display: flex; align-items: center; justify-content: center; padding: 20px; background: rgba(26,26,24,.86); -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px); }
+  .adm-modal[hidden] { display: none !important; }
+  .adm-box { position: relative; width: 100%; max-width: 360px; background: var(--bg); border: 1px solid var(--line); border-radius: 24px; padding: 26px 20px 20px; text-align: center; }
+  .adm-box .lic { width: 56px; height: 56px; margin: 0 auto 12px; border-radius: 16px; display: grid; place-items: center; background: var(--gold-soft); color: var(--sand); }
+  .adm-box .lic svg { width: 28px; height: 28px; }
+  .adm-box h3 { margin: 0; font-size: 1.2rem; color: #fff; }
+  .adm-box p { margin: 6px 0 18px; font-size: .88rem; color: var(--ink-soft); }
+  .adm-go { display: block; padding: 13px; border-radius: 999px; background: #c96442; color: #fff; font-weight: 700; }
+  .call-num { font-size: 1.5rem !important; font-weight: 700; color: #fff !important; letter-spacing: .04em; user-select: all; -webkit-user-select: all; font-variant-numeric: tabular-nums; margin: 6px 0 16px !important; }
+  .call-acts { display: grid; gap: 8px; }
+  .adm-go.ghost { background: var(--soft); width: 100%; }
+  .adm-go.wa { background: #1fa855; }
+  .adm-x { position: absolute; top: 10px; left: 10px; width: 34px; height: 34px; border-radius: 50%; background: var(--soft); color: #fff; }
+  .stats { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: -6px 0 18px; }
+  .stat { background: var(--bg); border: 1px solid var(--line); border-radius: 12px; padding: 8px 6px; display: flex; align-items: baseline; justify-content: center; gap: 5px; white-space: nowrap; }
+  .stat b { font-size: 1.1rem; line-height: 1.2; color: var(--sand); }
+  .stat span { font-size: .78rem; font-weight: 600; color: var(--ink); }
+  @media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
+</style>
+
+</head>
+<body class="t4">
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-wa" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm4.5 12.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.4.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.1 5.1 0 0 0 1.1 2.7 11.7 11.7 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3Z"/></symbol>
+    <symbol id="i-phone" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2Z"/></symbol>
+    <!-- خدمات -->
+    <symbol id="i-carshade" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2 8.5 12 4l10 4.5"/><path d="M4 7.6V21M20 7.6V21"/><path d="M7 18.5v-2.2l1.4-3.3h7.2l1.4 3.3v2.2Z"/><circle cx="9" cy="19" r="1.2"/><circle cx="15" cy="19" r="1.2"/></g></symbol>
+    <symbol id="i-screen" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M4 21V5M20 21V5"/><path d="M4 5h16"/><path d="M8 5v16M12 5v16M16 5v16"/></g></symbol>
+    <symbol id="i-pergola" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2 7h20M2 10h20"/><path d="M5 7v14M19 7v14"/><path d="M8 4v6M12 4v6M16 4v6"/><path d="M3 21h18"/></g></symbol>
+    <symbol id="i-sail" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6 20 9l-7 6Z"/><path d="M4 6v15M20 9v12"/><path d="M2 21h20"/></g></symbol>
+    <symbol id="i-tent" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v3"/><path d="M3 20 12 6l9 14"/><path d="M12 6v14"/><path d="M9.5 20 12 15l2.5 5"/><path d="M1.5 20h21"/></g></symbol>
+    <symbol id="i-hangar" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 20v-8a9 7 0 0 1 18 0v8"/><path d="M2 20h20"/><path d="M8 20v-6h8v6"/><path d="M8 17h8"/></g></symbol>
+    <symbol id="i-door" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 21V3h12v18"/><path d="M3 21h18"/><path d="M9 6h6v5H9z"/><circle cx="15" cy="14.5" r=".9" fill="currentColor"/></g></symbol>
+    <symbol id="i-window" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="16" rx="1"/><path d="M12 3v16M4 11h16"/><path d="M2.5 21h19"/></g></symbol>
+    <symbol id="i-card" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="5" width="19" height="14" rx="2"/><path d="M2.5 9.5h19M6.5 15h4"/></g></symbol>
+    <symbol id="i-measure" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="8" width="20" height="8" rx="1.5"/><path d="M6 8v3M10 8v4M14 8v3M18 8v4"/></g></symbol>
+    <!-- مميزات -->
+    <symbol id="i-bolt" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" d="M13 2 4 14h7l-1 8 9-12h-7Z"/></symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 20 6v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6Z"/><path d="m9 12 2 2 4-4"/></g></symbol>
+    <symbol id="i-wrench" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 0 0 5.4-5.4l-2.5 2.5-2.4-.6-.6-2.4Z"/></symbol>
+    <!-- أماكن -->
+    <symbol id="i-office" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 21V4h11v17"/><path d="M15 9h5v12"/><path d="M2 21h20"/><path d="M7.5 7.5h1M10.5 7.5h1M7.5 11h1M10.5 11h1M7.5 14.5h1M10.5 14.5h1"/></g></symbol>
+    <symbol id="i-factory" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21V11l6 3.5V11l6 3.5V5h5v16Z"/><path d="M2 21h20"/><path d="M7 18h2M12 18h2"/></g></symbol>
+    <symbol id="i-play" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><circle cx="12" cy="12" r="9.5"/><path d="M10 8.5 15.5 12 10 15.5Z"/></g></symbol>
+    <symbol id="i-gallery" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="1.6"/><path d="m21 16-5-5-9 9"/></g></symbol>
+    <!-- سوشيال -->
+    <symbol id="i-insta" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".9" fill="currentColor"/></g></symbol>
+    <symbol id="i-tiktok" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M14 3v11.5a3.5 3.5 0 1 1-3.5-3.5M14 3c.4 2.6 2.2 4.3 5 4.5"/></symbol>
+    <symbol id="i-snap" viewBox="0 0 24 24"><path fill="#fffc00" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" d="M12 3c3 0 5 2.2 5 5v2.4l1.7-.6c.6-.2 1 .5.5.9l-1.9 1.4c.6 1.8 2 3 3.7 3.4-.4.9-1.8 1.2-2.8 1.3l-.4 1.3-2-.3c-1.3.6-2.3 1.6-3.8 1.6s-2.5-1-3.8-1.6l-2 .3-.4-1.3c-1-.1-2.4-.4-2.8-1.3 1.7-.4 3.1-1.6 3.7-3.4l-1.9-1.4c-.5-.4-.1-1.1.5-.9l1.7.6V8c0-2.8 2-5 5-5Z"/></symbol>
+    <symbol id="i-fb" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" d="M14.5 21v-7.5h2.7l.4-3.2h-3.1V8.4c0-.9.3-1.6 1.6-1.6h1.7V4a20 20 0 0 0-2.5-.2c-2.5 0-4.1 1.5-4.1 4.2v2.3H8.5v3.2h2.7V21"/></symbol>
+    <symbol id="i-yt" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><rect x="2.5" y="5" width="19" height="14" rx="4"/><path d="M10 9.2 15 12l-5 2.8Z" fill="currentColor"/></g></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21Z"/><circle cx="12" cy="9.5" r="2.5"/></g></symbol>
+    <symbol id="i-globe" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></g></symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3.5 6.5 8.5 7 8.5-7"/></g></symbol>
+    <symbol id="i-star" viewBox="0 0 24 24"><path fill="currentColor" d="m12 2.8 2.8 5.8 6.3.9-4.6 4.4 1.1 6.3L12 17.2l-5.6 3 1.1-6.3L2.9 9.5l6.3-.9Z"/></symbol>
+    <symbol id="i-grid" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3.5" y="3.5" width="7" height="7" rx="2"/><rect x="13.5" y="3.5" width="7" height="7" rx="2"/><rect x="3.5" y="13.5" width="7" height="7" rx="2"/><rect x="13.5" y="13.5" width="7" height="7" rx="2"/></g></symbol>
+    <symbol id="i-star-o" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" d="m12 3 2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1L3.2 9.5l6.1-.9Z"/></symbol>
+    <symbol id="i-chat-alert" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v12H9l-5 4Z"/><path d="M12 7.5v4M12 14h.01"/></g></symbol>
+    <symbol id="i-tree" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21v-7"/><path d="M12 14c-3.5 0-6-2.3-6-5.3C6 5.6 8.7 3 12 3s6 2.6 6 5.7c0 3-2.5 5.3-6 5.3Z"/><path d="M9 21h6"/><path d="M12 11l-2-2M12 9.5l2.2-2"/></g></symbol>
+    <symbol id="i-expand" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></symbol>
+    <symbol id="i-landmark" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9.5 12 4l9 5.5"/><path d="M4 9.5h16"/><path d="M6 9.5v8M10 9.5v8M14 9.5v8M18 9.5v8"/><path d="M4 17.5h16M3 20.5h18"/></g></symbol>
+    <symbol id="i-users" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.2"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6"/><path d="M15.5 4.9a3.2 3.2 0 0 1 0 6.2M18 14.4c1.8.8 3 2.6 3 4.6"/></g></symbol>
+    <symbol id="i-heart" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" d="M12 20s-7.5-4.6-7.5-10.2A4.2 4.2 0 0 1 12 7.3a4.2 4.2 0 0 1 7.5 2.5C19.5 15.4 12 20 12 20Z"/></symbol>
+    <symbol id="i-mosque" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 21v-6a6 5 0 0 1 12 0v6"/><path d="M12 7.5V4.5M11 4.5h2"/><path d="M3 21h18"/><path d="M10 21v-3a2 2 0 0 1 4 0v3"/></g></symbol>
+    <symbol id="i-hotel" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 19V6M3 15h18v4M21 15v-2.5a3 3 0 0 0-3-3h-7.5V15"/><circle cx="6.8" cy="12" r="1.7"/></g></symbol>
+  </defs>
+</svg>
+<div class="page" dir="rtl" lang="ar">
+<div class="top-zone">
+  <button type="button" class="cover" id="coverBtn" aria-label="عرض صورة مقر الشركة كاملة"><img src="https://cdn.jsdelivr.net/gh/rooneynoor8-bit/marketing-agent@0f09add8e872150dd6a7229a9bfae019df678a5e/alebdaa/links/img/77baf70f3c.jpg" alt="مقر شركة الإبداع على طريق سلوى"><span class="zoom"><svg><use href="#i-expand"/></svg>صورة المقر</span></button>
+
+  <div class="card">
+    <div class="card-top">
+      <div class="logo"><img src="https://cdn.jsdelivr.net/gh/rooneynoor8-bit/marketing-agent@0f09add8e872150dd6a7229a9bfae019df678a5e/alebdaa/links/img/647a0ed786.jpg" alt="شعار الإبداع Creative tents"></div>
+      <div class="name"><h1>الإبداع للمظلات<small>واللاند سكيب</small></h1></div>
+      <a class="rate" href="https://maps.app.goo.gl/CAhxjJKBMuafqmHr5" target="_blank" rel="noopener" data-track="card_rating" aria-label="تقييماتنا على جوجل"><span class="st">★</span> <b>4.3</b> <span>(24)</span></a>
+    </div>
+    <p class="tags">سواتر • مظلات • برجولات • خيام • أبواب وشبابيك <button type="button" id="moreBtn" aria-expanded="false" aria-controls="moreBox">عرض المزيد</button></p>
+    <div class="more-box" id="moreBox" hidden>
+      <p class="mb-desc">شركة قطرية متخصصة في تصميم وتركيب المظلات والبرجولات والخيام والهناجر</p>
+      <div class="mb-grid">
+        <div class="mb"><svg><use href="#i-office"/></svg><b>مقرّ ومصنع خاص</b><small>المقر: طريق سلوى · المصنع: بركة العوامر</small></div>
+        <div class="mb"><svg><use href="#i-shield"/></svg><b>ضمان يصل إلى 8 سنوات</b><small>وخدمة ما بعد البيع</small></div>
+        <div class="mb"><svg><use href="#i-card"/></svg><b>تقسيط مريح</b><small>خطط دفع ميسّرة</small></div>
+        <div class="mb"><svg><use href="#i-landmark"/></svg><b>ثقة كبرى الجهات</b><small>حمد · كتارا · سوق واقف</small></div>
+      </div>
+      <div class="mb-hours">نستقبلكم يوميًا من 9 صباحًا حتى 8 مساءً</div>
+    </div>
+  </div>
+
+  <div class="pills">
+    <button class="pill" type="button" id="locBtn" aria-expanded="false" aria-controls="locPick" data-track="pill_location"><svg><use href="#i-pin"/></svg>العنوان</button>
+    <button class="pill nat" type="button" id="natBtn" aria-haspopup="dialog" data-track="pill_national"><svg><use href="#i-landmark"/></svg>مشاريع وطنية</button>
+    <a class="pill" href="https://ebdaatents.com/review/" target="_blank" rel="noopener" data-track="pill_rate"><svg><use href="#i-star-o"/></svg>قيّمنا</a>
+  </div>
+  <div class="locpick" id="locPick" hidden>
+    <a href="https://maps.app.goo.gl/CAhxjJKBMuafqmHr5" target="_blank" rel="noopener" data-track="loc_hq"><span class="lic"><svg><use href="#i-office"/></svg></span><b>مقر الشركة</b><small>طريق سلوى، قبل محطة وقود التيسير</small><span class="go">افتح الخريطة ←</span></a>
+    <a href="https://maps.app.goo.gl/CGUFvtqHQ1JWBPZs6" target="_blank" rel="noopener" data-track="loc_factory"><span class="lic"><svg><use href="#i-factory"/></svg></span><b>المصنع</b><small>بركة العوامر</small><span class="go">افتح الخريطة ←</span></a>
+  </div>
+
+  <section class="showcase" aria-label="أكبر مشاريعنا">
+    <div class="marquee">
+      <ul class="track"><li><button type="button" class="pj" data-proj="7743de67"><span class="pj-img"><img src="https://cdn.jsdelivr.net/gh/rooneynoor8-bit/marketing-agent@0f09add8e872150dd6a7229a9bfae019df678a5e/alebdaa/links/img/c210363d63.webp" alt=""></span><b>سوق واقف</b><small>أشرعة تظليل</small></button></li><li><button type="button" class="pj" data-proj="102db079"><span class="pj-img"><img src="https://cdn.jsdelivr.net/gh/rooneynoor8-bit/marketing-agent@0f09add8e872150dd6a7229a9bfae019df678a5e/alebdaa/links/img/63356d060f.webp" alt=""></span><b>مستشفى حمد</b><small>مظلات HDPE معلّقة</small></button></li><li><button type="button" class="pj" data-proj="9c28e779"><span class="pj-img"><img src="https://cdn.jsdelivr.net/gh/rooneynoor8-bit/marketing-agent@0f09add8e872150dd6a7229a9bfae019df678a5e/alebdaa/links/img/49b0c01103.webp" alt=""></span><b>كتارا</b><small>مظلات HDPE</small></button></li><li><button type="button" class="pj" data-proj="5514daf1"><span class="pj-img"><img src="https://cdn.jsdelivr.net/gh/rooneynoor8-bit/marketing-agent@0f09add8e872150dd6a7229a9bfae019df678a5e/alebdaa/links/img/6f294a927c.webp" alt=""></span><b>مواقف مشيرب</b><small>مظلات HDPE هرمية</small></button></li><li><button type="button" class="pj" data-proj="542cb060"><span class="pj-img"><img src="https://cdn.jsdelivr.net/gh/rooneynoor8-bit/marketing-agent@0f09add8e872150dd6a7229a9bfae019df678a5e/alebdaa/links/img/cf635af715.webp" alt=""></span><b>جامعة كالجاري في قطر</b><small>مظلات HDPE</small></button></li><li><button type="button" class="pj" data-proj="b794270d"><span class="pj-img"><img src="https://cdn.jsdelivr.net/gh/rooneynoor8-bit/marketing-agent@0f09add8e872150dd6a7229a9bfae019df678a5e/alebdaa/links/img/a6fabe5d43.webp" alt=""></span><b>مناطق</b><small>مظلات كويك سبان</small></button></li><li><button type="button" class="pj" data-proj="1336c9e9"><span class="pj-img"><img src="https://cdn.jsdelivr.net/gh/rooneynoor8-bit/marketing-agent@0f09add8e872150dd6a7229a9bfae019df678a5e/alebdaa/links/img/b1e06b3dbf.webp" alt=""></span><b>توكيل فورد</b><small>مظلات HDPE كابولية</small></button></li><li><button type="button" class="pj" data-proj="bd337363"><span class="pj-img"><img src="https://cdn.jsdelivr.net/gh/rooneynoor8-bit/marketing-agent@0f09add8e872150dd6a7229a9bfae019df678a5e/alebdaa/links/img/26c9b6b152.webp" alt=""></span><b>مجموعة الفردان</b><small>5 مجمعات سكنية</small></button></li><li><button type="button" class="pj" data-proj="035576aa"><span class="pj-img"><img src="https://cdn.jsdelivr.net/gh/rooneynoor8-bit/marketing-agent@0f09add8e872150dd6a7229a9bfae019df678a5e/alebdaa/links/img/9525474c81.webp" alt=""></span><b>مدرسة المجتمع للبنات</b><small>أشرعة تظليل ملونة</small></button></li></ul>
+    </div>
+  </section>
+
+</div>
+
+  <nav class="tabs" role="tablist">
+    <button role="tab" aria-selected="true" aria-controls="p-accounts" data-tab="accounts"><svg><use href="#i-grid"/></svg>حساباتنا</button>
+    <button role="tab" aria-selected="false" aria-controls="p-clients" data-tab="clients"><svg><use href="#i-users"/></svg>عملائنا</button>
+    <button role="tab" aria-selected="false" aria-controls="p-services" data-tab="services"><svg><use href="#i-pergola"/></svg>خدماتنا</button>
+    <button role="tab" aria-selected="false" aria-controls="p-works" data-tab="works"><svg><use href="#i-gallery"/></svg>الكتالوج</button>
+    <button role="tab" aria-selected="false" aria-controls="p-about" data-tab="about"><svg><use href="#i-office"/></svg>الشركة</button>
+  </nav>
+
+  <!-- حساباتنا -->
+  <section class="panel" id="p-accounts" role="tabpanel">
+    <div class="ttl"><h2>حساباتنا على وسائل التواصل</h2><p>تابعنا لتصلك أحدث مشاريعنا وعروضنا</p></div>
+    <div class="grid social-row">
+      <a class="tile" href="https://www.instagram.com/alebdaatents/" target="_blank" rel="noopener" data-track="social_instagram"><span class="sq c-ig"><svg><use href="#i-insta"/></svg></span><span class="l">إنستقرام</span></a>
+      <a class="tile" href="https://www.tiktok.com/@alebdaa_tents" target="_blank" rel="noopener" data-track="social_tiktok"><span class="sq c-tt"><svg><use href="#i-tiktok"/></svg></span><span class="l">تيك توك</span></a>
+      <a class="tile" href="https://www.snapchat.com/@alebdatents" target="_blank" rel="noopener" data-track="social_snapchat"><span class="sq c-snap"><svg><use href="#i-snap"/></svg></span><span class="l">سناب شات</span></a>
+      <a class="tile" href="https://www.facebook.com/alebdaatents" target="_blank" rel="noopener" data-track="social_facebook"><span class="sq c-fb"><svg><use href="#i-fb"/></svg></span><span class="l">فيسبوك</span></a>
+      <a class="tile" href="https://www.youtube.com/@alebdaatents" target="_blank" rel="noopener" data-track="social_youtube"><span class="sq c-yt"><svg><use href="#i-yt"/></svg></span><span class="l">يوتيوب</span></a>
+    </div>
+  </section>
+
+  <!-- الخدمات -->
+  <section class="panel" id="p-services" role="tabpanel" hidden>
+    <div class="ttl"><h2>خدماتنا</h2><p>في كل مكان في قطر لنا بصمة</p></div>
+    <div class="stats"><div class="stat"><b>15 عاماً</b><span>من النجاح</span></div><div class="stat"><b><bdi dir="ltr">+10</bdi> آلاف</b><span>مظلة</span></div></div>
+    <p class="hint">اختر الخدمة التي تناسبك، وسنرسل لك الأسعار عبر واتساب</p>
+    <div class="grid svc-scroll">
+      <a class="tile" data-track="svc_pvc" data-wa="السلام عليكم، أرغب في عرض سعر لمظلات PVC"><span class="sq photo"><img src="https://cdn.jsdelivr.net/gh/rooneynoor8-bit/marketing-agent@0f09add8e872150dd6a7229a9bfae019df678a5e/alebdaa/links/img/88c54b3984.jpg" alt=""></span><span class="l">مظلات PVC</span></a>
+      <a class="tile" data-track="svc_hdpe" data-wa="السلام عليكم، أرغب في عرض سعر لمظلات HDPE"><span class="sq photo"><img src="https://cdn.jsdelivr.net/gh/rooneynoor8-bit/marketing-agent@0f09add8e872150dd6a7229a9bfae019df678a5e/alebdaa/links/img/e5e975335f.jpg" alt=""></span><span class="l">مظلات HDPE</span></a>
+      <a class="tile" data-track="svc_kwik" data-wa="السلام عليكم، أرغب في عرض سعر لمظلات كويك سبان"><span class="sq photo"><img src="https://cdn.jsdelivr.net/gh/rooneynoor8-bit/marketing-agent@0f09add8e872150dd6a7229a9bfae019df678a5e/alebdaa/links/img/c85457d8fd.jpg" alt=""></span><span class="l">كويك سبان</span></a>
+      <a class="tile" data-track="svc_modern" data-wa="السلام عليكم، أرغب في عرض سعر لبرجولا مودرن"><span class="sq photo"><img src="https://cdn.jsdelivr.net/gh/rooneynoor8-bit/marketing-agent@0f09add8e872150dd6a7229a9bfae019df678a5e/alebdaa/links/img/1a7b53bd65.jpg" alt=""></span><span class="l">برجولا مودرن</span></a>
+      <a class="tile" data-track="svc_glass" data-wa="السلام عليكم، أرغب في عرض سعر لبرجولا زجاج M+"><span class="sq photo"><img src="https://cdn.jsdelivr.net/gh/rooneynoor8-bit/marketing-agent@0f09add8e872150dd6a7229a9bfae019df678a5e/alebdaa/links/img/c4f95a4d28.jpg" alt=""></span><span class="l">برجولا زجاج M+</span></a>
+      <a class="tile" data-track="svc_wood" data-wa="السلام عليكم، أرغب في عرض سعر لبرجولا خشب"><span class="sq photo"><img src="https://cdn.jsdelivr.net/gh/rooneynoor8-bit/marketing-agent@0f09add8e872150dd6a7229a9bfae019df678a5e/alebdaa/links/img/5b96b54f88.jpg" alt=""></span><span class="l">برجولا خشب</span></a>
+      <a class="tile" data-track="svc_dome" data-wa="السلام عليكم، أرغب في عرض سعر لقبة بولي كربونيت"><span class="sq photo"><img src="https://cdn.jsdelivr.net/gh/rooneynoor8-bit/marketing-agent@0f09add8e872150dd6a7229a9bfae019df678a5e/alebdaa/links/img/7f8b842ef2.jpg" alt=""></span><span class="l">قباب بولي كربونيت</span></a>
+      <a class="tile" data-track="svc_sail" data-wa="السلام عليكم، أرغب في عرض سعر لأشرعة تظليل"><span class="sq photo"><img src="https://cdn.jsdelivr.net/gh/rooneynoor8-bit/marketing-agent@0f09add8e872150dd6a7229a9bfae019df678a5e/alebdaa/links/img/7c3c02e42d.jpg" alt=""></span><span class="l">أشرعة تظليل</span></a>
+      <a class="tile" data-track="svc_swatr" data-wa="السلام عليكم، أرغب في عرض سعر لسواتر"><span class="sq photo"><img src="https://cdn.jsdelivr.net/gh/rooneynoor8-bit/marketing-agent@0f09add8e872150dd6a7229a9bfae019df678a5e/alebdaa/links/img/7f1327bd2e.jpg" alt=""></span><span class="l">سواتر</span></a>
+      <a class="tile" data-track="svc_rail" data-wa="السلام عليكم، أرغب في عرض سعر لدرابزين"><span class="sq photo"><img src="https://cdn.jsdelivr.net/gh/rooneynoor8-bit/marketing-agent@0f09add8e872150dd6a7229a9bfae019df678a5e/alebdaa/links/img/402a415f05.jpg" alt=""></span><span class="l">درابزين</span></a>
+      <a class="tile" data-track="svc_land" data-wa="السلام عليكم، أرغب في عرض سعر لأعمال تنسيق الحدائق"><span class="sq photo"><img src="https://cdn.jsdelivr.net/gh/rooneynoor8-bit/marketing-agent@0f09add8e872150dd6a7229a9bfae019df678a5e/alebdaa/links/img/dc279bab50.jpg" alt=""></span><span class="l">تنسيق الحدائق</span></a>
+      <a class="tile" data-track="svc_tents" data-wa="السلام عليكم، أرغب في عرض سعر لخيمة عربية أميرية"><span class="sq c-ink"><svg><use href="#i-tent"/></svg></span><span class="l">خيام أميرية</span></a>
+      <a class="tile" data-track="svc_hangar" data-wa="السلام عليكم، أرغب في عرض سعر لهناجر"><span class="sq c-ink"><svg><use href="#i-hangar"/></svg></span><span class="l">هناجر</span></a>
+      <a class="tile" data-track="svc_doors" data-wa="السلام عليكم، أرغب في عرض سعر لأبواب"><span class="sq c-ink"><svg><use href="#i-door"/></svg></span><span class="l">أبواب</span></a>
+      <a class="tile" data-track="svc_windows" data-wa="السلام عليكم، أرغب في عرض سعر لشبابيك"><span class="sq c-ink"><svg><use href="#i-window"/></svg></span><span class="l">شبابيك</span></a>
+    </div>
+  </section>
+
+  <!-- أعمالنا -->
+  <section class="panel" id="p-works" role="tabpanel" hidden>
+    <div class="ttl"><h2>كتالوج الإبداع</h2><p>اسحب لتصفّح الكتالوج، واضغط على أي صفحة لعرضها كاملة</p></div>
+    <div class="catalog">
+      <button type="button" class="cat-pg" aria-label="صفحة 1 من الكتالوج"><img loading="lazy" src="https://cdn.jsdelivr.net/gh/rooneynoor8-bit/marketing-agent@0f09add8e872150dd6a7229a9bfae019df678a5e/alebdaa/links/img/d6c538d508.jpg" alt="صفحة 1 من كتالوج الإبداع"></button>
+      <button type="button" class="cat-pg" aria-label="صفحة 2 من الكتالوج"><img loading="lazy" src="https://cdn.jsdelivr.net/gh/rooneynoor8-bit/marketing-agent@0f09add8e872150dd6a7229a9bfae019df678a5e/alebdaa/links/img/7420f66b87.jpg" alt="صفحة 2 من كتالوج الإبداع"></button>
+      <button type="button" class="cat-pg" aria-label="صفحة 3 من الكتالوج"><img loading="lazy" src="https://cdn.jsdelivr.net/gh/rooneynoor8-bit/marketing-agent@0f09add8e872150dd6a7229a9bfae019df678a5e/alebdaa/links/img/6cd8e50d4c.jpg" alt="صفحة 3 من كتالوج الإبداع"></button>
+      <button type="button" class="cat-pg" aria-label="صفحة 4 من الكتالوج"><img loading="lazy" src="https://cdn.jsdelivr.net/gh/rooneynoor8-bit/marketing-agent@0f09add8e872150dd6a7229a9bfae019df678a5e/alebdaa/links/img/002a8ab95f.jpg" alt="صفحة 4 من كتالوج الإبداع"></button>
+      <button type="button" class="cat-pg" aria-label="صفحة 5 من الكتالوج"><img loading="lazy" src="https://cdn.jsdelivr.net/gh/rooneynoor8-bit/marketing-agent@0f09add8e872150dd6a7229a9bfae019df678a5e/alebdaa/links/img/ac8328fb77.jpg" alt="صفحة 5 من كتالوج الإبداع"></button>
+      <button type="button" class="cat-pg" aria-label="صفحة 6 من الكتالوج"><img loading="lazy" src="https://cdn.jsdelivr.net/gh/rooneynoor8-bit/marketing-agent@0f09add8e872150dd6a7229a9bfae019df678a5e/alebdaa/links/img/becc624088.jpg" alt="صفحة 6 من كتالوج الإبداع"></button>
+      <button type="button" class="cat-pg" aria-label="صفحة 7 من الكتالوج"><img loading="lazy" src="https://cdn.jsdelivr.net/gh/rooneynoor8-bit/marketing-agent@0f09add8e872150dd6a7229a9bfae019df678a5e/alebdaa/links/img/3085654244.jpg" alt="صفحة 7 من كتالوج الإبداع"></button>
+      <button type="button" class="cat-pg" aria-label="صفحة 8 من الكتالوج"><img loading="lazy" src="https://cdn.jsdelivr.net/gh/rooneynoor8-bit/marketing-agent@0f09add8e872150dd6a7229a9bfae019df678a5e/alebdaa/links/img/3841b37c88.jpg" alt="صفحة 8 من كتالوج الإبداع"></button>
+      <button type="button" class="cat-pg" aria-label="صفحة 9 من الكتالوج"><img loading="lazy" src="https://cdn.jsdelivr.net/gh/rooneynoor8-bit/marketing-agent@0f09add8e872150dd6a7229a9bfae019df678a5e/alebdaa/links/img/281d28efa8.jpg" alt="صفحة 9 من كتالوج الإبداع"></button>
+      <button type="button" class="cat-pg" aria-label="صفحة 10 من الكتالوج"><img loading="lazy" src="https://cdn.jsdelivr.net/gh/rooneynoor8-bit/marketing-agent@0f09add8e872150dd6a7229a9bfae019df678a5e/alebdaa/links/img/c4ce9d55a1.jpg" alt="صفحة 10 من كتالوج الإبداع"></button>
+      <button type="button" class="cat-pg" aria-label="صفحة 11 من الكتالوج"><img loading="lazy" src="https://cdn.jsdelivr.net/gh/rooneynoor8-bit/marketing-agent@0f09add8e872150dd6a7229a9bfae019df678a5e/alebdaa/links/img/32699f2fad.jpg" alt="صفحة 11 من كتالوج الإبداع"></button>
+      <button type="button" class="cat-pg" aria-label="صفحة 12 من الكتالوج"><img loading="lazy" src="https://cdn.jsdelivr.net/gh/rooneynoor8-bit/marketing-agent@0f09add8e872150dd6a7229a9bfae019df678a5e/alebdaa/links/img/bef29ae77f.jpg" alt="صفحة 12 من كتالوج الإبداع"></button>
+      <button type="button" class="cat-pg" aria-label="صفحة 13 من الكتالوج"><img loading="lazy" src="https://cdn.jsdelivr.net/gh/rooneynoor8-bit/marketing-agent@0f09add8e872150dd6a7229a9bfae019df678a5e/alebdaa/links/img/7ce5223370.jpg" alt="صفحة 13 من كتالوج الإبداع"></button>
+      <button type="button" class="cat-pg" aria-label="صفحة 14 من الكتالوج"><img loading="lazy" src="https://cdn.jsdelivr.net/gh/rooneynoor8-bit/marketing-agent@0f09add8e872150dd6a7229a9bfae019df678a5e/alebdaa/links/img/0d88c4a16d.jpg" alt="صفحة 14 من كتالوج الإبداع"></button>
+      <button type="button" class="cat-pg" aria-label="صفحة 15 من الكتالوج"><img loading="lazy" src="https://cdn.jsdelivr.net/gh/rooneynoor8-bit/marketing-agent@0f09add8e872150dd6a7229a9bfae019df678a5e/alebdaa/links/img/0446016948.jpg" alt="صفحة 15 من كتالوج الإبداع"></button>
+      <button type="button" class="cat-pg" aria-label="صفحة 16 من الكتالوج"><img loading="lazy" src="https://cdn.jsdelivr.net/gh/rooneynoor8-bit/marketing-agent@0f09add8e872150dd6a7229a9bfae019df678a5e/alebdaa/links/img/437a993c0d.jpg" alt="صفحة 16 من كتالوج الإبداع"></button>
+      <button type="button" class="cat-pg" aria-label="صفحة 17 من الكتالوج"><img loading="lazy" src="https://cdn.jsdelivr.net/gh/rooneynoor8-bit/marketing-agent@0f09add8e872150dd6a7229a9bfae019df678a5e/alebdaa/links/img/01cf43446b.jpg" alt="صفحة 17 من كتالوج الإبداع"></button>
+      <button type="button" class="cat-pg" aria-label="صفحة 18 من الكتالوج"><img loading="lazy" src="https://cdn.jsdelivr.net/gh/rooneynoor8-bit/marketing-agent@0f09add8e872150dd6a7229a9bfae019df678a5e/alebdaa/links/img/72485e3984.jpg" alt="صفحة 18 من كتالوج الإبداع"></button>
+      <button type="button" class="cat-pg" aria-label="صفحة 19 من الكتالوج"><img loading="lazy" src="https://cdn.jsdelivr.net/gh/rooneynoor8-bit/marketing-agent@0f09add8e872150dd6a7229a9bfae019df678a5e/alebdaa/links/img/4eba1b56ee.jpg" alt="صفحة 19 من كتالوج الإبداع"></button>
+    </div>
+    <div class="cat-nav">
+      <button type="button" id="catPrev" aria-label="الصفحة السابقة">‹</button>
+      <span class="cat-count" id="catCount" dir="ltr">1 / 19</span>
+      <button type="button" id="catNext" aria-label="الصفحة التالية">›</button>
+    </div>
+    <a class="cat-ask" data-track="catalog_pdf" data-wa="السلام عليكم، أرغب في الحصول على نسخة PDF من كتالوج الإبداع"><svg><use href="#i-wa"/></svg>اطلب الكتالوج PDF عبر واتساب</a>
+  </section>
+
+  <!-- عملائنا -->
+  <section class="panel" id="p-clients" role="tabpanel" hidden>
+    <div class="ttl"><h2>عملائنا</h2><p>جهات وشركات كبرى في قطر عملنا معها · اضغط على أي مشروع لعرض تفاصيله</p></div>
+    <div class="cl-grid" id="clGrid"></div>
+    <h3 class="cl-sub">ومن عملائنا أيضًا</h3>
+    <div class="chips" style="margin-top:0"><span>مدرسة ميمونة الابتدائية للبنات</span><span>مركز الدحيل التعليمي</span><span>الدوحة للتأمين</span><span>مدرسة المهد الدولية</span><span>مدرسة الحياة الدولية بمعيذر</span><span>المدارس التونسية</span><span>المدرسة السورية في قطر</span><span>ماجيك فيليج</span><span>المرسى للتطوير العقاري</span><span>الصافلية للاستثمار العقاري</span><span>الوطنية للمقاولات الصناعية</span><span>الدوحة للإنشاءات</span><span class="more-cl" id="moreCl" hidden><span>الشيخ فهد آل ثاني</span><span>مدرسة الدوحة لتعليم قيادة السيارات</span><span>مركز الفكر الجديد</span><span>ألفا الخليج للإنشاء والتطوير</span><span>بدر للإنشاءات والتجارة</span><span>بدر للتجارة والمقاولات</span><span>باب عشتار للتجارة والمقاولات</span><span>حسانيسكو للتجارة والمقاولات</span><span>الطليحة لمواد البناء</span><span>مجموعة الحميدي التجارية</span><span>المنتهى للتجارة والمقاولات</span><span>الرضواني للتجارة والمقاولات</span><span>الواحات للتجارة والمقاولات</span><span>جاد للمقاولات</span><span>الولاية للتجارة والمقاولات</span><span>السعد العالي للتجارة والمقاولات</span><span>هاي تاور للتجارة والمقاولات</span><span>ساك للتجارة والمقاولات</span><span>الخرسعة للتجارة والمقاولات</span><span>الدوم الدولية للتجارة والخدمات</span><span>سنوار للإنشاءات</span><span>أفينيو للهندسة</span><span>الإنشاءات الهندسية</span><span>إيموشن للتجارة والمقاولات</span><span>الغرابة للتجارة والمقاولات</span><span>طلال للتجارة والمقاولات</span><span>بترا للمشاريع التجارية</span><span>جالاكسي للتجارة والمقاولات</span><span>أكتوجون للتجارة والمقاولات</span><span>جوديسون قطر</span><span>يونيون قطر</span><span>قطر هاي سي</span><span>ريا للتجارة والديكور</span><span>جلوبال آرت</span><span>المعدات والخدمات الصناعية</span><span>إنفال للأبواب الأوتوماتيكية</span><span>الدوحة ميديا</span><span>فايف إليمنتس للتسويق والإعلان</span><span>معارض أحلى صدفة</span><span>الشركة الدولية</span><span>شركة الصيانة</span><span>حضانة كيدي كورنر</span><span>حضانة مونتيسوري</span><span>حضانة القادة الصغار</span></span></div>
+    <button type="button" class="cl-all" id="clAll" aria-expanded="false" aria-controls="moreCl">عرض كل العملاء (+44)</button>
+    <a class="cat-ask" data-track="clients_quote" data-wa="السلام عليكم، اطّلعت على مشاريعكم وأرغب في عرض سعر لمشروعي"><svg><use href="#i-wa"/></svg>مشروعك القادم معنا · اطلب عرض سعر</a>
+  </section>
+
+  <!-- الشركة -->
+  <section class="panel" id="p-about" role="tabpanel" hidden>
+    <div class="sites">
+      <a href="https://maps.app.goo.gl/CAhxjJKBMuafqmHr5" target="_blank" rel="noopener" data-track="about_hq"><span class="lic"><svg><use href="#i-office"/></svg></span><b>مقر الشركة</b><small>طريق سلوى</small></a>
+      <a href="https://maps.app.goo.gl/CGUFvtqHQ1JWBPZs6" target="_blank" rel="noopener" data-track="about_factory"><span class="lic"><svg><use href="#i-factory"/></svg></span><b>المصنع</b><small>بركة العوامر</small></a>
+      <button type="button" id="phonesBtn" aria-expanded="false" aria-controls="phonesBox" data-track="about_phones"><span class="lic"><svg><use href="#i-phone"/></svg></span><b>أرقامنا</b><small>3 أرقام</small></button>
+      <a href="mailto:ebdaa.tents@gmail.com" data-track="about_email"><span class="lic"><svg><use href="#i-mail"/></svg></span><b>البريد</b><small>راسلنا</small></a>
+    </div>
+    <div class="phones phones-box" id="phonesBox" hidden><a href="tel:+97470703311">+974 7070 3311</a><a href="tel:+97470603337">+974 7060 3337</a><a href="tel:+97470339946">+974 7033 9946</a></div>
+    <p class="ask-l">اسألنا عبر واتساب عن:</p>
+    <div class="svc-quick">
+      <a data-track="svcq_inst" data-wa="السلام عليكم، أرغب في معرفة أنظمة التقسيط المتاحة"><span><svg><use href="#i-card"/></svg></span>تقسيط</a>
+      <a data-track="svcq_inspect" data-wa="السلام عليكم، أرغب في حجز معاينة للموقع"><span><svg><use href="#i-measure"/></svg></span>معاينة</a>
+      <a data-track="svcq_warranty" data-wa="السلام عليكم، أرغب في معرفة تفاصيل الضمان"><span><svg><use href="#i-shield"/></svg></span>ضمان</a>
+      <a data-track="svcq_install" data-wa="السلام عليكم، كم تستغرق مدة التركيب؟"><span><svg><use href="#i-bolt"/></svg></span>تركيب</a>
+      <a data-track="svcq_aftersales" data-wa="السلام عليكم، أحتاج إلى خدمة ما بعد البيع"><span><svg><use href="#i-wrench"/></svg></span>ما بعد البيع</a>
+    </div>
+    <a class="complain" data-track="about_complaint" data-wa="السلام عليكم، عندي شكوى أو اقتراح:"><svg><use href="#i-chat-alert"/></svg><span><b>لديك شكوى أو اقتراح؟</b><small>راسلنا عبر واتساب وسنرد عليك في أسرع وقت</small></span></a>
+    <button type="button" class="copy-line" id="adminTrigger">© الإبداع للمظلات واللاند سكيب · سجل تجاري 87398</button>
+  </section>
+</div>
+
+
+<div class="modal" id="modal" hidden>
+  <div class="sheet" role="dialog" aria-modal="true" aria-labelledby="mTitle">
+    <button type="button" class="x" id="mClose" aria-label="إغلاق">✕</button>
+    <div class="m-img" id="mImgWrap"><img id="mImg" alt=""></div>
+    <div class="m-body" id="mBody">
+      <span class="m-tag" id="mTag"></span>
+      <h3 id="mTitle"></h3>
+      <p id="mDesc"></p>
+      <a class="m-cta" id="mCta" target="_blank" rel="noopener"><svg><use href="#i-wa"/></svg>أعجبك المشروع؟ اطلب عرض سعر</a>
+    </div>
+  </div>
+</div>
+
+<div class="modal" id="natModal" hidden>
+  <div class="sheet nat-sheet" role="dialog" aria-modal="true" aria-labelledby="natTitle">
+    <button type="button" class="x" id="natClose" aria-label="إغلاق">✕</button>
+    <div class="nat-head"><h3 id="natTitle">مشاريع وطنية</h3><p>اضغط على أي مشروع لعرض تفاصيله</p></div>
+    <div class="nat-grid" id="natGrid"></div>
+  </div>
+</div>
+
+<div class="adm-modal" id="admModal" hidden>
+  <div class="adm-box" role="dialog" aria-modal="true" aria-labelledby="admTitle">
+    <button type="button" class="adm-x" id="admClose" aria-label="إغلاق">✕</button>
+    <span class="lic"><svg><use href="#i-grid"/></svg></span>
+    <h3 id="admTitle">إدارة الحسابات</h3>
+    <p>للفريق فقط · الدخول بكلمة المرور</p>
+    <a class="adm-go" href="https://claude.ai/artifact/VMaUMHVnCbgZoN9kRcy77Q" target="_blank" rel="noopener noreferrer">دخول المنصة</a>
+  </div>
+</div>
+
+<div class="adm-modal" id="callModal" hidden>
+  <div class="adm-box" role="dialog" aria-modal="true" aria-labelledby="callTitle">
+    <button type="button" class="adm-x" id="callClose" aria-label="إغلاق">✕</button>
+    <span class="lic"><svg><use href="#i-phone"/></svg></span>
+    <h3 id="callTitle">اتصل بنا</h3>
+    <p class="call-num" id="callNum" dir="ltr"></p>
+    <div class="call-acts">
+      <a class="adm-go" id="callGo" href="#">اتصال</a>
+      <button type="button" class="adm-go ghost" id="callCopy">نسخ الرقم</button>
+      <a class="adm-go wa" id="callWa" href="#" target="_blank" rel="noopener">واتساب</a>
+    </div>
+  </div>
+</div>
+
+<!-- الشريط السفلي -->
+<nav class="dock" aria-label="تواصل">
+  <a href="tel:+97470703311" data-track="dock_call"><svg><use href="#i-phone"/></svg>اتصال</a>
+  <a data-track="dock_whatsapp" data-wa="السلام عليكم، أرغب في عرض سعر"><svg><use href="#i-wa"/></svg>واتساب</a>
+  <a href="https://ebdaatents.com" target="_blank" rel="noopener" data-track="dock_site"><svg><use href="#i-globe"/></svg>موقعنا</a>
+</nav>
+
+<script>
+  document.body.classList.add("t4");
+
+  // رقم واتساب المبيعات
+  const WA_NUMBER = "97470703311";
+
+  // مصدر الحملة من الرابط، بيتضاف للرسالة عشان المبيعات تعرف الطلب جاي منين
+  const params = new URLSearchParams(location.search);
+  const source = [params.get("utm_source"), params.get("utm_campaign")].filter(Boolean).join(" / ");
+
+  function waLink(text) {
+    const full = source ? `${text}\n(المصدر: ${source})` : text;
+    return `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(full)}`;
+  }
+
+  function track(name) {
+    if (window.fbq) fbq("track", "Contact", { content_name: name });
+    if (window.gtag) gtag("event", "generate_lead", { method: name });
+    if (window.snaptr) snaptr("track", "CUSTOM_EVENT_1", { description: name });
+  }
+
+  document.querySelectorAll("[data-wa]").forEach(el => {
+    el.href = waLink(el.dataset.wa);
+    el.target = "_blank";
+    el.rel = "noopener";
+  });
+  document.querySelectorAll("[data-track]").forEach(el => {
+    el.addEventListener("click", () => track(el.dataset.track));
+  });
+
+  document.querySelectorAll(".photos img").forEach(img => {
+    img.addEventListener("error", () => img.parentElement.classList.add("broken"));
+  });
+
+  function toggle(btnId, boxId) {
+    const btn = document.getElementById(btnId), box = document.getElementById(boxId);
+    btn.addEventListener("click", () => {
+      box.hidden = !box.hidden;
+      btn.setAttribute("aria-expanded", !box.hidden);
+    });
+  }
+  toggle("moreBtn", "moreBox");
+  document.getElementById("clAll").addEventListener("click", e => {
+    const box = document.getElementById("moreCl"); box.hidden = !box.hidden;
+    e.currentTarget.setAttribute("aria-expanded", !box.hidden);
+    e.currentTarget.textContent = box.hidden ? "عرض كل العملاء (+44)" : "عرض أقل";
+  });
+  toggle("locBtn", "locPick");
+  toggle("phonesBtn", "phonesBox");
+  // الضغط في أي مكان على الكارت يفتح/يقفل عرض المزيد
+  document.querySelector(".card").addEventListener("click", e => {
+    if (e.target.closest("#moreBtn, a, button")) return;
+    document.getElementById("moreBtn").click();
+  });
+  // كروت اللوكيشن مقفولة لحد ما تدوس على الزرار، وتتقفل لو دوست برّاها
+  const locPick = document.getElementById("locPick"), locBtn = document.getElementById("locBtn");
+  locPick.hidden = true; locBtn.setAttribute("aria-expanded", "false");
+  document.addEventListener("click", e => {
+    if (!locPick.hidden && !locPick.contains(e.target) && !locBtn.contains(e.target)) {
+      locPick.hidden = true; locBtn.setAttribute("aria-expanded", "false");
+    }
+  });
+
+  // شريط المشاريع يبدأ دايمًا من أول 3 (سوق واقف، حمد، كتارا)
+  const mq = document.querySelector(".marquee");
+  const mqReset = () => { mq.scrollLeft = 0; };
+  try { history.scrollRestoration = "manual"; } catch (e) {}
+  mqReset(); requestAnimationFrame(mqReset);
+  window.addEventListener("load", mqReset);
+  window.addEventListener("pageshow", mqReset);
+
+  // التبويبات
+  const tabs = document.querySelectorAll('[role="tab"]');
+  function openTab(name, scroll) {
+    tabs.forEach(t => {
+      const on = t.dataset.tab === name;
+      t.setAttribute("aria-selected", on);
+      document.getElementById(t.getAttribute("aria-controls")).hidden = !on;
+    });
+    if (scroll) document.querySelector(".tabs").scrollIntoView({ behavior: "smooth" });
+  }
+  tabs.forEach(t => t.addEventListener("click", () => openTab(t.dataset.tab)));
+  document.querySelectorAll("[data-goto]").forEach(b => b.addEventListener("click", () => openTab(b.dataset.goto, true)));
+
+  // بوب اب المشاريع وصورة المقر
+  const PROJECTS = {"5514daf1": {"t": "مواقف مشيرب", "w": "مظلات مواقف", "d": "مظلات HDPE هرمية لمواقف السيارات أمام مبنى مواقف مشيرب، على أعمدة من الستيل، تحجب الشمس وتسمح بمرور الهواء."}, "542cb060": {"t": "جامعة كالجاري في قطر", "w": "مظلات HDPE", "d": "مظلة HDPE لمواقف السيارات عند مدخل الجامعة، على أعمدة بلون الواجهة."}, "b794270d": {"t": "مناطق", "w": "مظلات كويك سبان", "d": "مظلات كويك سبان مقوّسة لمواقف المدخل الرئيسي في مناطق، بلون أبيض متناسق مع المبنى."}, "7743de67": {"t": "سوق واقف", "w": "أشرعة تظليل", "d": "أشرعة تظليل قماشية على أعمدة خشبية، متناسقة مع الطابع التراثي لسوق واقف."}, "1336c9e9": {"t": "توكيل فورد", "w": "مظلات HDPE كابولية", "d": "مظلات HDPE معلّقة لمواقف السيارات أمام توكيل فورد."}, "bd337363": {"t": "مجموعة الفردان", "w": "5 مجمعات سكنية", "d": "نفّذنا مظلات لخمسة مجمعات سكنية تابعة لمجموعة الفردان، منها مظلة المدخل الرئيسي لحدائق الفردان 2. مظلة للمدخل الرئيسي للمجمع السكني على أعمدة من الستيل."}, "035576aa": {"t": "مدرسة المجتمع للبنات", "w": "أشرعة تظليل ملونة", "d": "أشرعة تظليل بألوان مبهجة فوق مساحات المدرسة."}, "9c28e779": {"t": "كتارا", "w": "مظلات HDPE", "d": "مظلات HDPE مربعة حول المبنى الدائري في كتارا، لتظليل المداخل والمواقف بطابع يناسب المكان."}, "102db079": {"t": "مستشفى حمد", "w": "مظلات HDPE معلّقة", "d": "مظلات HDPE بنظام الشد المعلّق أمام مبنى مستشفى حمد، دون أعمدة في منتصف المساحة."}};
+  // مشاريع وطنية + عملائنا: الكروت بتاخد صورها من شريط المشاريع
+  const QA_FLAG = "data:image/svg+xml," + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 30 13"><defs><clipPath id="r"><rect width="28" height="11" rx="1"/></clipPath></defs><g clip-path="url(#r)"><rect width="28" height="11" fill="#fff"/><polygon fill="#8a1538" points="28,0 28,11 6,11 9,10.389 6,9.778 9,9.167 6,8.556 9,7.944 6,7.333 9,6.722 6,6.111 9,5.5 6,4.889 9,4.278 6,3.667 9,3.056 6,2.444 9,1.833 6,1.222 9,0.611 6,0.0"/></g></svg>');
+  PROJECTS["gov-wajba"] = { t: "قصر الوجبة", w: "المكتب القانوني للأمير", d: "من الجهات السيادية في قطر التي وثقت بالإبداع.", img: QA_FLAG };
+  PROJECTS["gov-army"] = { t: "القوات المسلحة القطرية", w: "جهة سيادية", d: "من الجهات السيادية في قطر التي وثقت بالإبداع.", img: QA_FLAG };
+  PROJECTS["gov-justice"] = { t: "وزارة العدل", w: "جهة حكومية", d: "من الجهات الحكومية في قطر التي وثقت بالإبداع.", img: QA_FLAG };
+  PROJECTS["gov-ccq"] = { t: "كلية المجتمع", w: "جهة تعليمية حكومية", d: "من الجهات الحكومية في قطر التي وثقت بالإبداع.", img: QA_FLAG };
+  PROJECTS["gov-ashghal"] = { t: "أشغال", w: "110 مظلات سيارات", d: "عقد 110 مظلات سيارات مع هيئة الأشغال العامة (أشغال)، أنجزنا 75% منه خلال 21 يومًا من توقيع العقد.", img: QA_FLAG };
+  PROJECTS["gov-tax"] = { t: "الهيئة العامة للضرائب", w: "جهة حكومية", d: "من الجهات الحكومية في قطر التي وثقت بالإبداع.", img: QA_FLAG };
+  const NATIONAL = ["102db079", "9c28e779", "7743de67", "5514daf1", "b794270d", "gov-wajba", "gov-army", "gov-ashghal", "gov-justice", "gov-tax", "gov-ccq"];
+  function projCard(id) {
+    const b = document.createElement("button");
+    b.type = "button"; b.dataset.proj = id;
+    const img = document.createElement("img");
+    img.src = PROJECTS[id].img || document.querySelector(`.track [data-proj="${id}"] img`).src; img.alt = "";
+    if (PROJECTS[id].img) b.classList.add("flag");
+    const t = document.createElement("b"); t.textContent = PROJECTS[id].t;
+    const s = document.createElement("small"); s.textContent = PROJECTS[id].w;
+    b.append(img, t, s);
+    return b;
+  }
+  const natModal = document.getElementById("natModal"), natBtn = document.getElementById("natBtn");
+  NATIONAL.forEach(id => document.getElementById("natGrid").append(projCard(id)));
+  document.querySelectorAll(".track [data-proj]").forEach(b => { if (!NATIONAL.includes(b.dataset.proj)) document.getElementById("clGrid").append(projCard(b.dataset.proj)); });
+  // بعد كروت المشاريع: السفارات بأعلامها ثم أهم العملاء
+  const EMBASSIES = [["سفارة الكويت", "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 12 6\"><rect width=\"12\" height=\"2\" fill=\"#007a3d\"/><rect y=\"2\" width=\"12\" height=\"2\" fill=\"#fff\"/><rect y=\"4\" width=\"12\" height=\"2\" fill=\"#ce1126\"/><polygon points=\"0,0 3,2 3,4 0,6\"/></svg>"], ["السفارة الصينية", "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 30 20\"><rect width=\"30\" height=\"20\" fill=\"#de2910\"/><polygon fill=\"#ffde00\" points=\"5.00,2.00 5.67,4.07 7.85,4.07 6.09,5.35 6.76,7.43 5.00,6.15 3.24,7.43 3.91,5.35 2.15,4.07 4.33,4.07\"/><polygon fill=\"#ffde00\" points=\"10.81,1.41 10.38,2.00 10.81,2.59 10.12,2.36 9.69,2.95 9.69,2.22 9.00,2.00 9.69,1.78 9.69,1.05 10.12,1.64\"/><polygon fill=\"#ffde00\" points=\"12.50,3.13 12.35,3.84 12.98,4.21 12.26,4.28 12.10,4.99 11.81,4.33 11.09,4.41 11.63,3.92 11.33,3.26 11.96,3.62\"/><polygon fill=\"#ffde00\" points=\"12.00,6.00 12.22,6.69 12.95,6.69 12.36,7.12 12.59,7.81 12.00,7.38 11.41,7.81 11.64,7.12 11.05,6.69 11.78,6.69\"/><polygon fill=\"#ffde00\" points=\"9.50,8.13 10.04,8.62 10.67,8.26 10.37,8.92 10.91,9.41 10.19,9.33 9.90,9.99 9.74,9.28 9.02,9.21 9.65,8.84\"/></svg>"], ["السفارة السودانية", "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 12 6\"><rect width=\"12\" height=\"2\" fill=\"#d21034\"/><rect y=\"2\" width=\"12\" height=\"2\" fill=\"#fff\"/><rect y=\"4\" width=\"12\" height=\"2\" fill=\"#000\"/><polygon fill=\"#007229\" points=\"0,0 4,3 0,6\"/></svg>"]];
+  const CLIENTS = [["إزدان القابضة", "i-office"], ["إزدان العقارية", "i-office"], ["قطر الخيرية", "i-heart"], ["فندق سنترال إن", "i-hotel"], ["هارلي ديفيدسون", "i-office"], ["مجمع اللؤلؤ", "i-office"], ["النادي العربي", "i-star-o"], ["سوق واقف الوكرة", "i-office"], ["جامع المسند بالمريخية", "i-mosque"], ["أزميل للمقاولات", "i-factory"], ["سينوهايدرو", "i-factory"], ["الشيراوي إخوان", "i-factory"]];
+  function infoCard(name, vis, sub) {
+    const c = document.createElement("div"); c.className = "cl-card";
+    const v = document.createElement("span"); v.className = "vis"; v.innerHTML = vis;
+    const t = document.createElement("b"); t.textContent = name;
+    c.append(v, t);
+    if (sub) { const s = document.createElement("small"); s.textContent = sub; c.append(s); }
+    return c;
+  }
+  EMBASSIES.forEach(([n, svg]) => document.getElementById("clGrid").append(infoCard(n, `<img alt="" src="data:image/svg+xml,${encodeURIComponent(svg)}">`, "جهة دبلوماسية")));
+  CLIENTS.forEach(([n, ic]) => document.getElementById("clGrid").append(infoCard(n, `<svg><use href="#${ic}"/></svg>`)));
+  const modal = document.getElementById("modal"), mImg = document.getElementById("mImg"), mBody = document.getElementById("mBody");
+  let lastFocus = null;
+  function openModal(photoOnly) {
+    lastFocus = document.activeElement;
+    modal.classList.toggle("photo", photoOnly);
+    mBody.hidden = photoOnly;
+    modal.hidden = false;
+    document.getElementById("mClose").focus();
+  }
+  function closeModal() { modal.hidden = true; if (lastFocus) lastFocus.focus(); }
+  document.querySelectorAll("[data-proj]").forEach(b => b.addEventListener("click", () => {
+    const p = PROJECTS[b.dataset.proj];
+    mImg.src = b.querySelector("img").src; mImg.alt = p.t;
+    document.getElementById("mTag").textContent = p.w;
+    document.getElementById("mTitle").textContent = p.t;
+    document.getElementById("mDesc").textContent = p.d;
+    document.getElementById("mCta").href = waLink(`السلام عليكم، اطّلعت على مشروع ${p.t} (${p.w}) وأرغب في عرض سعر لمشروع مماثل`);
+    track("project_" + b.dataset.proj);
+    const fromNat = !natModal.hidden;
+    natModal.hidden = true;
+    openModal(false);
+    if (fromNat) lastFocus = natBtn;
+  }));
+  document.getElementById("coverBtn").addEventListener("click", () => {
+    const img = document.querySelector("#coverBtn img");
+    mImg.src = img.src; mImg.alt = img.alt;
+    openModal(true);
+  });
+  // الكتالوج سلايدز
+  const cat = document.querySelector(".catalog"), catPages = cat.querySelectorAll(".cat-pg");
+  const catCount = document.getElementById("catCount"), catPrev = document.getElementById("catPrev"), catNext = document.getElementById("catNext");
+  const catIndex = () => Math.round(Math.abs(cat.scrollLeft) / (cat.clientWidth + 12));
+  function catUpdate() {
+    const i = catIndex();
+    catCount.textContent = `${i + 1} / ${catPages.length}`;
+    catPrev.disabled = i === 0; catNext.disabled = i === catPages.length - 1;
+  }
+  function catGo(step) {
+    const i = Math.min(catPages.length - 1, Math.max(0, catIndex() + step));
+    catPages[i].scrollIntoView({ behavior: "smooth", block: "nearest", inline: "center" });
+  }
+  cat.addEventListener("scroll", () => requestAnimationFrame(catUpdate), { passive: true });
+  catPrev.addEventListener("click", () => catGo(-1));
+  catNext.addEventListener("click", () => catGo(1));
+  catUpdate();
+
+  document.querySelectorAll(".cat-pg").forEach(b => b.addEventListener("click", () => {
+    const img = b.querySelector("img");
+    mImg.src = img.src; mImg.alt = img.alt;
+    openModal(true);
+  }));
+  document.getElementById("mClose").addEventListener("click", closeModal);
+  modal.addEventListener("click", e => { if (e.target === modal || modal.classList.contains("photo") && e.target.tagName !== "BUTTON") closeModal(); });
+  document.addEventListener("keydown", e => { if (e.key === "Escape" && !modal.hidden) closeModal(); });
+  natBtn.addEventListener("click", () => { natModal.hidden = false; document.getElementById("natClose").focus(); });
+  function closeNat() { natModal.hidden = true; natBtn.focus(); }
+  document.getElementById("natClose").addEventListener("click", closeNat);
+  natModal.addEventListener("click", e => { if (e.target === natModal) closeNat(); });
+  document.addEventListener("keydown", e => { if (e.key === "Escape" && !natModal.hidden) closeNat(); });
+
+  // الإدارة: تفتح من سطر الحقوق في آخر تبويب الشركة
+  const admModal = document.getElementById("admModal");
+  document.getElementById("adminTrigger").addEventListener("click", () => { admModal.hidden = false; document.getElementById("admClose").focus(); });
+  document.getElementById("admClose").addEventListener("click", () => { admModal.hidden = true; });
+  admModal.addEventListener("click", e => { if (e.target === admModal) admModal.hidden = true; });
+  document.addEventListener("keydown", e => { if (e.key === "Escape") admModal.hidden = true; });
+  // الاتصال: جوه الأرتيفاكت روابط tel: مش بتشتغل، فبنعرض الرقم مع اتصال ونسخ وواتساب
+  const callModal = document.getElementById("callModal");
+  const inFrame = window.self !== window.top;
+  document.querySelectorAll('a[href^="tel:"]').forEach(a => a.addEventListener("click", e => {
+    if (!inFrame) return;
+    e.preventDefault();
+    const num = a.getAttribute("href").slice(4);
+    const pretty = num.replace(/^\+974(\d{4})(\d{4})$/, "+974 $1 $2");
+    document.getElementById("callNum").textContent = pretty;
+    document.getElementById("callGo").href = "tel:" + num;
+    document.getElementById("callWa").href = "https://wa.me/" + num.replace(/\D/g, "");
+    callModal.hidden = false;
+  }));
+  document.getElementById("callCopy").addEventListener("click", () => {
+    const t = document.getElementById("callNum").textContent;
+    const b = document.getElementById("callCopy");
+    navigator.clipboard.writeText(t.replace(/\s/g, "")).then(() => { b.textContent = "اتنسخ ✓"; }, () => {
+      const r = document.createRange(); r.selectNodeContents(document.getElementById("callNum"));
+      const sel = getSelection(); sel.removeAllRanges(); sel.addRange(r); b.textContent = "حدّد الرقم وانسخه";
+    });
+    setTimeout(() => { b.textContent = "نسخ الرقم"; }, 1800);
+  });
+  document.getElementById("callClose").addEventListener("click", () => { callModal.hidden = true; });
+  callModal.addEventListener("click", e => { if (e.target === callModal) callModal.hidden = true; });
+</script>
+</body>
+</html>
