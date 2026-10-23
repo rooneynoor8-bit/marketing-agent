@@ -31,9 +31,10 @@ jobs:
           META_ACCESS_TOKEN: ${{ secrets.META_ACCESS_TOKEN }}
           PROMPT: ${{ github.event.inputs.prompt }}
         run: |
+          mkdir -p reports/_answers
           python agent.py "$PROMPT
 
-          When you are done, save the full deliverable with save_report." | tee answer.txt
+          When you are done, save the full deliverable with save_report." | tee "reports/_answers/$(date +%F_%H%M).md"
 
       - name: Save results to the repo
         if: always()
@@ -44,7 +45,7 @@ jobs:
           if git diff --cached --quiet; then
             echo "Nothing new to save."
           else
-            git commit -m "Agent: ${{ github.event.inputs.prompt }}" | head -1
+            git commit -q -m "Agent results $(date +%F_%H%M)"
             git pull --rebase -q origin main
             git push
           fi
