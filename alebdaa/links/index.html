@@ -274,6 +274,13 @@
   .dock a { display: flex; flex-direction: column; align-items: center; gap: 4px; font-size: .82rem; font-weight: 600; color: #fff; }
   .dock svg { width: 26px; height: 26px; color: var(--sand); }
   .dock .wa { color: #128c4b; }
+  /* زرار الاتصال: موجة خفيفة حوالين السماعة وهزة صغيرة كل كام ثانية */
+  .call-sig .sig { position: relative; display: grid; place-items: center; width: 26px; height: 26px; }
+  .call-sig .sig::before, .call-sig .sig::after { content: ""; position: absolute; inset: -5px; border-radius: 50%; border: 1.5px solid var(--sand); opacity: 0; animation: sig 2.8s ease-out infinite; pointer-events: none; }
+  .call-sig .sig::after { animation-delay: .5s; }
+  .call-sig svg { animation: ring 2.8s ease-in-out infinite; transform-origin: 50% 60%; }
+  @keyframes sig { 0% { transform: scale(.7); opacity: .55; } 70%, 100% { transform: scale(1.45); opacity: 0; } }
+  @keyframes ring { 0%, 62%, 100% { transform: rotate(0); } 66% { transform: rotate(-12deg); } 70% { transform: rotate(10deg); } 74% { transform: rotate(-8deg); } 78% { transform: rotate(5deg); } 82% { transform: rotate(0); } }
   body.t1 #p-works, body.t3 #p-works { --soft: #ece6dc; --line: #e3dcd0; --ink-soft: #6f6a64; --bg: #ffffff; }
   .catalog { direction: ltr; display: flex; gap: 12px; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; border-radius: 12px; }
   .catalog::-webkit-scrollbar { display: none; }
@@ -617,7 +624,7 @@
 
 <!-- الشريط السفلي -->
 <nav class="dock" aria-label="تواصل">
-  <a href="tel:+97470703311" data-track="dock_call"><svg><use href="#i-phone"/></svg>اتصال</a>
+  <a href="tel:+97470703311" data-track="dock_call" class="call-sig"><span class="sig"><svg><use href="#i-phone"/></svg></span>اتصال</a>
   <a data-track="dock_whatsapp" data-wa="السلام عليكم، أرغب في عرض سعر"><svg><use href="#i-wa"/></svg>واتساب</a>
   <a href="https://ebdaatents.com" target="_blank" rel="noopener" data-track="dock_site"><svg><use href="#i-globe"/></svg>موقعنا</a>
 </nav>
@@ -685,13 +692,7 @@
     }
   });
 
-  // شريط المشاريع يبدأ دايمًا من أول 3 (سوق واقف، حمد، كتارا)
-  const mq = document.querySelector(".marquee");
-  const mqReset = () => { mq.scrollLeft = 0; };
   try { history.scrollRestoration = "manual"; } catch (e) {}
-  mqReset(); requestAnimationFrame(mqReset);
-  window.addEventListener("load", mqReset);
-  window.addEventListener("pageshow", mqReset);
 
   // التبويبات
   const tabs = document.querySelectorAll('[role="tab"]');
@@ -834,6 +835,55 @@
   });
   document.getElementById("callClose").addEventListener("click", () => { callModal.hidden = true; });
   callModal.addEventListener("click", e => { if (e.target === callModal) callModal.hidden = true; });
+
+  // شريط المشاريع: بيبدأ بأول 3 (سوق واقف، حمد، كتارا) ويتحرك ناحية اليمين ببطء من غير نهاية.
+  // اللمس بيوقفه، وبيكمل لوحده بعد 3 ثواني من آخر سحب.
+  const mq = document.querySelector(".marquee");
+  const mqTrack = mq.querySelector(".track");
+  const mqItems = [...mqTrack.children];
+  mqItems.forEach(li => {
+    const c = li.cloneNode(true);
+    c.setAttribute("aria-hidden", "true");
+    const btn = c.querySelector("button");
+    btn.tabIndex = -1;
+    btn.addEventListener("click", () => li.querySelector("button").click());
+    mqTrack.append(c);
+  });
+  const MQ_SPEED = 28; // بكسل في الثانية
+  const mqStill = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  let mqLoop = 0, mqPos = 0, mqHold = true, mqResume = 0, mqLast = 0;
+  const mqMeasure = () => { mqLoop = mqTrack.children[mqItems.length].offsetLeft - mqItems[0].offsetLeft; };
+  const mqWrap = p => (mqLoop ? ((p % mqLoop) + mqLoop) % mqLoop || mqLoop : p);
+  const mqStart = () => { mqMeasure(); mqPos = mqLoop; mq.scrollLeft = mqPos; mqHold = false; };
+  function mqTick(t) {
+    const dt = mqLast ? Math.min(t - mqLast, 64) : 0; mqLast = t;
+    if (!mqHold && mqLoop && !document.hidden) {
+      mqPos = mqWrap(mqPos - MQ_SPEED * dt / 1000);
+      mq.scrollLeft = mqPos;
+    }
+    requestAnimationFrame(mqTick);
+  }
+  function mqPause() { mqHold = true; clearTimeout(mqResume); mq.style.scrollSnapType = "x mandatory"; }
+  function mqLater() {
+    clearTimeout(mqResume);
+    mqResume = setTimeout(() => { mqPos = mqWrap(mq.scrollLeft); mq.style.scrollSnapType = "none"; mqHold = mqStill; }, 3000);
+  }
+  mq.addEventListener("pointerdown", mqPause, { passive: true });
+  mq.addEventListener("touchstart", mqPause, { passive: true });
+  mq.addEventListener("wheel", () => { mqPause(); mqLater(); }, { passive: true });
+  ["pointerup", "pointercancel", "touchend"].forEach(ev => mq.addEventListener(ev, mqLater, { passive: true }));
+  mq.addEventListener("scroll", () => {
+    if (!mqHold || !mqLoop) return;
+    if (mq.scrollLeft < 2) mq.scrollLeft += mqLoop;
+    else if (mq.scrollLeft > mqLoop * 1.5) mq.scrollLeft -= mqLoop;
+  }, { passive: true });
+  window.addEventListener("resize", () => { const r = mqLoop ? mqPos / mqLoop : 1; mqMeasure(); mqPos = mqWrap(r * mqLoop); });
+  mq.style.scrollSnapType = "none";
+  mqStart(); requestAnimationFrame(mqStart);
+  window.addEventListener("load", mqStart);
+  window.addEventListener("pageshow", mqStart);
+  mqHold = mqStill;
+  requestAnimationFrame(mqTick);
 </script>
 </body>
 </html>
