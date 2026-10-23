@@ -1,0 +1,50 @@
+name: Ask the agent
+
+on:
+  workflow_dispatch:
+    inputs:
+      prompt:
+        description: "What should the agent do? (e.g. analyze a website, write posts)"
+        required: true
+
+permissions:
+  contents: write
+
+jobs:
+  ask:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run the agent
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY || secrets.AHMED1993 }}
+          META_ACCESS_TOKEN: ${{ secrets.META_ACCESS_TOKEN }}
+          PROMPT: ${{ github.event.inputs.prompt }}
+        run: |
+          python agent.py "$PROMPT
+
+          When you are done, save the full deliverable with save_report." | tee answer.txt
+
+      - name: Save results to the repo
+        if: always()
+        run: |
+          git config user.name "agent-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add -f reports/ clients/
+          if git diff --cached --quiet; then
+            echo "Nothing new to save."
+          else
+            git commit -m "Agent: ${{ github.event.inputs.prompt }}" | head -1
+            git pull --rebase -q origin main
+            git push
+          fi
