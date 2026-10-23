@@ -351,7 +351,7 @@
   .complain svg { width: 26px; height: 26px; color: var(--sand); flex: none; }
   .complain b { display: block; font-size: .92rem; }
   .complain small { color: var(--ink-soft); font-size: .8rem; }
-  .dock.admin { grid-template-columns: repeat(4, 1fr); }
+  .admin-link { margin-top: 10px; border-style: solid; }
   .stats { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: -6px 0 18px; }
   .stat { background: var(--bg); border: 1px solid var(--line); border-radius: 12px; padding: 8px 6px; display: flex; align-items: baseline; justify-content: center; gap: 5px; white-space: nowrap; }
   .stat b { font-size: 1.1rem; line-height: 1.2; color: var(--sand); }
@@ -552,6 +552,7 @@
       <a data-track="svcq_aftersales" data-wa="السلام عليكم، أحتاج إلى خدمة ما بعد البيع"><span><svg><use href="#i-wrench"/></svg></span>ما بعد البيع</a>
     </div>
     <a class="complain" data-track="about_complaint" data-wa="السلام عليكم، عندي شكوى أو اقتراح:"><svg><use href="#i-chat-alert"/></svg><span><b>لديك شكوى أو اقتراح؟</b><small>راسلنا عبر واتساب وسنرد عليك في أسرع وقت</small></span></a>
+    <a class="complain admin-link" href="https://alebdaa-admin.arkgulf-agency.workers.dev" target="_blank" rel="noopener noreferrer"><svg><use href="#i-grid"/></svg><span><b>الإدارة</b><small>دخول منصة إدارة الحسابات</small></span></a>
     <p style="font-size:.76rem;color:var(--ink-soft);text-align:center;margin:18px 0 0">© الإبداع للمظلات واللاند سكيب · سجل تجاري 87398</p>
   </section>
 </div>
@@ -579,11 +580,10 @@
 </div>
 
 <!-- الشريط السفلي -->
-<nav class="dock admin" aria-label="تواصل">
+<nav class="dock" aria-label="تواصل">
   <a href="tel:+97470703311" data-track="dock_call"><svg><use href="#i-phone"/></svg>اتصال</a>
   <a data-track="dock_whatsapp" data-wa="السلام عليكم، أرغب في عرض سعر"><svg><use href="#i-wa"/></svg>واتساب</a>
   <a href="https://ebdaatents.com" target="_blank" rel="noopener" data-track="dock_site"><svg><use href="#i-globe"/></svg>موقعنا</a>
-  <a id="adminDock" href="https://alebdaa-admin.arkgulf-agency.workers.dev" target="_blank" rel="noopener noreferrer"><svg><use href="#i-grid"/></svg>الإدارة</a>
 </nav>
 
 <script>
