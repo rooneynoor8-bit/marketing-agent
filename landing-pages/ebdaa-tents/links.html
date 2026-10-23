@@ -79,6 +79,26 @@
   .group-title { font-size: .85rem; font-weight: 700; color: var(--accent); margin: 16px 2px 8px; }
   .group-title:first-of-type { margin-top: 0; }
 
+  /* ---------- Locations + reviews ---------- */
+  .locs { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 8px; }
+  .loc {
+    background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 12px;
+    display: flex; flex-direction: column; gap: 2px;
+  }
+  .loc b { font-size: .92rem; }
+  .loc small { color: var(--ink-soft); font-size: .76rem; line-height: 1.4; flex: 1; }
+  .loc .dir { margin-top: 8px; font-size: .8rem; font-weight: 700; color: var(--accent); }
+  .gbox {
+    display: block; margin-top: 8px; background: var(--card); border: 1px solid var(--line);
+    border-radius: 14px; padding: 12px 14px;
+  }
+  .gbox .top { display: flex; align-items: center; gap: 8px; }
+  .gbox .score { font-size: 1.5rem; font-weight: 700; line-height: 1; }
+  .gbox .stars { color: #e3a008; letter-spacing: 1px; }
+  .gbox .count { color: var(--ink-soft); font-size: .78rem; }
+  .gbox .quote { display: block; margin: 8px 0 6px; font-size: .85rem; color: var(--ink); text-align: right; }
+  .gbox .more { font-size: .8rem; font-weight: 700; color: var(--accent); }
+
   /* ---------- Tabs ---------- */
   .tabs {
     display: flex; gap: 4px; margin-top: 18px; padding: 4px; background: var(--card);
@@ -145,7 +165,6 @@
     <h1>الإبداع للمظلات <span class="h1-sub">واللاند سكيب</span></h1>
     <p class="tag">سواتر · مظلات · برجولات · أبواب · شبابيك، في قطر</p>
     <div class="mini-stats"><span>✦ +10,000 مظلة منفذة</span><span>✦ +20 سنة خبرة</span><span>✦ مصنع خاص</span></div>
-    <a class="rating" href="https://ebdaatents.com/review/" target="_blank" rel="noopener" data-track="header_reviews">★ 4.3 على جوجل · 24 تقييم</a>
   </header>
 
   <nav class="quick" aria-label="تواصل سريع">
@@ -174,6 +193,21 @@
     <div class="usp"><i>🔧</i><span>خدمة ما بعد البيع</span></div>
     <div class="usp"><i>💳</i><span>أنظمة تقسيط مختلفة</span></div>
   </div>
+
+  <!-- مواقعنا والتقييمات -->
+  <div class="locs">
+    <a class="loc" href="https://maps.app.goo.gl/CAhxjJKBMuafqmHr5" target="_blank" rel="noopener" data-track="loc_hq">
+      <b>🏢 مقر الشركة</b><small>طريق سلوى، قبل محطة بترول التيسير</small><span class="dir">الاتجاهات ←</span>
+    </a>
+    <a class="loc" href="https://maps.app.goo.gl/CGUFvtqHQ1JWBPZs6" target="_blank" rel="noopener" data-track="loc_factory">
+      <b>🏭 المصنع</b><small>بركة العوامر</small><span class="dir">الاتجاهات ←</span>
+    </a>
+  </div>
+  <a class="gbox" href="https://ebdaatents.com/review/" target="_blank" rel="noopener" data-track="gbox_reviews">
+    <div class="top"><span class="score">4.3</span><span><span class="stars">★★★★☆</span><br><span class="count">24 تقييم على جوجل</span></span></div>
+    <span class="quote" dir="ltr">“Their team was professional, reliable, and delivered high-quality work on time.”</span>
+    <span class="more">شوف كل التقييمات، وقيّمنا انت كمان ←</span>
+  </a>
 
   <div class="tabs" role="tablist">
     <button role="tab" aria-selected="true" aria-controls="p-services">الخدمات</button>
