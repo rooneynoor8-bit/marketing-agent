@@ -1,0 +1,9 @@
+name = "alebdaa-admin"
+main = "src/index.js"
+compatibility_date = "2024-09-23"
+
+# بعد تشغيل: npx wrangler kv namespace create DATA
+# انسخ الـ id اللي هيطلع وحطه هنا مكان PUT_KV_ID_HERE
+[[kv_namespaces]]
+binding = "DATA"
+id = "PUT_KV_ID_HERE"
