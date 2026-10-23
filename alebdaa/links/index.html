@@ -360,6 +360,10 @@
   .adm-box h3 { margin: 0; font-size: 1.2rem; color: #fff; }
   .adm-box p { margin: 6px 0 18px; font-size: .88rem; color: var(--ink-soft); }
   .adm-go { display: block; padding: 13px; border-radius: 999px; background: #c96442; color: #fff; font-weight: 700; }
+  .call-num { font-size: 1.5rem !important; font-weight: 700; color: #fff !important; letter-spacing: .04em; user-select: all; -webkit-user-select: all; font-variant-numeric: tabular-nums; margin: 6px 0 16px !important; }
+  .call-acts { display: grid; gap: 8px; }
+  .adm-go.ghost { background: var(--soft); width: 100%; }
+  .adm-go.wa { background: #1fa855; }
   .adm-x { position: absolute; top: 10px; left: 10px; width: 34px; height: 34px; border-radius: 50%; background: var(--soft); color: #fff; }
   .stats { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: -6px 0 18px; }
   .stat { background: var(--bg); border: 1px solid var(--line); border-radius: 12px; padding: 8px 6px; display: flex; align-items: baseline; justify-content: center; gap: 5px; white-space: nowrap; }
@@ -597,6 +601,20 @@
   </div>
 </div>
 
+<div class="adm-modal" id="callModal" hidden>
+  <div class="adm-box" role="dialog" aria-modal="true" aria-labelledby="callTitle">
+    <button type="button" class="adm-x" id="callClose" aria-label="إغلاق">✕</button>
+    <span class="lic"><svg><use href="#i-phone"/></svg></span>
+    <h3 id="callTitle">اتصل بنا</h3>
+    <p class="call-num" id="callNum" dir="ltr"></p>
+    <div class="call-acts">
+      <a class="adm-go" id="callGo" href="#">اتصال</a>
+      <button type="button" class="adm-go ghost" id="callCopy">نسخ الرقم</button>
+      <a class="adm-go wa" id="callWa" href="#" target="_blank" rel="noopener">واتساب</a>
+    </div>
+  </div>
+</div>
+
 <!-- الشريط السفلي -->
 <nav class="dock" aria-label="تواصل">
   <a href="tel:+97470703311" data-track="dock_call"><svg><use href="#i-phone"/></svg>اتصال</a>
@@ -792,6 +810,30 @@
   document.getElementById("admClose").addEventListener("click", () => { admModal.hidden = true; });
   admModal.addEventListener("click", e => { if (e.target === admModal) admModal.hidden = true; });
   document.addEventListener("keydown", e => { if (e.key === "Escape") admModal.hidden = true; });
+  // الاتصال: جوه الأرتيفاكت روابط tel: مش بتشتغل، فبنعرض الرقم مع اتصال ونسخ وواتساب
+  const callModal = document.getElementById("callModal");
+  const inFrame = window.self !== window.top;
+  document.querySelectorAll('a[href^="tel:"]').forEach(a => a.addEventListener("click", e => {
+    if (!inFrame) return;
+    e.preventDefault();
+    const num = a.getAttribute("href").slice(4);
+    const pretty = num.replace(/^\+974(\d{4})(\d{4})$/, "+974 $1 $2");
+    document.getElementById("callNum").textContent = pretty;
+    document.getElementById("callGo").href = "tel:" + num;
+    document.getElementById("callWa").href = "https://wa.me/" + num.replace(/\D/g, "");
+    callModal.hidden = false;
+  }));
+  document.getElementById("callCopy").addEventListener("click", () => {
+    const t = document.getElementById("callNum").textContent;
+    const b = document.getElementById("callCopy");
+    navigator.clipboard.writeText(t.replace(/\s/g, "")).then(() => { b.textContent = "اتنسخ ✓"; }, () => {
+      const r = document.createRange(); r.selectNodeContents(document.getElementById("callNum"));
+      const sel = getSelection(); sel.removeAllRanges(); sel.addRange(r); b.textContent = "حدّد الرقم وانسخه";
+    });
+    setTimeout(() => { b.textContent = "نسخ الرقم"; }, 1800);
+  });
+  document.getElementById("callClose").addEventListener("click", () => { callModal.hidden = true; });
+  callModal.addEventListener("click", e => { if (e.target === callModal) callModal.hidden = true; });
 </script>
 </body>
 </html>
