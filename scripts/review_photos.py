@@ -24,6 +24,15 @@ Return ONLY a JSON array."""
 
 def main() -> None:
     src, out = Path(sys.argv[1]), Path(sys.argv[2])
+    try:
+        run(src, out)
+    except Exception as e:  # save the error so it can be read from the repo
+        out.parent.mkdir(parents=True, exist_ok=True)
+        (out.parent / "photos-review-error.txt").write_text(f"{type(e).__name__}: {e}", encoding="utf-8")
+        raise
+
+
+def run(src: Path, out: Path) -> None:
     photos = json.loads(src.read_text(encoding="utf-8"))
     client = anthropic.Anthropic()
     lines = ["# مراجعة صور جوجل للإعلانات – لمسة ناعمة", ""]
