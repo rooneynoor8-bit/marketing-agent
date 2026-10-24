@@ -4,15 +4,22 @@
   "website": "",
   "instagram": "",
   "facebook": "",
-  "industry": "",
-  "market": "",
-  "products": [],
-  "target_audience": "",
+  "industry": "مركز مساج واسترخاء للرجال",
+  "market": "السعودية - الرياض: فرعين لبن والمونسية (مستنتج من أسماء الحملات، يحتاج تأكيد)",
+  "products": [
+    "مساج تايلاندي",
+    "ريفليكسولوجي",
+    "مساج سويدي",
+    "شياتسو",
+    "مساج الأحجار الساخنة"
+  ],
+  "target_audience": "رجال في الرياض (المساج المنزلي غير متاح)",
   "competitors": [],
   "brand_voice": "",
-  "goals": "",
+  "goals": "رسائل واتساب/ماسنجر تتحول لحجوزات",
   "monthly_budget": "",
-  "meta_ad_account_id": "",
+  "meta_ad_account_id": "4333949530189988",
   "google_ads_customer_id": "",
-  "notes": "ملف حملات منفصل. active=false لحد ما البيانات تكتمل عشان التقرير الأسبوعي ما يصرفش عليه."
+  "notes": "الحساب الإعلاني متوصل عن طريق Windsor.ai. أول تحليل للإعلانات: reports/lamsa-naema/2026-10-24_ads-analysis.md",
+  "currency": "SAR"
 }
