@@ -3,11 +3,13 @@
 Run:  python scripts/review_photos.py data/lamsa-naema_photos.json reports/lamsa-naema/photos-review.md
 """
 
+import base64
 import json
 import sys
 from pathlib import Path
 
 import anthropic
+import requests
 
 PROMPT = """These are photos from the Google Business Profile of "لمسة ناعمة سبا", a men-only massage and spa center in Riyadh (branch: {branch}).
 For EACH photo, in order, return one JSON object with:
@@ -37,8 +39,19 @@ def run(src: Path, out: Path) -> None:
     client = anthropic.Anthropic()
     lines = ["# مراجعة صور جوجل للإعلانات – لمسة ناعمة", ""]
     for branch, ids in photos.items():
-        urls = [f"https://lh3.googleusercontent.com/{i}=w1024" for i in ids]
-        content = [{"type": "image", "source": {"type": "url", "url": u}} for u in urls]
+        urls, content, skipped = [], [], []
+        for i in ids:
+            url = f"https://lh3.googleusercontent.com/{i}=w1024"
+            resp = requests.get(url, timeout=60)
+            ctype = resp.headers.get("content-type", "").split(";")[0]
+            if resp.status_code != 200 or ctype not in ("image/jpeg", "image/png", "image/webp", "image/gif"):
+                skipped.append(f"{url} ({resp.status_code} {ctype})")
+                continue
+            urls.append(url)
+            content.append({"type": "image", "source": {
+                "type": "base64", "media_type": ctype, "data": base64.b64encode(resp.content).decode()}})
+        if skipped:
+            lines.append(f"تعذّر تحميل {len(skipped)} صورة من {branch}: " + "، ".join(skipped))
         content.append({"type": "text", "text": PROMPT.format(branch=branch)})
         with client.messages.stream(
             model="claude-opus-5-5",
