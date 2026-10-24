@@ -44,7 +44,10 @@ def performance_step(client_id: str, profile: dict) -> str:
 
 def main() -> None:
     client = anthropic.Anthropic()
-    ids = sys.argv[1:] or sorted(p.stem for p in CLIENTS_DIR.glob("*.json"))
+    ids = sys.argv[1:] or sorted(
+        p.stem for p in CLIENTS_DIR.glob("*.json")
+        if json.loads(p.read_text(encoding="utf-8")).get("active", True)  # "active": false skips a client
+    )
     if not ids:
         print("No clients in clients/.")
         return
